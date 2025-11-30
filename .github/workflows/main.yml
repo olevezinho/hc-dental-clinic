@@ -13,7 +13,7 @@ jobs:
     # uses GitHub's checkout action to checkout code from the main branch
     - uses: actions/checkout@v2
 
-    # sets up .NET Core SDK 8.0.100
+    # sets up .NET Core SDK 10.0.100
     - name: Setup .NET Core SDK
       uses: actions/setup-dotnet@v1
       with:
@@ -27,15 +27,19 @@ jobs:
 
     # restores blazor wasm workloads
     # - name: Restore WASM workloads
-    #   run: dotnet workload install wasm-tools
+    #   run: dotnet workload install wasm-
+
+    # changes the base-image-path in CustomPage.razor from '/curriculum-vitae/' to '../curriculum-vitae/' to match base blazor template
+    #- name: Change base-image-path in CustomPage.razor from /curriculum-vitae to ../../curriculum-vitae
+    # run: sed -i 's/\/curriculum-vitae/\/curriculum-vitae\/curriculum-vitae/g' Pages/CustomPage.razor
 
     # publishes Blazor project to the release-folder
     - name: Publish .NET Core project
       run: dotnet publish -c Release -o release --nologo
 
-    # changes the base-tag in index.html from '/' to 'akaratefelgueiras' to match GitHub Pages repository subdirectory
-    #- name: Change base-tage in index.html from / to akaratefelgueiras
-    #  run: sed -i 's/<base href="\/" \/>/<base href="\/akaratefelgueiras\/" \/>/g' release/wwwroot/index.html
+    # changes the base-tag in index.html from '/' to 'hc-dental-clinic' to match GitHub Pages repository subdirectory
+    - name: Change base-tag in index.html from / to hc-dental-clinic
+      run: sed -i 's/<base href="\/" \/>/<base href="\/hc-dental-clinic\/" \/>/g' release/wwwroot/index.html
 
     # copy index.html to 404.html to serve the same file when a file is not found
     - name: copy index.html to 404.html
