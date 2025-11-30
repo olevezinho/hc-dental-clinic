@@ -10,7 +10,7 @@ RUN dotnet workload install wasm-tools --disable-parallel
 RUN dotnet restore HcDentalClinic.csproj
 COPY . .
 
-RUN dotnet build HcDentalClinic.csproj --no-restore -c Release -o /app/build
+RUN dotnet build HcDentalClinic.csproj -c Release -o /app/build
 
 FROM build AS publish
 RUN dotnet publish HcDentalClinic.csproj -c Release -o /app/publish
