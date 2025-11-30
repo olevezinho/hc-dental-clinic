@@ -1,0 +1,14 @@
+services:
+   hc-dental-clinic:
+    image: hc-dental-clinic
+    build:
+      context: ./src/HcDentalClinic
+    ulimits:
+      nofile:
+        soft: 65536
+        hard: 65536
+    environment:
+      - ASPNETCORE_URLS=http://*:5005
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "8081:80"
