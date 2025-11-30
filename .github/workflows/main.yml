@@ -31,7 +31,7 @@ jobs:
 
     # changes the base-image-path in CustomPage.razor from '/curriculum-vitae/' to '../curriculum-vitae/' to match base blazor template
     - name: Change base-image-path in CustomPage.razor from /images to ../../images
-      run: sed -i 's/\/hc-dental-clinic/\/images\/images/g' src/HcDentalClinic/Pages/LandingPage.razor
+      run: sed -i 's/\/images/\/images\/images/g' src/HcDentalClinic/Pages/LandingPage.razor
 
     # publishes Blazor project to the release-folder
     - name: Publish .NET Core project
