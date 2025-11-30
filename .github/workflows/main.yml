@@ -30,19 +30,19 @@ jobs:
     #   run: dotnet workload install wasm-
 
     # changes the base-image-path in CustomPage.razor from '/curriculum-vitae/' to '../curriculum-vitae/' to match base blazor template
-    - name: Change base-image-path in CustomPage.razor from /images to /hc-dental-clinic/images
-      run: sed -i 's|/images/|/hc-dental-clinic/images/|g' src/HcDentalClinic/Pages/LandingPage.razor
+    # - name: Change base-image-path in CustomPage.razor from /images to /hc-dental-clinic/images
+    #   run: sed -i 's|/images/|/hc-dental-clinic/images/|g' src/HcDentalClinic/Pages/LandingPage.razor
 
     # publishes Blazor project to the release-folder
     - name: Publish .NET Core project
       run: dotnet publish -c Release -o release --nologo
 
-    - name: Change image paths in release index.html to /hc-dental-clinic/images
-      run: sed -i 's|/images/|/hc-dental-clinic/images/|g' release/wwwroot/index.html
+    # - name: Change image paths in release index.html to /hc-dental-clinic/images
+    #   run: sed -i 's|/images/|/hc-dental-clinic/images/|g' release/wwwroot/index.html
 
     # changes the base-tag in index.html from '/' to 'hc-dental-clinic' to match GitHub Pages repository subdirectory
-    - name: Change base-tag in index.html from / to hc-dental-clinic
-      run: sed -i 's/<base href="\/" \/>/<base href="\/hc-dental-clinic\/" \/>/g' release/wwwroot/index.html
+    # - name: Change base-tag in index.html from / to hc-dental-clinic
+    #   run: sed -i 's/<base href="\/" \/>/<base href="\/hc-dental-clinic\/" \/>/g' release/wwwroot/index.html
 
     # copy index.html to 404.html to serve the same file when a file is not found
     - name: copy index.html to 404.html
