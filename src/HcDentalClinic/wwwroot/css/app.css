@@ -1,5 +1,5 @@
 html, body {
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    /* font-family: Georgia, 'Times New Roman', Times, serif; */
 }
 
 h1:focus {
@@ -67,40 +67,6 @@ a, .btn-link {
         content: "An error has occurred."
     }
 
-.loading-progress {
-    position: absolute;
-    display: block;
-    width: 8rem;
-    height: 8rem;
-    inset: 20vh 0 auto 0;
-    margin: 0 auto 0 auto;
-}
-
-    .loading-progress circle {
-        fill: none;
-        stroke: #e0e0e0;
-        stroke-width: 0.6rem;
-        transform-origin: 50% 50%;
-        transform: rotate(-90deg);
-    }
-
-        .loading-progress circle:last-child {
-            stroke: #ad9587;
-            stroke-dasharray: calc(3.141 * var(--blazor-load-percentage, 0%) * 0.8), 500%;
-            transition: stroke-dasharray 0.05s ease-in-out;
-        }
-
-.loading-progress-text {
-    position: absolute;
-    text-align: center;
-    font-weight: bold;
-    inset: calc(20vh + 3.25rem) 0 auto 0.2rem;
-}
-
-    .loading-progress-text:after {
-        content: var(--blazor-load-percentage-text, "Loading");
-    }
-
 code {
     color: #c02d76;
 }
@@ -114,6 +80,7 @@ code {
     text-align: start;
 }
 
+/* Ecra de carregamento logo CSS */
 .loading-logo {
     display: block;
     margin: 20vh auto 0 auto;
