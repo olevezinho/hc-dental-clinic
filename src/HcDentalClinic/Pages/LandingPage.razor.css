@@ -23,11 +23,21 @@
 }
 
 .wip-image {
-    /* Control image size and ensure it's responsive */
-    max-width: 75vw; /* Prevents image from exceeding viewport width */
+    max-width: 75vw;
     height: auto;
-    object-fit: contain; /* Ensures the whole image is visible */
-    max-height: 75vh; /* Prevents image from exceeding viewport height */
+    object-fit: contain;
+    max-height: 75vh;
+
+    /* fade-in */
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 500ms ease-out, transform 500ms ease-out;
+    will-change: opacity, transform;
+}
+
+.wip-image.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .wip-footer {

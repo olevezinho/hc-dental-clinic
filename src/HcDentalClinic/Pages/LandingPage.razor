@@ -2,11 +2,19 @@
 @layout CustomLayout
 
 <div class="wip-container">
-    <h1 class="wip-text">Estamos a preparar algo fantástico para si.</h1>
+    <h1 class="wip-text">Estamos a preparar algo especial para si.</h1>
 
-    <img src="/images/background-shadowed.png" alt="Work in progress" class="wip-image" />
+    <img src="/images/background-shadowed.png"
+         alt="Work in progress"
+         class="wip-image @(imageLoaded ? "visible" : "loading")"
+     @onload="OnImageLoaded" />
 
     <footer class="wip-footer">
         &copy; @DateTime.Now.Year HC Dental Clinic - Todos os direitos reservados.
     </footer>
 </div>
+
+@code {
+  private bool imageLoaded;
+  private void OnImageLoaded() => imageLoaded = true;
+}
