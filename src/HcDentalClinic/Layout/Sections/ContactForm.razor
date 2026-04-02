@@ -1,0 +1,382 @@
+﻿<div class="contact-form-icon-container">
+    <MudIcon 
+        Icon="@Icons.Material.Outlined.CalendarToday" 
+        Size="Size.Large"
+        Style="color: #ad9587; font-size: 2.5rem; margin-top: 1rem;" />
+</div>
+<h3 class="contact-form-text">Marcação de consulta</h3>
+<MudText 
+    Typo="Typo.h5" 
+    Class="pa-12 mt-2"
+    Align="Align.Center"
+    Style="font-weight: 250; color: #807f7f; font-size: 1.3rem;">
+    Agende a sua consulta de forma rápida e fácil. Entraremos em contacto para confirmar a disponibilidade.
+</MudText>
+<MudContainer 
+    MaxWidth="MaxWidth.Medium" 
+    Class="pa-4 mb-8" >
+    <MudPaper Height="100%" Width="100%" Style="color:#ad9587; box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.1); border-radius: 24px;">
+        <MudCard>
+            <MudForm 
+                @ref="_form"
+                @bind-IsValid="_isValid"
+                Class="pa-8"
+                Style="background-color: #faf9f7; border-radius: 16px;">
+                <MudGrid Spacing="2">
+                    <!-- Row 1: Name and Email -->
+                    <MudItem xs="12" sm="6">
+                        <MudText Class="pa-1 mb-2" Align="Align.Left" Style="color:#333333; font-weight: 450;">Nome</MudText>
+                        <MudTextField 
+                            T="string" 
+                            @bind-Value="_name"
+                            Label="O seu nome completo" 
+                            Variant="Variant.Filled" 
+                            AdornmentColor="Color.Inherit"
+                            Required="true" 
+                            RequiredError="Nome obrigatório!"
+                            Style="background-color: #ededed; border-radius: 16px; overflow: hidden;"/>
+                    </MudItem>
+                    <MudItem xs="12" sm="6">
+                        <MudText Class="pa-1 mb-2" Align="Align.Left" Style="color:#333333; font-weight: 450;">Email</MudText>
+                        <MudTextField 
+                            T="string"
+                            @bind-Value="_email"
+                            Label="oseu@email.com"
+                            Variant="Variant.Filled" 
+                            Validation="@(new Func<string, string?>(ValidateEmail))"
+                            AdornmentColor="Color.Inherit"
+                            Required="true" 
+                            RequiredError="Email obrigatório!"
+                            Style="background-color: #ededed; border-radius: 16px; overflow: hidden;"/>
+                    </MudItem>
+                    
+                    <!-- Row 2: Phone and Contact Reason -->
+                    <MudItem xs="12" sm="6">
+                        <MudText Class="pa-1 mb-2" Align="Align.Left" Style="color:#333333; font-weight: 450;">Contacto</MudText>
+                        <MudTextField 
+                            T="string"
+                            @bind-Value="_contact"
+                            Label="912 345 678"
+                            Variant="Variant.Filled" 
+                            Validation="@(new Func<string, string?>(ValidatePhone))"
+                            Required="true" 
+                            RequiredError="Contacto obrigatório!"
+                            Style="background-color: #ededed; border-radius: 16px; overflow: hidden;"/>
+                    </MudItem>
+                    <MudItem xs="12" sm="6">
+                        <MudText Class="pa-1 mb-2" Align="Align.Left" Style="color:#333333; font-weight: 450;">Motivo</MudText>
+                        <MudSelect 
+                            T="string"
+                            @bind-Value="_reason"
+                            Label="Motivo da consulta"
+                            Variant="Variant.Filled"
+                            FullWidth="true"
+                            Required="true"
+                            RequiredError="Motivo obrigatório!"
+                            Style="background-color: #ededed; border-radius: 16px; overflow: hidden; z-index: 999999;"
+                            PopoverClass="mud-select-popover-custom"> 
+                            @foreach (var reason in _reasons)
+                            {
+                                <MudSelectItem T="string" Value="@reason">@reason</MudSelectItem>
+                            }
+                        </MudSelect>
+                    </MudItem>
+                    
+                    <!-- Row 3: Message -->
+                    <MudItem xs="12">
+                        <MudText Class="pa-1 mb-2" Align="Align.Left" Style="color:#333333; font-weight: 450;">Mensagem</MudText>
+                        <MudTextField 
+                            T="string" 
+                            @bind-Value="_message"
+                            Label="Informações adicionais ou preferências de horário ..."
+                            Variant="Variant.Filled" 
+                            Required="true"
+                            Lines="4"
+                            RequiredError="Mensagem obrigatória!"
+                            Style="background-color: #ededed; border-radius: 16px; overflow: hidden;"/>
+                    </MudItem>
+
+                    <!-- Row 4: Data agreement -->
+                    <MudItem xs="12">
+                        <MudCheckBox 
+                            @bind-Value="_agreement" 
+                            LabelPlacement="Placement.Right"
+                            Dense="true" 
+                            Required="true"
+                            RequiredError="Tem de aceitar a política de privacidade para continuar."
+                            Color="Color.Inherit">
+                            <ChildContent>
+                                Li e aceito a <MudLink Href="/privacy" Target="_blank">política de privacidade</MudLink>
+                            </ChildContent>
+                        </MudCheckBox>
+                    </MudItem>
+                    
+                    <!-- Row 5: Submit Button -->
+                    <MudItem xs="12">
+                        <MudButton 
+                            Variant="Variant.Filled"
+                            FullWidth="true"
+                            Disabled="@(!_isValid || _sending)"
+                            OnClick="SubmitFormAsync"
+                            @onmouseover="OnMouseOverColorChange"
+                            @onmouseout="OnMouseOutColorChange"
+                            EndIcon="@Icons.Material.Outlined.Send" 
+                            Class="mt-4"
+                            Style="@($"color: white; background-color: {((!_isValid || _sending) ? mudButtonDisabledBackgroundColor : mudButtonBackgroundColor)}; border-radius: 16px;")">
+                            @if(_sending)
+                            {
+                                <span>A solicitar ...</span>
+                            }
+                            else
+                            {
+                                <span>Solicitar Marcação</span>
+                            }
+                        </MudButton>
+                    </MudItem>
+                </MudGrid>
+            </MudForm>
+        </MudCard>
+    </MudPaper>
+</MudContainer>
+
+@if(_submitted || _invalid)
+{
+    <MudContainer MaxWidth="MaxWidth.Medium" Class="pa-4 mb-20">
+        <MudPaper Width="100%" Style="color:#ad9587; box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.1); border-radius: 24px;">
+            <MudCard Style="background-color: #faf9f7; border-radius: 24px;">
+                <MudAlert Severity="@_alertSeverity" Style="background-color: #faf9f7;" Class="mt-1">
+                @_alertMessage
+                </MudAlert>
+            </MudCard>
+        </MudPaper>
+    </MudContainer>
+}
+
+@code 
+{
+
+    // EmailJS configuration constants
+    private const string EmailJSPublicKey = "public_key_placeholder";
+    private const string EmailJSServiceID = "service_id_placeholder";
+    private const string EmailJSTemplateID = "template_id_placeholder";
+
+    // Verifalia configuration constants
+    private const string VerifaliaAPIKey = "verifalia_api_key_placeholder";
+
+    private string mudButtonDisabledBackgroundColor = "#ededed !important";
+    private string mudButtonBackgroundColor = Colors.Brown.Lighten3;
+
+    private MudForm _form = null!;
+    private bool _isValid;
+    private bool _sending;
+    private bool _submitted;
+    private bool _invalid;
+    private Severity _alertSeverity;
+    private string _alertMessage = string.Empty;
+
+    
+    private string _name = string.Empty;
+    private string _email = string.Empty;
+    private string _contact = string.Empty;
+    private string _reason = string.Empty;
+    private string _message = string.Empty;
+    private bool _agreement { get; set; } = false;
+
+    public string[] _reasons =[
+        "Check-up / Limpeza",
+        "Emergência",
+        "Dentisteria estética",
+        "Ortodontia",
+        "Odontopediatria",
+        "Outro"
+    ];
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JSRuntime.InvokeVoidAsync("EmailJSInterop.init", EmailJSPublicKey);
+        }
+    }
+
+    private string? ValidateEmail(string email)
+    {
+        if (string.IsNullOrWhiteSpace(email))
+            return "Email obrigatório!";
+
+        var emailPattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+        if (!System.Text.RegularExpressions.Regex.IsMatch(email, emailPattern))
+            return "Email inválido!";
+
+        return null;
+    }
+
+    private string? ValidatePhone(string phone)
+    {
+        if (string.IsNullOrWhiteSpace(phone))
+            return "Contacto obrigatório!";
+
+        var phonePattern = @"^\+?\d{9}$";
+        if (!System.Text.RegularExpressions.Regex.IsMatch(phone, phonePattern))
+            return "Contacto inválido! Use o formato 912 345 678";
+
+        return null;
+    }
+
+    private async Task SubmitFormAsync()
+    {
+        await _form.ValidateAsync();
+
+        if (!_form.IsValid || !_agreement)
+            return;
+
+        _sending = true;
+        _submitted = false;
+
+        StateHasChanged();
+
+        var templateData = new
+        {
+            name = _name,
+            email = _email,
+            contact = _contact,
+            reason = _reason,
+            message = _message
+        };
+
+        try
+        {
+            var emailValidationResult = await DoubleCheckEmailAsync(_email);
+            if (emailValidationResult is not null)
+            {
+                _alertSeverity = Severity.Error;
+                _alertMessage = emailValidationResult;
+                return;
+            }
+
+            var result = await JSRuntime.InvokeAsync<EmailJSResponse>(
+                "EmailJSInterop.send", 
+                EmailJSServiceID, 
+                EmailJSTemplateID, 
+                templateData);
+
+            if (result.Success)
+            {
+                _alertSeverity = Severity.Success;
+                _alertMessage = "Pedido de marcação enviado com sucesso! Entraremos em contacto em breve.";
+                ResetForm();
+            }
+            else
+            {
+                _alertSeverity = Severity.Error;
+                _alertMessage = $"Ocorreu um erro ao enviar o pedido {result.Text}. Por favor, tente novamente mais tarde.";
+                _invalid = true;
+                return;
+            }
+        }
+        catch (Exception ex)
+        {
+            _alertSeverity = Severity.Error;
+            _alertMessage = $"Ocorreu um erro: {ex.Message}.";
+            _invalid = true;
+        }
+        finally
+        {
+            _sending = false;
+            if(!_invalid) 
+            {
+                _submitted = true;
+            }
+        }
+    }
+
+    private void OnMouseOverColorChange(MouseEventArgs args)
+    {
+        mudButtonBackgroundColor = Colors.Brown.Lighten2;
+    }
+
+    private void OnMouseOutColorChange(MouseEventArgs args)
+    {
+        mudButtonBackgroundColor = Colors.Brown.Lighten3;
+    }
+
+    private void ResetForm()
+    {
+        _name = string.Empty;
+        _email = string.Empty;
+        _contact = string.Empty;
+        _reason = string.Empty;
+        _message = string.Empty;
+        _agreement = false;
+        _form.ResetAsync();
+    }
+
+    private async Task<string?> DoubleCheckEmailAsync(string email)
+    {
+        // Setup of the URL
+        var uri = "https://api.verifalia.com/v2.7/email-validations?waitTime=5000";
+
+        // Authentication configuration for the HttpClient
+        var authString = Convert.ToBase64String(Encoding.UTF8.GetBytes($"{VerifaliaAPIKey}:"));
+        HttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", authString);
+
+        // Setup the request body
+        var payload = new
+        {
+            entries = new[] { new { inputData = email } }
+        };
+
+        try
+        {
+            // Using PostAsync
+            using var response = await HttpClient.PostAsJsonAsync(uri, payload);
+
+            if (response.IsSuccessStatusCode)
+            {
+                // Reading the result
+                var result = await response.Content.ReadFromJsonAsync<VerifaliaResponse>();
+
+                if (result?.Entries?.Data is { Count: > 0 })
+                {
+                    var firstEntry = result.Entries.Data[0];
+                    
+                    if (firstEntry.Status is "Success") return null; // E-mail is valid
+                    else
+                    {
+                        ResetForm();
+                        // There was a different status, so let's log the status
+                        _alertSeverity = Severity.Error;
+                        _alertMessage = $"Foi reportado um status diferente do esperado. Tente novamente mais tarde";
+                        return $"Foi reportado um estado diferente do esperado. Estado: '{firstEntry.Status}'";
+                    }
+                }
+                else 
+                {
+                    ResetForm();
+                    // Result data contains no entries
+                    _alertSeverity = Severity.Error;
+                    _alertMessage = "O resultado não contém entradas no campo Data.";
+                    return "O resultado não contém entradas no campo Data.";
+                }
+            }
+            else
+            {
+                ResetForm();
+                // API issues
+                _alertSeverity = Severity.Error;
+                _alertMessage = $"Ocorreu um erro ao validar o e-mail contra a API";
+                return "Ocorreu um erro ao validar o e-mail contra a API";
+            }
+        }
+        catch (Exception ex)
+        {
+            ResetForm();
+            // Hypothetical network issues
+            _alertSeverity = Severity.Error;
+            _alertMessage = "Aconteceu um erro inesperado. Por favor, tente novamente mais tarde." ;
+            return $"Ocorreu um erro ao validar o e-mail {email}. Detalhes: {ex.Message}";
+        }
+    }
+
+    private record EmailJSResponse(bool Success, string Status, string Text);
+}

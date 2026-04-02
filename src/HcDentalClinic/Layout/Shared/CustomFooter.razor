@@ -1,0 +1,318 @@
+﻿<MudPaper>
+    @if(IsMobile)
+    {
+        <div class="footer-container">
+            <div class="social-media-links">
+                <MudGrid Class="pa-1 mt-6" Justify="Justify.Center" Spacing="2">
+                    <MudItem xs="10" sm="6" md="3">
+                        <MudImage 
+                            Class="pa-2"
+                            Src="/images/loading-shadowed.png" 
+                            Alt="HC Dental Clinic logótipo"
+                            Width="240" />
+                        <MudText Typo="Typo.h6" Class="pa-4"
+                            Style="@($"color: {Colors.Gray.Lighten1}; font-weight: 250;")">
+                            A criar sorrisos bonitos e saudáveis para toda a família desde 2026.
+                        </MudText>
+                    </MudItem>
+                    <MudItem xs="10" sm="6" md="3">
+                        <MudText Typo="Typo.h5" Class="pa-4"
+                            Style="@($"color: {Colors.Gray.Lighten3}; font-weight: bold;")">
+                            Links Rápidos:
+                        </MudText>
+                        <MudButton 
+                            Class="ma-2" 
+                            Variant="Variant.Text" 
+                            Href="#missao"
+                            @onmouseover="OnMouseOverTextMissaoColorChange"
+                            @onmouseout="OnMouseOutTextMissaoColorChange"
+                            Style="@($"color: {mudMissaoTextColor}; font-weight: 250;")">
+                            A nossa missão
+                        </MudButton>
+                        <MudFlexBreak />
+                        <MudButton 
+                            Class="ma-2" 
+                            Variant="Variant.Text" 
+                            Href="#servicos"
+                            @onmouseover="OnMouseOverTextServicosColorChange"
+                            @onmouseout="OnMouseOutTextServicosColorChange"
+                            Style="@($"color: {mudServicosTextColor}; font-weight: 250;")">
+                            Serviços
+                        </MudButton>
+                        <MudFlexBreak />
+                        <MudButton 
+                            Class="ma-2" 
+                            Variant="Variant.Text" 
+                            Href="#equipa"
+                            @onmouseover="OnMouseOverTextEquipaColorChange"
+                            @onmouseout="OnMouseOutTextEquipaColorChange"
+                            Style="@($"color: {mudEquipaTextColor}; font-weight: 250;")">
+                            A nossa equipa
+                        </MudButton>
+                        <MudFlexBreak />
+                        <MudButton 
+                            Class="ma-2"
+                            Variant="Variant.Text"
+                            Href="#casos-clinicos"
+                            @onmouseover="OnMouseOverTextContactosColorChange"
+                            @onmouseout="OnMouseOutTextContactosColorChange"
+                            Style="@($"color: {mudContactosTextColor}; font-weight: 250;")">
+                            Contacte-nos
+                        </MudButton>
+                    </MudItem>
+                    <MudItem xs="10" sm="6" md="3">
+                        <MudText Typo="Typo.h5" Class="pa-4"
+                            Style="@($"color: {Colors.Gray.Lighten3}; font-weight: bold;")">
+                            Conecte-se connosco
+                        </MudText>
+                        <MudGrid Class="pa-10" Justify="Justify.FlexStart">
+                            <MudIconButton 
+                                Class="mr-3" 
+                                Variant="Variant.Filled"
+                                @onmouseover="OnMouseOverFacebook"
+                                @onmouseout="OnMouseOutFacebook"
+                                Icon="@Icons.Custom.Brands.Facebook"
+                                Style="@($"color: {Colors.Gray.Lighten3}; background-color: {mudButtonFacebookBackgroundColor}; border-radius: 16px;")"
+                                Href="#" />
+                            <MudIconButton 
+                                Class="mr-3"
+                                Variant="Variant.Filled"
+                                @onmouseover="OnMouseOverInstagram"
+                                @onmouseout="OnMouseOutInstagram"
+                                Icon="@Icons.Custom.Brands.Instagram"
+                                Style="@($"color: {Colors.Gray.Lighten3}; background-color: {mudButtonInstagramBackgroundColor}; border-radius: 16px;")"
+                                Href="https://www.instagram.com/hcdentalclinic.pt/" />
+                            <MudIconButton 
+                                Variant="Variant.Filled"
+                                @onmouseover="OnMouseOverWhatsApp"
+                                @onmouseout="OnMouseOutWhatsApp"
+                                Icon="@Icons.Custom.Brands.WhatsApp"
+                                Style="@($"color: {Colors.Gray.Lighten3}; background-color: {mudButtonWhatsAppBackgroundColor}; border-radius: 16px;")"
+                                Href="https://wa.me/00351965345367" />
+                        </MudGrid>
+                        <MudText Typo="Typo.h6" Class="pa-4"
+                            Style="@($"color: {Colors.Gray.Lighten1}; font-weight: 250;")">
+                            Siga-nos para dicas dentárias, ofertas especiais e novidades da clínica!
+                        </MudText>
+                    </MudItem>
+                    <MudItem xs="11">
+                        <MudDivider DividerType="DividerType.Middle" Class="mt-6"
+                            Style="@($"color: {Colors.Gray.Darken1};")" />
+                    </MudItem>
+                    <MudItem xs="10">
+                        <div class="copyright-container">
+                            <footer class="copyright-text">
+                                &copy; @DateTime.Now.Year HC Dental Clinic - Todos os direitos reservados.
+                            </footer>
+                        </div>
+                    </MudItem>
+                </MudGrid>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="footer-container">
+            <div class="social-media-links">
+                <MudGrid Class="pa-10" Justify="Justify.Center" Spacing="2">
+                    <MudItem xs="8" sm="4" md="3">
+                        <MudImage 
+                            Class="pa-2" 
+                            Src="/images/loading-shadowed.png" 
+                            Alt="HC Dental Clinic logótipo"
+                            Width="240" />
+                        <MudText Typo="Typo.h6" Class="pa-4"
+                            Style="@($"color: {Colors.Gray.Lighten1}; font-weight: 250;")">
+                            A criar sorrisos bonitos e saudáveis para<br />
+                            toda a família desde 2026.
+                        </MudText>
+                    </MudItem>
+                    <MudItem xs="8" sm="4" md="3">
+                        <MudText Typo="Typo.h5" Class="pa-4"
+                            Style="@($"color: {Colors.Gray.Lighten3}; font-weight: bold;")">
+                            Links Rápidos:
+                        </MudText>
+                        <MudButton 
+                            Class="ma-2" 
+                            Variant="Variant.Text" 
+                            Href="#missao"
+                            @onmouseover="OnMouseOverTextMissaoColorChange"
+                            @onmouseout="OnMouseOutTextMissaoColorChange"
+                            Style="@($"color: {mudMissaoTextColor}; font-weight: 250;")">
+                            A nossa missão
+                        </MudButton>
+                        <MudFlexBreak />
+                        <MudButton 
+                            Class="ma-2" 
+                            Variant="Variant.Text" 
+                            Href="#servicos"
+                            @onmouseover="OnMouseOverTextServicosColorChange"
+                            @onmouseout="OnMouseOutTextServicosColorChange"
+                            Style="@($"color: {mudServicosTextColor}; font-weight: 250;")">
+                            Serviços
+                        </MudButton>
+                        <MudFlexBreak />
+                        <MudButton 
+                            Class="ma-2" 
+                            Variant="Variant.Text" 
+                            Href="#equipa"
+                            @onmouseover="OnMouseOverTextEquipaColorChange"
+                            @onmouseout="OnMouseOutTextEquipaColorChange"
+                            Style="@($"color: {mudEquipaTextColor}; font-weight: 250;")">
+                            A nossa equipa
+                        </MudButton>
+                        <MudFlexBreak />
+                        <MudButton 
+                            Class="ma-2"
+                            Variant="Variant.Text"
+                            Href="#casos-clinicos"
+                            @onmouseover="OnMouseOverTextContactosColorChange"
+                            @onmouseout="OnMouseOutTextContactosColorChange"
+                            Style="@($"color: {mudContactosTextColor}; font-weight: 250;")">
+                            Contacte-nos
+                        </MudButton>
+                    </MudItem>
+                    <MudItem xs="8" sm="4" md="3">
+                        <MudText Typo="Typo.h5" Class="pa-4"
+                            Style="@($"color: {Colors.Gray.Lighten3}; font-weight: bold;")">
+                            Conecte-se connosco
+                        </MudText>
+                        <MudGrid Class="pa-10" Justify="Justify.FlexStart">
+                            <MudIconButton 
+                                Class="mr-2" 
+                                Variant="Variant.Filled"
+                                @onmouseover="OnMouseOverFacebook"
+                                @onmouseout="OnMouseOutFacebook"
+                                Icon="@Icons.Custom.Brands.Facebook"
+                                Style="@($"color: {Colors.Gray.Lighten3}; background-color: {mudButtonFacebookBackgroundColor}; border-radius: 16px;")"
+                                Href="#" />
+                            <MudIconButton 
+                                Class="mr-2"
+                                Variant="Variant.Filled"
+                                @onmouseover="OnMouseOverInstagram"
+                                @onmouseout="OnMouseOutInstagram"
+                                Icon="@Icons.Custom.Brands.Instagram"
+                                Style="@($"color: {Colors.Gray.Lighten3}; background-color: {mudButtonInstagramBackgroundColor}; border-radius: 16px;")"
+                                Href="https://www.instagram.com/hcdentalclinic.pt/" />
+                            <MudIconButton 
+                                Variant="Variant.Filled"
+                                @onmouseover="OnMouseOverWhatsApp"
+                                @onmouseout="OnMouseOutWhatsApp"
+                                Icon="@Icons.Custom.Brands.WhatsApp"
+                                Style="@($"color: {Colors.Gray.Lighten3}; background-color: {mudButtonWhatsAppBackgroundColor}; border-radius: 16px;")"
+                                Href="https://wa.me/00351965345367" />
+                        </MudGrid>
+                        <MudText Typo="Typo.h6" Class="pa-4"
+                            Style="@($"color: {Colors.Gray.Lighten1}; font-weight: 250;")">
+                            Siga-nos para dicas dentárias, ofertas especiais<br />e novidades da clínica!
+                        </MudText>
+                    </MudItem>
+                    <MudItem xs="10">
+                        <MudDivider DividerType="DividerType.Middle" Class="my-6"
+                            Style="@($"color: {Colors.Gray.Darken1};")" />
+                    </MudItem>
+                    <MudItem xs="10">
+                        <div class="copyright-container">
+                            <footer class="copyright-text">
+                                &copy; @DateTime.Now.Year HC Dental Clinic - Todos os direitos reservados.
+                            </footer>
+                        </div>
+                    </MudItem>
+                </MudGrid>
+            </div>
+        </div>
+    }   
+</MudPaper>
+
+@code 
+{
+    private MudBlazor.Breakpoint _currentBreakpoint;
+    private bool IsMobile => _currentBreakpoint < MudBlazor.Breakpoint.Sm;
+
+    // Text link colors
+    private string mudMissaoTextColor = Colors.Gray.Lighten1;
+    private string mudServicosTextColor = Colors.Gray.Lighten1;
+    private string mudEquipaTextColor = Colors.Gray.Lighten1;
+    private string mudContactosTextColor = Colors.Gray.Lighten1;
+    
+    // Social media button background colors
+    private string mudButtonFacebookBackgroundColor = Colors.BlueGray.Darken4;
+    private string mudButtonInstagramBackgroundColor = Colors.BlueGray.Darken4;
+    private string mudButtonWhatsAppBackgroundColor = Colors.BlueGray.Darken4;
+
+    private void OnBreakpointChanged(MudBlazor.Breakpoint breakpoint)
+    {
+        _currentBreakpoint = breakpoint;
+        StateHasChanged();
+    }
+
+    private void OnMouseOverTextMissaoColorChange(MouseEventArgs args)
+    {
+        mudMissaoTextColor = Colors.Gray.Lighten3;
+    }
+
+    private void OnMouseOutTextMissaoColorChange(MouseEventArgs args)
+    {
+        mudMissaoTextColor = Colors.Gray.Lighten1;
+    }
+
+    private void OnMouseOverTextServicosColorChange(MouseEventArgs args)
+    {
+        mudServicosTextColor = Colors.Gray.Lighten3;
+    }
+    
+    private void OnMouseOutTextServicosColorChange(MouseEventArgs args)
+    {
+        mudServicosTextColor = Colors.Gray.Lighten1;
+    }
+
+    private void OnMouseOverTextEquipaColorChange(MouseEventArgs args)
+    {
+        mudEquipaTextColor = Colors.Gray.Lighten3;
+    }
+    
+    private void OnMouseOutTextEquipaColorChange(MouseEventArgs args)
+    {
+        mudEquipaTextColor = Colors.Gray.Lighten1;
+    }
+
+    private void OnMouseOverTextContactosColorChange(MouseEventArgs args)
+    {
+        mudContactosTextColor = Colors.Gray.Lighten3;
+    }
+
+    private void OnMouseOutTextContactosColorChange(MouseEventArgs args)
+    {
+        mudContactosTextColor = Colors.Gray.Lighten1;
+    }
+
+    private void OnMouseOverFacebook(MouseEventArgs args)
+    {
+        mudButtonFacebookBackgroundColor = "#ad9587";
+    }
+
+    private void OnMouseOutFacebook(MouseEventArgs args)
+    {
+        mudButtonFacebookBackgroundColor = Colors.BlueGray.Darken4;
+    }
+
+    private void OnMouseOverInstagram(MouseEventArgs args)
+    {        
+        mudButtonInstagramBackgroundColor = "#ad9587";
+    }
+
+    private void OnMouseOutInstagram(MouseEventArgs args)
+    {
+        mudButtonInstagramBackgroundColor = Colors.BlueGray.Darken4;
+    }
+
+    private void OnMouseOverWhatsApp(MouseEventArgs args)
+    {
+        mudButtonWhatsAppBackgroundColor = "#ad9587";
+    }
+
+    private void OnMouseOutWhatsApp(MouseEventArgs args)
+    {
+        mudButtonWhatsAppBackgroundColor = Colors.BlueGray.Darken4;
+    }
+}

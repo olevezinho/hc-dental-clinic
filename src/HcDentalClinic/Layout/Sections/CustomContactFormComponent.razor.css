@@ -1,0 +1,25 @@
+.contact-form-container {
+    /* Set a background color */
+    background-color: #ffffff;
+
+    /* Ensure it fills the viewport and center content */
+    height: 110vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Pushes children to top and bottom */
+    align-items: center;
+    text-align: center;
+}
+
+.contact-form-container-mobile {
+    /* Set a background color */
+    background-color: #ffffff;
+
+    /* Ensure it fills the viewport and center content */
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Pushes children to top and bottom */
+    align-items: center;
+    text-align: center;
+}

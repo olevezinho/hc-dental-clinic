@@ -1,0 +1,28 @@
+﻿<section id="contact-form">
+    <MudBreakpointProvider OnBreakpointChanged="OnBreakpointChanged">
+        @if(IsMobile)
+        {
+            <div class="contact-form-container-mobile">
+                <ContactForm />
+            </div>
+        }
+        else
+        {
+            <div class="contact-form-container">
+                <ContactForm />
+            </div>
+        }
+    </MudBreakpointProvider>
+</section>
+
+@code 
+{
+    private MudBlazor.Breakpoint _currentBreakpoint;
+    private bool IsMobile => _currentBreakpoint < MudBlazor.Breakpoint.Sm;
+    
+    private void OnBreakpointChanged(MudBlazor.Breakpoint breakpoint)
+    {
+        _currentBreakpoint = breakpoint;
+        StateHasChanged();
+    }
+}

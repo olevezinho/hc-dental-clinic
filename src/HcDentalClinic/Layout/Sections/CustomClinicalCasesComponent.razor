@@ -1,0 +1,348 @@
+﻿<section id="clinical-cases">
+    <MudBreakpointProvider OnBreakpointChanged="OnBreakpointChanged">
+        @if(IsMobile)
+        {
+            <div class="clinical-cases-container-mobile">
+                <h1 class="clinical-cases-text">Casos Clínicos</h1>
+                <MudText 
+                    Typo="Typo.h6"
+                    Class="pa-12 mt-2"
+                    Align="Align.Center"
+                    Style="font-weight: 250; color: #807f7f; font-size: 1.3rem;">
+                    Resultados reais de pacientes reais que confiaram em nós com os seus sorrisos
+                </MudText>
+                <MudContainer MaxWidth="MaxWidth.Medium" Class="pa-4" >
+                    <MudPaper Height="95vh" Width="90%" Style="color:#bcaaa4; box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.1); border-radius: 24px;">
+                        <MudCarousel 
+                            Class="mud-witdh-full"
+                            ShowArrows="true" 
+                            ShowBullets="true" 
+                            NavigationButtonsClass="clinical-cases-carousel-buttons"
+                            EnableSwipeGesture="false" 
+                            AutoCycle="false" 
+                            ArrowsPosition="Position.Bottom"
+                            Style="height: 100%;" 
+                            TData="object">
+                            <BulletTemplate Context="selected">
+                                <div class="mud-button-root mud-icon-button mud-icon-button-color-inherit mud-ripple mud-ripple-icon" style="margin-bottom: 3rem;">
+                                    <span class="mud-icon-button-label">
+                                        <MudIcon Icon="@(selected ? toothFilled : toothOutline)" Size="Size.Small" />
+                                    </span>
+                                </div>
+                            </BulletTemplate>
+                            <PreviousButtonTemplate>
+                                <div Class="mud-button-root mud-icon-button mud-icon-button-color-inherit mud-ripple mud-ripple-icon" 
+                                    @onmouseover="OnMouseOverPreviousButton" 
+                                    @onmouseout="OnMouseOutPreviousButton"
+                                    style="@($"border-radius: 24px; background-color: {defaultPreviousButtonBackground}; box-shadow: {defaultPreviousButtonShadow}; margin-left: 3rem; margin-bottom: 3rem; transition: all 0.3s ease;")">
+                                    <span class="mud-icon-button-label">
+                                        <MudIcon Class="mud-ripple mud-ripple-icon mud-icon-button-size-medium" Icon="@Icons.Material.Rounded.KeyboardArrowLeft" Color="@Color.Inherit" />
+                                    </span>
+                                </div>
+                            </PreviousButtonTemplate>
+                            <NextButtonTemplate>
+                                <div Class="mud-button-root mud-icon-button mud-icon-button-color-inherit mud-ripple mud-ripple-icon" 
+                                    @onmouseover="OnMouseOverNextButton" 
+                                    @onmouseout="OnMouseOutNextButton"
+                                    style="@($"border-radius: 24px; background-color: {defaultNextButtonBackground}; box-shadow: {defaultNextButtonShadow}; margin-right: 3rem; margin-bottom: 3rem; transition: all 0.3s ease;")">
+                                    <span class="mud-icon-button-label">
+                                        <MudIcon Class="mud-ripple mud-ripple-icon mud-icon-button-size-medium" Icon="@Icons.Material.Rounded.KeyboardArrowRight" Color="@Color.Inherit" />
+                                    </span>
+                                </div>
+                            </NextButtonTemplate>
+                            <ChildContent>
+                                <MudCarouselItem 
+                                    Transition="Transition.Slide" 
+                                    Color="@Color.Primary"
+                                    Style="color:#e9c681; background-color: #faf9f7; border-radius: 16px;">
+                                    <div class="d-flex" style="height:100%">
+                                        <MudGrid Class="pa-8">
+                                            <MudItem xs="12" Class="align-start d-flex" Style="justify-content: space-between; width: 100%;">
+                                                <div style="margin-left: 1.2rem;">
+                                                    <MudText 
+                                                        Typo="Typo.h3"
+                                                        Class="mt-4"
+                                                        Align="Align.Left"
+                                                        Style="font-weight: 450; color: #000000; font-size: 1.3rem;">
+                                                        Transformação de sorriso
+                                                    </MudText>
+                                                </div>
+                                            </MudItem>
+                                            <MudFlexBreak />
+                                            <MudItem xs="12">
+                                                <div>
+                                                    <MudIcon Icon="@Icons.Material.Filled.Grade" Color="@Color.Warning" Size="@Size.Medium" Class="mt-4 mb-2" />
+                                                    <MudIcon Icon="@Icons.Material.Filled.Grade" Color="@Color.Warning" Size="@Size.Medium" Class="mt-4 mb-2" />
+                                                    <MudIcon Icon="@Icons.Material.Filled.Grade" Color="@Color.Warning" Size="@Size.Medium" Class="mt-4 mb-2" />
+                                                    <MudIcon Icon="@Icons.Material.Filled.Grade" Color="@Color.Warning" Size="@Size.Medium" Class="mt-4 mb-2" />
+                                                    <MudIcon Icon="@Icons.Material.Filled.Grade" Color="@Color.Warning" Size="@Size.Medium" Class="mt-4 mb-2" />
+                                                </div>
+                                            </MudItem>
+                                            <MudFlexBreak />
+                                            <MudItem xs="12">
+                                                <div style="margin-left: 1.2rem;">
+                                                    <MudText 
+                                                        Typo="Typo.h3"
+                                                        Class="mt-2 mb-1"
+                                                        Align="Align.Left"
+                                                        Style="font-weight: 450; color: #bcaaa4; font-size: 1rem;">
+                                                        Tratamento:
+                                                    </MudText>
+                                                </div>
+                                                <MudText 
+                                                    Typo="Typo.h6" 
+                                                    Class="pa-5" 
+                                                    Align="Align.Left"
+                                                    Style="@($"color: {Colors.Gray.Darken3}; font-weight: 350;")">
+                                                    Transformação completa com facetas e branqueamento
+                                                </MudText>
+                                            </MudItem>
+                                            <MudFlexBreak />
+                                            <MudItem xs="12">
+                                                <div style="margin-left: 1.2rem;">
+                                                    <MudText 
+                                                        Typo="Typo.h3"
+                                                        Class="mt-1 mb-1"
+                                                        Align="Align.Left"
+                                                        Style="font-weight: 450; color: #bcaaa4; font-size: 1rem;">
+                                                        Resultados:
+                                                    </MudText>
+                                                </div>
+                                                <MudText 
+                                                    Typo="Typo.h6" 
+                                                    Class="pa-5 mb-16" 
+                                                    Align="Align.Left"
+                                                    Style="@($"color: {Colors.Gray.Darken3}; font-weight: 350;")">
+                                                    Paciente recuperou a confiança com um sorriso de aspecto natural e brilhante
+                                                </MudText>
+                                            </MudItem>
+                                        </MudGrid>
+                                    </div>
+                                </MudCarouselItem>
+                                <MudCarouselItem 
+                                    Transition="Transition.Slide" 
+                                    Color="@Color.Secondary"
+                                    Style="color:#8b764b; background-color: #faf9f7; border-radius: 16px;">
+                                    <div class="d-flex" style="height:100%">
+                                        <MudIcon Class="mx-auto my-auto" Icon="@Icons.Custom.Brands.MudBlazor" Size="@Size.Large" />
+                                    </div>
+                                </MudCarouselItem>
+                                <MudCarouselItem 
+                                    Transition="Transition.Slide"
+                                    Style="color:#8b764b; background-color: #faf9f7; border-radius: 16px;">
+                                    <div class="d-flex" style="height:100%">
+                                        <MudIcon Class="mx-auto my-auto" Icon="@Icons.Custom.Brands.MudBlazor" Color="@Color.Primary" Size="@Size.Large" />
+                                    </div>
+                                </MudCarouselItem>
+                            </ChildContent>
+                        </MudCarousel>
+                    </MudPaper>
+                </MudContainer>
+                <MudText 
+                    Typo="Typo.h6"
+                    Class="pa-12 mb-6"
+                    Align="Align.Center"
+                    Style="font-weight: 300; color: #807f7f; font-size: 1.1rem;">
+                    * Os resultados individuais podem variar. Todos os tratamentos são personalizados às necessidades de cada paciente.
+                </MudText>
+            </div>
+        }
+        else
+        {
+            <div class="clinical-cases-container">
+                <h1 class="clinical-cases-text">Casos Clínicos</h1>
+                <MudText 
+                    Typo="Typo.h6"
+                    Class="mt-1"
+                    Align="Align.Center"
+                    Style="font-weight: 250; color: #807f7f; font-size: 1.3rem;">
+                    Resultados reais de pacientes reais que confiaram em nós com os seus sorrisos
+                </MudText>
+                <MudContainer MaxWidth="MaxWidth.Medium" Class="pa-4" >
+                    <MudPaper Height="450px" Width="100%" Style="color:#bcaaa4; box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.1); border-radius: 24px;">
+                        <MudCarousel 
+                            Class="mud-witdh-full"
+                            ShowArrows="true" 
+                            ShowBullets="true" 
+                            NavigationButtonsClass="clinical-cases-carousel-buttons"
+                            EnableSwipeGesture="false" 
+                            AutoCycle="false" 
+                            ArrowsPosition="Position.Bottom"
+                            Style="height: 100%;" 
+                            TData="object">
+                            <BulletTemplate Context="selected">
+                                <div class="mud-button-root mud-icon-button mud-icon-button-color-inherit mud-ripple mud-ripple-icon" style="margin-bottom: 3rem;">
+                                    <span class="mud-icon-button-label">
+                                        <MudIcon Icon="@(selected ? toothFilled : toothOutline)" Size="Size.Small" />
+                                    </span>
+                                </div>
+                            </BulletTemplate>
+                            <PreviousButtonTemplate>
+                                <div Class="mud-button-root mud-icon-button mud-icon-button-color-inherit mud-ripple mud-ripple-icon" 
+                                    @onmouseover="OnMouseOverPreviousButton" 
+                                    @onmouseout="OnMouseOutPreviousButton"
+                                    style="@($"border-radius: 24px; background-color: {defaultPreviousButtonBackground}; box-shadow: {defaultPreviousButtonShadow}; margin-left: 3rem; margin-bottom: 3rem; transition: all 0.3s ease;")">
+                                    <span class="mud-icon-button-label">
+                                        <MudIcon Class="mud-ripple mud-ripple-icon mud-icon-button-size-medium" Icon="@Icons.Material.Rounded.KeyboardArrowLeft" Color="@Color.Inherit" />
+                                    </span>
+                                </div>
+                            </PreviousButtonTemplate>
+                            <NextButtonTemplate>
+                                <div Class="mud-button-root mud-icon-button mud-icon-button-color-inherit mud-ripple mud-ripple-icon" 
+                                    @onmouseover="OnMouseOverNextButton" 
+                                    @onmouseout="OnMouseOutNextButton"
+                                    style="@($"border-radius: 24px; background-color: {defaultNextButtonBackground}; box-shadow: {defaultNextButtonShadow}; margin-right: 3rem; margin-bottom: 3rem; transition: all 0.3s ease;")">
+                                    <span class="mud-icon-button-label">
+                                        <MudIcon Class="mud-ripple mud-ripple-icon mud-icon-button-size-medium" Icon="@Icons.Material.Rounded.KeyboardArrowRight" Color="@Color.Inherit" />
+                                    </span>
+                                </div>
+                            </NextButtonTemplate>
+                            <ChildContent>
+                                <MudCarouselItem 
+                                    Transition="Transition.Slide" 
+                                    Color="@Color.Primary"
+                                    Style="color:#e9c681; background-color: #faf9f7; border-radius: 16px;">
+                                    <div class="d-flex" style="height:100%">
+                                        <MudGrid Class="pa-8">
+                                            <MudItem xs="12" Class="align-start d-flex" Style="justify-content: space-between; width: 100%;">
+                                                <div style="margin-left: 1.2rem;">
+                                                    <MudText 
+                                                        Typo="Typo.h3"
+                                                        Class="mt-4"
+                                                        Align="Align.Left"
+                                                        Style="font-weight: 450; color: #000000; font-size: 1.3rem;">
+                                                        Transformação de sorriso
+                                                    </MudText>
+                                                </div>
+                                                <div style="margin-right: 1.2rem; display: flex;">
+                                                    <MudIcon Icon="@Icons.Material.Filled.Grade" Color="@Color.Warning" Size="@Size.Medium" Class="mt-4 mb-2" />
+                                                    <MudIcon Icon="@Icons.Material.Filled.Grade" Color="@Color.Warning" Size="@Size.Medium" Class="mt-4 mb-2" />
+                                                    <MudIcon Icon="@Icons.Material.Filled.Grade" Color="@Color.Warning" Size="@Size.Medium" Class="mt-4 mb-2" />
+                                                    <MudIcon Icon="@Icons.Material.Filled.Grade" Color="@Color.Warning" Size="@Size.Medium" Class="mt-4 mb-2" />
+                                                    <MudIcon Icon="@Icons.Material.Filled.Grade" Color="@Color.Warning" Size="@Size.Medium" Class="mt-4 mb-2" />
+                                                </div>
+                                            </MudItem>
+                                            <MudFlexBreak />
+                                            <MudItem xs="12">
+                                                <div style="margin-left: 1.2rem;">
+                                                    <MudText 
+                                                        Typo="Typo.h3"
+                                                        Class="mt-2 mb-1"
+                                                        Align="Align.Left"
+                                                        Style="font-weight: 450; color: #bcaaa4; font-size: 1rem;">
+                                                        Tratamento:
+                                                    </MudText>
+                                                </div>
+                                                <MudText 
+                                                    Typo="Typo.h6" 
+                                                    Class="pa-5" 
+                                                    Align="Align.Left"
+                                                    Style="@($"color: {Colors.Gray.Darken3}; font-weight: 350;")">
+                                                    Transformação completa com facetas e branqueamento
+                                                </MudText>
+                                            </MudItem>
+                                            <MudFlexBreak />
+                                            <MudItem xs="12">
+                                                <div style="margin-left: 1.2rem;">
+                                                    <MudText 
+                                                        Typo="Typo.h3"
+                                                        Class="mt-1 mb-1"
+                                                        Align="Align.Left"
+                                                        Style="font-weight: 450; color: #bcaaa4; font-size: 1rem;">
+                                                        Resultados:
+                                                    </MudText>
+                                                </div>
+                                                <MudText 
+                                                    Typo="Typo.h6" 
+                                                    Class="pa-5 mb-16" 
+                                                    Align="Align.Left"
+                                                    Style="@($"color: {Colors.Gray.Darken3}; font-weight: 350;")">
+                                                    Paciente recuperou a confiança com um sorriso de aspecto natural e brilhante
+                                                </MudText>
+                                            </MudItem>
+                                        </MudGrid>
+                                    </div>
+                                </MudCarouselItem>
+                                <MudCarouselItem 
+                                    Transition="Transition.Slide" 
+                                    Color="@Color.Secondary"
+                                    Style="color:#8b764b; background-color: #faf9f7; border-radius: 16px;">
+                                    <div class="d-flex" style="height:100%">
+                                        <MudIcon Class="mx-auto my-auto" Icon="@Icons.Custom.Brands.MudBlazor" Size="@Size.Large" />
+                                    </div>
+                                </MudCarouselItem>
+                                <MudCarouselItem 
+                                    Transition="Transition.Slide"
+                                    Style="color:#8b764b; background-color: #faf9f7; border-radius: 16px;">
+                                    <div class="d-flex" style="height:100%">
+                                        <MudIcon Class="mx-auto my-auto" Icon="@Icons.Custom.Brands.MudBlazor" Color="@Color.Primary" Size="@Size.Large" />
+                                    </div>
+                                </MudCarouselItem>
+                            </ChildContent>
+                        </MudCarousel>
+                    </MudPaper>
+                </MudContainer>
+                <MudText 
+                    Typo="Typo.h6"
+                    Class="mb-20"
+                    Align="Align.Center"
+                    Style="font-weight: 300; color: #807f7f; font-size: 1.1rem;">
+                    * Os resultados individuais podem variar. Todos os tratamentos são personalizados às necessidades de cada paciente.
+                </MudText>
+            </div>
+        }
+    </MudBreakpointProvider>
+</section>
+
+@code 
+{
+    private MudBlazor.Breakpoint _currentBreakpoint;
+    private bool IsMobile => _currentBreakpoint < MudBlazor.Breakpoint.Sm;
+
+    private string defaultPreviousButtonShadow = "0px 2px 4px rgba(0, 0, 0, 0.1);";
+    private string defaultPreviousButtonBackground = "white";
+    private string defaultNextButtonShadow = "0px 2px 4px rgba(0, 0, 0, 0.1);";
+    private string defaultNextButtonBackground = "white";
+
+    private void OnBreakpointChanged(MudBlazor.Breakpoint breakpoint)
+    {
+        _currentBreakpoint = breakpoint;
+        StateHasChanged();
+    }
+
+    private void OnMouseOverPreviousButton(MouseEventArgs args)
+    {
+        defaultPreviousButtonShadow = "0px 4px 8px rgba(0, 0, 0, 0.2);";
+        defaultPreviousButtonBackground = "#f5f5f5";
+    }
+
+    private void OnMouseOutPreviousButton(MouseEventArgs args)
+    {
+        defaultPreviousButtonShadow = "0px 2px 4px rgba(0, 0, 0, 0.1);";
+        defaultPreviousButtonBackground = "white";
+    }
+
+    private void OnMouseOverNextButton(MouseEventArgs args)
+    {
+        defaultNextButtonShadow = "0px 4px 8px rgba(0, 0, 0, 0.2);";
+        defaultNextButtonBackground = "#f5f5f5";
+    }
+
+    private void OnMouseOutNextButton(MouseEventArgs args)
+    {
+        defaultNextButtonShadow = "0px 2px 4px rgba(0, 0, 0, 0.1);";
+        defaultNextButtonBackground = "white";
+    }
+
+    // Casos clinicos de relevo
+    // Ver página da clinica Miguel Vieira
+        // Destartarização e branqueamento
+        // Cuidados Preventivos
+        // 
+        // Reabilitação estética
+
+    // Icons https://pictogrammers.com/library/mdi/icon/tooth/
+    const string toothFilled = @"<svg xmlns=""http://www.w3.org/2000/svg"" viewBox=""0 0 24 24""> <path d=""M7,2C4,2 2,5 2,8C2,10.11 3,13 4,14C5,15 6,22 8,22C12.54,22 10,15 12,15C14,15 11.46,22 16,22C18,22 19,15 20,14C21,13 22,10.11 22,8C22,5 20,2 17,2C14,2 14,3 12,3C10,3 10,2 7,2Z"" /></svg>";
+    const string toothOutline = @"<svg xmlns=""http://www.w3.org/2000/svg"" viewBox=""0 0 24 24""> <path d=""M7,2C4,2 2,5 2,8C2,10.11 3,13 4,14C5,15 6,22 8,22C12.54,22 10,15 12,15C14,15 11.46,22 16,22C18,22 19,15 20,14C21,13 22,10.11 22,8C22,5 20,2 17,2C14,2 14,3 12,3C10,3 10,2 7,2M7,4C9,4 10,5 12,5C14,5 15,4 17,4C18.67,4 20,6 20,8C20,9.75 19.14,12.11 18.19,13.06C17.33,13.92 16.06,19.94 15.5,19.94C15.29,19.94 15,18.88 15,17.59C15,15.55 14.43,13 12,13C9.57,13 9,15.55 9,17.59C9,18.88 8.71,19.94 8.5,19.94C7.94,19.94 6.67,13.92 5.81,13.06C4.86,12.11 4,9.75 4,8C4,6 5.33,4 7,4Z"" /></svg>";
+    
+}

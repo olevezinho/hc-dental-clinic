@@ -1,5 +1,9 @@
+html {
+    scroll-behavior: smooth;
+}
+
 html, body {
-    /* font-family: Georgia, 'Times New Roman', Times, serif; */
+    font-family: 'Noto Sans', sans-serif;
 }
 
 h1:focus {
@@ -93,4 +97,38 @@ code {
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
+}
+
+/* MudSelect Popover Styling for the contact form*/
+.mud-select-popover-custom {
+    background-color: #ededed !important;
+    border-radius: 16px !important;
+}
+
+.mud-select-popover-custom .mud-paper {
+    background-color: #ededed !important;
+    border-radius: 16px !important;
+}
+
+.mud-select-popover-custom .mud-list {
+    background-color: #ededed !important;
+    border-radius: 16px !important;
+}
+
+.mud-select-popover-custom .mud-list-item {
+    background-color: #ededed !important;
+}
+
+.mud-select-popover-custom .mud-list-item:hover {
+    background-color: #e0e0e0 !important;
+}
+
+/* MudDialog index configuration */
+:root {
+    --mud-zindex-dialog: 9999 !important; /* Valor padrão costuma ser 1300 */
+}
+
+/* Garante que o overlay (fundo escuro) também suba */
+.mud-overlay {
+    z-index: 9998 !important;
 }

@@ -1,0 +1,168 @@
+﻿<MudBreakpointProvider OnBreakpointChanged="OnBreakpointChanged">
+    <MudToolBar Style="position: sticky; top: 0; width: 100%; z-index: 1000; background-color: white;">
+        <MudImage Src="/images/loading-shadowed.png" Alt="HC Dental Clinic logótipo" Width="200" />
+        <MudSpacer />
+        @if(IsMobile)
+        {
+            <MudButton 
+                Class="mr-5"
+                Variant="Variant.Filled"
+                Href="#contact-form"
+                @onmouseover="OnMouseOverColorChange"
+                @onmouseout="OnMouseOutColorChange"
+                OnClick="@(async () => await ScrollToSection("contact-form"))"
+                Style="@($"color: white; background-color: {mudButtonBackgroundColor}; border-radius: 16px;")">
+                Marcação
+            </MudButton>
+        }
+        else
+        {
+            <MudButton 
+                Class="mr-5"
+                Variant="Variant.Text"
+                Href="#mission"
+                @onmouseover="OnMouseOverTextMissaoColorChange"
+                @onmouseout="OnMouseOutTextMissaoColorChange"
+                OnClick="@(async () => await ScrollToSection("mission"))"
+                Style="@($"color: {mudMissaoTextColor}; transition: color 0.3s;")">
+                Missão
+            </MudButton>
+            <MudButton 
+                Class="mr-5"
+                Variant="Variant.Text"
+                Href="#services"
+                @onmouseover="OnMouseOverTextServicosColorChange"
+                @onmouseout="OnMouseOutTextServicosColorChange"
+                OnClick="@(async () => await ScrollToSection("services"))"
+                Style="@($"color: {mudServicosTextColor}; transition: color 0.3s;")">
+                Serviços
+            </MudButton>
+            <MudButton 
+                Class="mr-5"
+                Variant="Variant.Text"
+                Href="#team"
+                @onmouseover="OnMouseOverTextEquipaColorChange"
+                @onmouseout="OnMouseOutTextEquipaColorChange"
+                OnClick="@(async () => await ScrollToSection("team"))"
+                Style="@($"color: {mudEquipaTextColor}; transition: color 0.3s;")">
+                Equipa
+            </MudButton>
+            <MudButton 
+                Class="mr-5"
+                Variant="Variant.Text"
+                Href="#clinical-cases"
+                @onmouseover="OnMouseOverTextCasosClinicosColorChange"
+                @onmouseout="OnMouseOutTextCasosClinicosColorChange"
+                OnClick="@(async () => await ScrollToSection("clinical-cases"))"
+                Style="@($"color: {mudCasosClinicosTextColor}; transition: color 0.3s;")">
+                Casos Clínicos
+            </MudButton>
+            <MudButton 
+                Class="mr-5"
+                Variant="Variant.Text"
+                Href="#contact-form"
+                @onmouseover="OnMouseOverTextMarcacaoColorChange"
+                @onmouseout="OnMouseOutTextMarcacaoColorChange"
+                OnClick="@(async () => await ScrollToSection("contact-form"))"
+                Style="@($"color: {mudMarcacaoTextColor}; transition: color 0.3s;")">
+                Marcação
+            </MudButton>
+            @* TODO: Adicionar botão para hc-mini *@
+            <MudButton 
+                Class="mr-5"
+                Variant="Variant.Filled"
+                Href="#contact"
+                @onmouseover="OnMouseOverColorChange"
+                @onmouseout="OnMouseOutColorChange"
+                OnClick="@(async () => await ScrollToSection("contact"))"
+                Style="@($"color: white; background-color: {mudButtonBackgroundColor}; border-radius: 16px;")">
+                Contacto
+            </MudButton>
+        }
+    </MudToolBar>
+</MudBreakpointProvider>
+
+@code
+{
+    private MudBlazor.Breakpoint _currentBreakpoint;
+    private bool IsMobile => _currentBreakpoint < MudBlazor.Breakpoint.Sm;
+
+    private string mudMissaoTextColor = Colors.BlueGray.Darken2;
+    private string mudServicosTextColor = Colors.BlueGray.Darken2;
+    private string mudEquipaTextColor = Colors.BlueGray.Darken2;
+    private string mudCasosClinicosTextColor = Colors.BlueGray.Darken2;
+    private string mudMarcacaoTextColor = Colors.BlueGray.Darken2;
+    private string mudButtonBackgroundColor = Colors.Brown.Lighten3;
+
+    private void OnBreakpointChanged(MudBlazor.Breakpoint breakpoint)
+    {
+        _currentBreakpoint = breakpoint;
+        StateHasChanged();
+    }
+
+    // Scroll to section using JavaScript interop
+    private async Task ScrollToSection(string sectionId)
+    {
+        await JSRuntime.InvokeVoidAsync("scrollToSection", sectionId);
+    }
+
+    private void OnMouseOverTextMissaoColorChange(MouseEventArgs args)
+    {
+        mudMissaoTextColor = Colors.Brown.Lighten3;
+    }
+
+    private void OnMouseOutTextMissaoColorChange(MouseEventArgs args)
+    {
+        mudMissaoTextColor = Colors.BlueGray.Darken2;
+    }
+
+    private void OnMouseOverTextServicosColorChange(MouseEventArgs args)
+    {
+        mudServicosTextColor = Colors.Brown.Lighten3;
+    }
+    
+    private void OnMouseOutTextServicosColorChange(MouseEventArgs args)
+    {
+        mudServicosTextColor = Colors.BlueGray.Darken2;
+    }
+
+    private void OnMouseOverTextCasosClinicosColorChange(MouseEventArgs args)
+    {
+        mudCasosClinicosTextColor = Colors.Brown.Lighten3;
+    }
+
+    private void OnMouseOutTextCasosClinicosColorChange(MouseEventArgs args)
+    {
+        mudCasosClinicosTextColor = Colors.BlueGray.Darken2;
+    }
+
+    private void OnMouseOverTextEquipaColorChange(MouseEventArgs args)
+    {
+        mudEquipaTextColor = Colors.Brown.Lighten3;
+    }
+
+    private void OnMouseOutTextEquipaColorChange(MouseEventArgs args)
+    {
+        mudEquipaTextColor = Colors.BlueGray.Darken2;
+    }
+
+    private void OnMouseOverTextMarcacaoColorChange(MouseEventArgs args)
+    {
+        mudMarcacaoTextColor = Colors.Brown.Lighten3;
+    }
+
+    private void OnMouseOutTextMarcacaoColorChange(MouseEventArgs args)
+    {
+        mudMarcacaoTextColor = Colors.BlueGray.Darken2;
+    }
+
+    private void OnMouseOverColorChange(MouseEventArgs args)
+    {
+        mudButtonBackgroundColor = Colors.Brown.Lighten2;
+    }
+
+    private void OnMouseOutColorChange(MouseEventArgs args)
+    {
+        mudButtonBackgroundColor = Colors.Brown.Lighten3;
+    }
+}

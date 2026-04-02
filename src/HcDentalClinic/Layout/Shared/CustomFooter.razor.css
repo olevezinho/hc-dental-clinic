@@ -1,0 +1,24 @@
+.footer-container {
+    background-color: #101828; /* Match the landing page background color */
+    display: flex;
+    flex-direction: column;
+}
+
+.social-media-links {
+    display: flex;
+    flex-direction: column;
+}
+
+.copyright-container {    
+    /* Ensure it fills the viewport and center content */
+    justify-content: space-between; /* Pushes children to top and bottom */
+    align-items: center;
+    text-align: center;
+}
+
+.copyright-text {
+    padding: 10px;
+    color: #d1d1d1; /* Change text color to light gray */
+    text-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5); /* Soft shadow for footer */
+    padding-inline: 1rem; /* Ensures minimum space on both edges of the viewport */
+}

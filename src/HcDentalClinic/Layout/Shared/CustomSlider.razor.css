@@ -1,0 +1,25 @@
+.carousel {
+  position: relative;
+  height: 100vh;
+}
+
+.carousel .carousel-item {
+  position: relative;
+  height: 100vh;
+}
+
+.carousel-mobile {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(200, 172, 156, 0.784); /* Change the color code here */
+  z-index: 1;
+}

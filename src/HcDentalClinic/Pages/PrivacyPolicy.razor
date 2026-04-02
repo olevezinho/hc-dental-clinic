@@ -1,0 +1,81 @@
+﻿@page "/privacy"
+@inherits LayoutComponentBase
+
+<div class="privacy-policy-page">
+    <MudPaper 
+        Class="mx-auto my-auto p-6"
+        Height="auto" 
+        Width="90%" 
+        Style="color:#7f745d; box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.1); border-radius: 24px;">
+        <div class="privacy-policy-text">
+            <MudText
+                Class="pa-4 mb-10"
+                Style="@($"color: #000000; font-size: 2rem; font-weight: bolder;")">
+                Política de privacidade e proteção de dados
+            </MudText>
+            <MudGrid Class="pa-1 mt-6" Justify="Justify.Center" Spacing="2">
+                <MudItem xs="10" sm="6" md="3">
+                    <MudImage 
+                        Class="pa-4"
+                        Src="/images/background-shadowed.png" 
+                        Alt="HC Dental Clinic logótipo"
+                        Width="400" />
+                </MudItem>
+            </MudGrid>
+            <MudText 
+                Class="pa-4"
+                Style="@($"color: {Colors.Gray.Darken1};")">
+                <strong>1. Responsável pelo Tratamento</strong>
+                <br />
+                A HC Dental Clinic (HMIRANDA & CSANTOS-MEDICINA DENTÁRIA, LDA), com sede em Rua Nicolau Coelho, Edif. Santa Quitéria, No 521, Bloco 3, Frac D3, r/c dto, é a responsável pelo tratamento dos dados pessoais recolhidos através deste formulário.
+                <br />
+                <br />
+                <strong>2. Dados Recolhidos e Finalidade</strong>
+                <br />
+                Recolhemos o seu nome, endereço de e-mail e [outros campos, ex: telefone] com a finalidade exclusiva de responder à sua solicitação, pedido de orçamento ou questão.
+                <br />
+                <br />
+                <strong>3. Base Legal e Consentimento</strong>
+                <br />
+                Ao submeter o formulário, está a dar o seu consentimento para o tratamento dos dados, conforme exigido pelo Regulamento Geral de Proteção de Dados (RGPD).
+                <br />
+                <br />
+                <strong>4. Partilha de Dados</strong>
+                <br />
+                Os seus dados não serão vendidos ou partilhados com terceiros, exceto no cumprimento de obrigações legais.
+                <br />
+                <br />
+                <strong>5. Retenção de Dados</strong>
+                <br />
+                Os seus dados serão armazenados apenas pelo tempo necessário para responder à sua questão, sendo posteriormente eliminados, a menos que se inicie uma relação contratual. 
+                <br />
+                <br />
+                <strong>6. Direitos do Utilizador</strong>
+                <br />
+                Pode, a qualquer momento, solicitar o acesso, retificação, eliminação ou portabilidade dos seus dados, enviando um e-mail para: mailto:geral@hcdentalclinic.pt. 
+            </MudText>
+        </div>
+    </MudPaper>
+</div>
+<CustomMap />
+<CustomFooter />
+
+@code 
+{
+    private string mudButtonTextColor = Colors.BlueGray.Darken2;
+
+    private void OnMouseOverColorChange(MouseEventArgs args)
+    {
+        mudButtonTextColor = MudBlazor.Colors.Brown.Lighten4;
+    }
+
+    private void OnMouseOutColorChange(MouseEventArgs args)
+    {
+        mudButtonTextColor = Colors.BlueGray.Darken2;
+    }
+
+    private void GoBack()
+    {
+        Navigation.NavigateTo(Navigation.BaseUri);
+    }
+}

@@ -7,7 +7,6 @@
     <title>HC | Dental Clinic</title>
     <base href="/" />
     <link rel="preload" id="webassembly" />
-    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/app.css" />
     <link rel="icon" type="image/png" href="favicon.png" />
     <link href="HcDentalClinic.styles.css" rel="stylesheet" />
@@ -18,8 +17,11 @@
 
     <!-- Font Type -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- Update font type to match the one in the template -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=GFS+Didot&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <!-- Google Maps API -->
 </head>
 
 <body>
@@ -33,7 +35,13 @@
         <span class="dismiss">🗙</span>
     </div>
     <script src="_framework/blazor.webassembly#[.{fingerprint}].js"></script>
+    <!-- MudBlazor -->
     <script src="_content/MudBlazor/MudBlazor.min.js"></script>
+    <!-- EmailJS -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <!-- JS Files -->
+    <script src="js/animations.js"></script>
+    <script src="js/emailjs-interop.js"></script>
 </body>
 
 </html>

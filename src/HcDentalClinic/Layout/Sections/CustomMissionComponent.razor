@@ -1,0 +1,247 @@
+﻿<section id="mission">
+    <MudBreakpointProvider OnBreakpointChanged="OnBreakpointChanged">
+        @if(IsMobile)
+        {
+            <div class="mission-container-mobile">
+                <h1 class="mission-text">A nossa missão</h1>
+                <MudText 
+                    Typo="Typo.h5" 
+                    Class="pa-12 mt-2"
+                    Align="Align.Center"
+                    Style="font-weight: 300; color: #807f7f; font-size: 1.1rem;">
+                    Acreditamos que todos merecem um sorriso saudável e bonito. A nossa missão é<br />
+                    fornecer cuidados dentários excepcionais que combinam a mais recente tecnologia<br />
+                    com uma abordagem suave e compassiva, adequada para pacientes de todas as idades.
+                </MudText>
+                <MudGrid Class="pa-2 mt-2 mb-8" Justify="Justify.Center">
+                    <MudItem xs="10" sm="6" md="3" Class="d-flex justify-center align-center">
+                        <MudPaper
+                            @onmouseover="OnMouseOverCompassiveCareShadowIncrease"
+                            @onmouseout="OnMouseOutCompassiveCareShadowDecrease"
+                            Style="@($"background-color: #ffffff; border-radius: 24px; box-shadow: {defaultCompassiveCareShadow} text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);")">
+                            <MudGrid Class="pa-6 mt-1">
+                                <MudItem xs="12" Style="display: flex; justify-content: center; align-items: center;">
+                                    <div class="rounded-circle" style="background-color: #f5f2ef; margin-top: 1rem; min-width: 5.2rem; min-height: 5.2rem; max-width: 5.5rem; max-height: 5.5rem;">
+                                        <MudIcon 
+                                            Icon="@Icons.Material.Rounded.FavoriteBorder"
+                                            Style="color: #ad9587; font-size: 4.4rem; margin-top: 0.3rem;" />
+                                    </div>
+                                </MudItem>
+                                <MudItem xs="12">
+                                    <MudText Typo="Typo.h3" Class="pa-4" Align="Align.Center"
+                                        Style="@($"color: {Colors.Gray.Darken3}; font-weight: bold;")">
+                                        Cuidado Compassivo
+                                    </MudText>
+                                </MudItem>
+                                <MudItem xs="12">
+                                    <MudText Typo="Typo.h6" Class="pa-4" Align="Align.Center"
+                                        Style="@($"color: {Colors.Gray.Darken1}; font-weight: 250;")">
+                                        Tratamos cada paciente com cuidado e compreensão, conforto e tranquilidade
+                                    </MudText>
+                                </MudItem>
+                            </MudGrid>
+                        </MudPaper>
+                    </MudItem>
+
+                    <MudItem xs="10" sm="6" md="3" Class="d-flex justify-center align-center">
+                        <MudPaper
+                            @onmouseover="OnMouseOverForTheFamilyShadowIncrease"
+                            @onmouseout="OnMouseOutForTheFamilyShadowDecrease"
+                            Style="@($"background-color: #ffffff; border-radius: 24px; box-shadow: {defaultForTheFamilyShadow} text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);")">
+                            <MudGrid Class="pa-6 mt-1">
+                                <MudItem xs="12" Style="display: flex; justify-content: center; align-items: center;">
+                                    <div class="rounded-circle" style="background-color: #dcfce7; margin-top: 1rem;min-width: 5.2rem; min-height: 5.2rem; max-width: 5.5rem; max-height: 5.5rem;">
+                                        <MudIcon Icon="@Icons.Material.Filled.FamilyRestroom"
+                                            Style="color: #00c951; font-size: 4.2rem; margin-top: 0.3rem;" />
+                                    </div>
+                                </MudItem>
+                                <MudItem xs="12">
+                                    <MudText Typo="Typo.h3" Class="pa-4" Align="Align.Center"
+                                        Style="@($"color: {Colors.Gray.Darken3}; font-weight: bold;")">
+                                        Para Toda a Família
+                                    </MudText>
+                                </MudItem>
+                                <MudItem xs="12">
+                                    <MudText Typo="Typo.h6" Class="pa-4" Align="Align.Center"
+                                        Style="@($"color: {Colors.Gray.Darken1}; font-weight: 250;")">
+                                        Dos mais novos aos mais velhos, criamos um ambiente acolhedor para toda a família
+                                    </MudText>
+                                </MudItem>
+                            </MudGrid>
+                        </MudPaper>
+                    </MudItem>
+
+                    <MudItem xs="10" sm="6" md="3" Class="d-flex justify-center align-center">
+                        <MudPaper 
+                            @onmouseover="OnMouseOverQualityExcelenceShadowIncrease"
+                            @onmouseout="OnMouseOutQualityExcelenceShadowDecrease"
+                            Style="@($"background-color: #ffffff; border-radius: 24px; box-shadow: {defaultQualityExcelenceShadow} text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);")">
+                            <MudGrid Class="pa-6 mt-1">
+                                <MudItem xs="12" Style="display: flex; justify-content: center; align-items: center;">
+                                    <div class="rounded-circle" style="background-color: #f3e8ff; margin-top: 1rem; min-width: 5.2rem; min-height: 5.2rem; max-width: 5.5rem; max-height: 5.5rem;">
+                                        <MudIcon Icon="@Icons.Material.Filled.MilitaryTech"
+                                            Style="color: #ad46ff; font-size: 4.4rem; margin-top: 0.3rem;" />
+                                    </div>
+                                </MudItem>
+                                <MudItem xs="12">
+                                    <MudText Typo="Typo.h3" Class="pa-4" Align="Align.Center"
+                                        Style="@($"color: {Colors.Gray.Darken3}; font-weight: bold;")">
+                                        Excelência de Qualidade
+                                    </MudText>
+                                </MudItem>
+                                <MudItem xs="12">
+                                    <MudText Typo="Typo.h6" Class="pa-4" Align="Align.Center"
+                                        Style="@($"color: {Colors.Gray.Darken1}; font-weight: 250;")">
+                                        Utilizamos tecnologia de ponta e técnicas comprovadas para os melhores resultados
+                                    </MudText>
+                                </MudItem>
+                            </MudGrid>
+                        </MudPaper>
+                    </MudItem>
+                </MudGrid>
+            </div>
+        }
+        else
+        {
+            <div class="mission-container">
+                <h1 class="mission-text">A nossa missão</h1>
+                <MudText 
+                    Typo="Typo.h5" 
+                    Class="mt-4"
+                    Align="Align.Center"
+                    Style="font-weight: 250; color: #807f7f; font-size: 1.3rem;">
+                    Acreditamos que todos merecem um sorriso saudável e bonito. A nossa missão é<br />
+                    fornecer cuidados dentários excepcionais que combinam a mais recente tecnologia<br />
+                    com uma abordagem suave e compassiva, adequada para pacientes de todas as idades.
+                </MudText>
+                <MudGrid Class="pa-10 mt-10" Justify="Justify.Center" Spacing="6">
+                    <MudItem xs="8" sm="4" md="3" Class="d-flex justify-center align-center" Style="height: 40vh;">
+                        <MudPaper
+                            @onmouseover="OnMouseOverCompassiveCareShadowIncrease"
+                            @onmouseout="OnMouseOutCompassiveCareShadowDecrease"
+                            Style="@($"background-color: #ffffff; border-radius: 24px; box-shadow: {defaultCompassiveCareShadow} text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);")">
+                            <MudGrid Class="pa-10">
+                                <MudItem xs="12" Style="display: flex; justify-content: center; align-items: center;">
+                                    <div class="rounded-circle" style="background-color: #f5f2ef; min-width: 5.2rem; min-height: 5.2rem; max-width: 5.5rem; max-height: 5.5rem;">
+                                        <MudIcon 
+                                            Icon="@Icons.Material.Rounded.FavoriteBorder"
+                                            Style="color: #ad9587; font-size: 4.4rem; margin-top: 0.3rem;" />
+                                    </div>
+                                </MudItem>
+                                <MudItem xs="12">
+                                    <MudText Typo="Typo.h3" Class="pa-4" Align="Align.Center"
+                                        Style="@($"color: {Colors.Gray.Darken3}; font-weight: bold;")">
+                                        Cuidado Compassivo
+                                    </MudText>
+                                </MudItem>
+                                <MudItem xs="12">
+                                    <MudText Typo="Typo.h6" Class="pa-4" Align="Align.Center"
+                                        Style="@($"color: {Colors.Gray.Darken1}; font-weight: 250;")">
+                                        Tratamos cada paciente com cuidado e compreensão, conforto e tranquilidade
+                                    </MudText>
+                                </MudItem>
+                            </MudGrid>
+                        </MudPaper>
+                    </MudItem>
+
+                    <MudItem xs="8" sm="4" md="3" Class="d-flex justify-center align-center" Style="height: 40vh;">
+                        <MudPaper
+                            @onmouseover="OnMouseOverForTheFamilyShadowIncrease"
+                            @onmouseout="OnMouseOutForTheFamilyShadowDecrease"
+                            Style="@($"background-color: #ffffff; border-radius: 24px; box-shadow: {defaultForTheFamilyShadow} text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);")">
+                            <MudGrid Class="pa-10">
+                                <MudItem xs="12" Style="display: flex; justify-content: center; align-items: center;">
+                                    <div class="rounded-circle" style="background-color: #dcfce7; min-width: 5.2rem; min-height: 5.2rem; max-width: 5.5rem; max-height: 5.5rem;">
+                                        <MudIcon Icon="@Icons.Material.Filled.FamilyRestroom"
+                                            Style="color: #00c951; font-size: 4.2rem; margin-top: 0.3rem;" />
+                                    </div>
+                                </MudItem>
+                                <MudItem xs="12">
+                                    <MudText Typo="Typo.h3" Class="pa-4" Align="Align.Center"
+                                        Style="@($"color: {Colors.Gray.Darken3}; font-weight: bold;")">
+                                        Para Toda a Família
+                                    </MudText>
+                                </MudItem>
+                                <MudItem xs="12">
+                                    <MudText Typo="Typo.h6" Class="pa-4" Align="Align.Center"
+                                        Style="@($"color: {Colors.Gray.Darken1}; font-weight: 250;")">
+                                        Dos mais novos aos mais velhos, criamos um ambiente acolhedor para toda a família
+                                    </MudText>
+                                </MudItem>
+                            </MudGrid>
+                        </MudPaper>
+                    </MudItem>
+
+                    <MudItem xs="8" sm="4" md="3" Class="d-flex justify-center align-center" Style="height: 40vh;">
+                        <MudPaper 
+                            @onmouseover="OnMouseOverQualityExcelenceShadowIncrease"
+                            @onmouseout="OnMouseOutQualityExcelenceShadowDecrease"
+                            Style="@($"background-color: #ffffff; border-radius: 24px; box-shadow: {defaultQualityExcelenceShadow} text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);")">
+                            <MudGrid Class="pa-10">
+                                <MudItem xs="12" Style="display: flex; justify-content: center; align-items: center;">
+                                    <div class="rounded-circle" style="background-color: #f3e8ff; min-width: 5.2rem; min-height: 5.2rem; max-width: 5.5rem; max-height: 5.5rem;">
+                                        <MudIcon Icon="@Icons.Material.Filled.MilitaryTech"
+                                            Style="color: #ad46ff; font-size: 4.4rem; margin-top: 0.3rem;" />
+                                    </div>
+                                </MudItem>
+                                <MudItem xs="12">
+                                    <MudText Typo="Typo.h3" Class="pa-4" Align="Align.Center"
+                                        Style="@($"color: {Colors.Gray.Darken3}; font-weight: bold;")">
+                                        Excelência de Qualidade
+                                    </MudText>
+                                </MudItem>
+                                <MudItem xs="12">
+                                    <MudText Typo="Typo.h6" Class="pa-4" Align="Align.Center"
+                                        Style="@($"color: {Colors.Gray.Darken1}; font-weight: 250;")">
+                                        Utilizamos tecnologia de ponta e técnicas comprovadas para os melhores resultados
+                                    </MudText>
+                                </MudItem>
+                            </MudGrid>
+                        </MudPaper>
+                    </MudItem>
+                </MudGrid>
+            </div>
+        }
+    </MudBreakpointProvider>
+</section>
+
+@code 
+{
+    private MudBlazor.Breakpoint _currentBreakpoint;
+    private bool IsMobile => _currentBreakpoint < MudBlazor.Breakpoint.Sm;
+
+    private string defaultCompassiveCareShadow = "0px 0px 6px rgba(20, 20, 20, 0.1);";
+    private string defaultForTheFamilyShadow = "0px 0px 6px rgba(20, 20, 20, 0.1);";
+    private string defaultQualityExcelenceShadow = "0px 0px 6px rgba(20, 20, 20, 0.1);";
+
+    private void OnBreakpointChanged(MudBlazor.Breakpoint breakpoint)
+    {
+        _currentBreakpoint = breakpoint;
+        StateHasChanged();
+    }
+
+    private void OnMouseOverCompassiveCareShadowIncrease(MouseEventArgs args)
+    {
+        defaultCompassiveCareShadow = "0px 4px 12px rgba(20, 20, 20, 0.25);";
+    }
+    private void OnMouseOutCompassiveCareShadowDecrease(MouseEventArgs args)
+    {
+        defaultCompassiveCareShadow = "0px 0px 6px rgba(20, 20, 20, 0.1);";
+    }
+    private void OnMouseOverForTheFamilyShadowIncrease(MouseEventArgs args)
+    {
+        defaultForTheFamilyShadow = "0px 4px 12px rgba(20, 20, 20, 0.25);";
+    }
+    private void OnMouseOutForTheFamilyShadowDecrease(MouseEventArgs args)
+    {
+        defaultForTheFamilyShadow = "0px 0px 6px rgba(20, 20, 20, 0.1);";
+    }
+    private void OnMouseOverQualityExcelenceShadowIncrease(MouseEventArgs args)
+    {
+        defaultQualityExcelenceShadow = "0px 4px 12px rgba(20, 20, 20, 0.25);";
+    }
+    private void OnMouseOutQualityExcelenceShadowDecrease(MouseEventArgs args)
+    {
+        defaultQualityExcelenceShadow = "0px 0px 6px rgba(20, 20, 20, 0.1);";
+    }
+}

@@ -1,0 +1,497 @@
+﻿<section id="services">
+    <MudBreakpointProvider OnBreakpointChanged="OnBreakpointChanged">
+        @if(IsMobile)
+        {
+            <div class="services-container-mobile">
+                <h1 class="services-text">Os nossos serviços</h1>
+                <MudText 
+                    Typo="Typo.h5"
+                    Class="pa-12 mt-2"
+                    Align="Align.Center"
+                    Style="font-weight: 300; color: #807f7f; font-size: 1.1rem;">
+                    Cuidados dentários abrangentes adaptados às suas necessidades
+                </MudText>
+                <MudGrid 
+                    Class="pa-2 mt-2 mb-8"
+                    Justify="Justify.Center" 
+                    Spacing="8">
+                    <MudItem xs="10" sm="6">
+                        <MudPaper
+                            @onmouseover="OnMouseOverYellowPlaceholderShadowIncrease"
+                            @onmouseout="OnMouseOutYellowPlaceholderShadowDecrease"
+                            Style="@($"background-color: #ffffff; border-radius: 24px; box-shadow: {defaultYellowPlaceholderShadow} text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);")">
+                            <MudGrid Class="pa-2 mt-1">
+                                <MudItem xs="6" Style="margin-bottom: -1rem;">
+                                    <div style="margin-left: 1.2rem; background-color: #fef9c2; min-width: 3.5rem; min-height: 3.5rem; max-width: 4rem; max-height: 4rem; border-radius: 15%;">
+                                        <MudIcon 
+                                            Icon="@Icons.Material.Outlined.AutoAwesome"
+                                            Style="color: #d08700; font-size: 2.5rem; margin-top: 0.5rem;" />
+                                    </div>
+                                </MudItem>
+                                <MudFlexBreak />
+                                <MudItem xs="12" Style="margin-bottom: -2rem;">
+                                    <MudText Typo="Typo.h3" Class="pa-5" Align="Align.Left"
+                                        Style="@($"color: {Colors.Gray.Darken3}; font-weight: bold;")">
+                                        Limpeza & Branqueamento
+                                    </MudText>
+                                </MudItem>
+                                <MudFlexBreak />
+                                <MudItem xs="12">
+                                    <MudText Typo="Typo.h6" Class="pa-5" Align="Align.Left"
+                                        Style="@($"color: {Colors.Gray.Darken1}; font-weight: 250;")">
+                                        Serviços profissionais de limpeza e branqueamento para manter o seu sorriso brilhante e saudável
+                                    </MudText>
+                                </MudItem>
+                            </MudGrid>
+                        </MudPaper>
+                    </MudItem>
+
+                    <MudFlexBreak />
+                    <MudItem xs="10" sm="6">
+                        <MudPaper
+                            @onmouseover="OnMouseOverBrownPlaceholderShadowIncrease"
+                            @onmouseout="OnMouseOutBrownPlaceholderShadowDecrease"
+                            Style="@($"background-color: #ffffff; border-radius: 24px; box-shadow: {defaultBrownPlaceholderShadow} text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);")">
+                            <MudGrid Class="pa-2 mt-1">
+                                <MudItem xs="6" Style="margin-bottom: -1rem;">
+                                    <div style="margin-left: 1.2rem; background-color: #f5f2ef; min-width: 3.5rem; min-height: 3.5rem; max-width: 4rem; max-height: 4rem; border-radius: 15%;">
+                                        <MudIcon 
+                                            Icon="@Icons.Material.Outlined.Shield"
+                                            Style="color: #ad9587; font-size: 2.5rem; margin-top: 0.5rem;" />
+                                    </div>
+                                </MudItem>
+                                <MudFlexBreak />
+                                <MudItem xs="12" Style="margin-bottom: -2rem;">
+                                    <MudText Typo="Typo.h3" Class="pa-5" Align="Align.Left"
+                                        Style="@($"color: {Colors.Gray.Darken3}; font-weight: bold;")">
+                                        Cuidados Preventivos
+                                    </MudText>
+                                </MudItem>
+                                <MudFlexBreak />
+                                <MudItem xs="12">
+                                    <MudText Typo="Typo.h6" Class="pa-5" Align="Align.Left"
+                                        Style="@($"color: {Colors.Gray.Darken1}; font-weight: 250;")">
+                                        Check-ups regulares, radiografias e tratamentos preventivos para manter a saúde oral ideal
+                                    </MudText>
+                                </MudItem>
+                            </MudGrid>
+                        </MudPaper>
+                    </MudItem>
+
+                    <MudFlexBreak />
+                    <MudItem xs="10" sm="6">
+                        <MudPaper
+                            @onmouseover="OnMouseOverPinkPlaceholderShadowIncrease"
+                            @onmouseout="OnMouseOutPinkPlaceholderShadowDecrease"
+                            Style="@($"background-color: #ffffff; border-radius: 24px; box-shadow: {defaultPinkPlaceholderShadow} text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);")">
+                            <MudGrid Class="pa-2 mt-1">
+                                <MudItem xs="6" Style="margin-bottom: -1rem;">
+                                    <div style="margin-left: 1rem; background-color: #fce7f3; min-width: 3.5rem; min-height: 3.5rem; max-width: 4rem; max-height: 4rem; border-radius: 15%;">
+                                        <MudIcon 
+                                            Icon="@Icons.Material.Outlined.ChildCare"
+                                            Style="color: #e60076; font-size: 2.5rem; margin-top: 0.5rem;" />
+                                    </div>
+                                </MudItem>
+                                <MudFlexBreak />
+                                <MudItem xs="12" Style="margin-bottom: -2rem;">
+                                    <MudText Typo="Typo.h3" Class="pa-5" Align="Align.Left"
+                                        Style="@($"color: {Colors.Gray.Darken3}; font-weight: bold;")">
+                                        Odontopediatria
+                                    </MudText>
+                                </MudItem>
+                                <MudFlexBreak />
+                                <MudItem xs="12">
+                                    <MudText Typo="Typo.h6" Class="pa-5" Align="Align.Left"
+                                        Style="@($"color: {Colors.Gray.Darken1}; font-weight: 250;")">
+                                        Cuidados especializados para crianças num ambiente divertido e confortável que reduz a ansiedade
+                                    </MudText>
+                                </MudItem>
+                            </MudGrid>
+                        </MudPaper>
+                    </MudItem>
+
+                    <MudFlexBreak />
+                    <MudItem xs="10" sm="6">
+                        <MudPaper
+                            @onmouseover="OnMouseOverPurplePlaceholderShadowIncrease"
+                            @onmouseout="OnMouseOutPurplePlaceholderShadowDecrease"
+                            Style="@($"background-color: #ffffff; border-radius: 24px; box-shadow: {defaultPurplePlaceholderShadow} text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);")">
+                            <MudGrid Class="pa-2 mt-1">
+                                <MudItem xs="6" Style="margin-bottom: -1rem;">
+                                    <div style="margin-left: 1.2rem; background-color: #f3e8ff; min-width: 3.5rem; min-height: 3.5rem; max-width: 4rem; max-height: 4rem; border-radius: 15%;">
+                                        <MudIcon 
+                                            Icon="@Icons.Material.Outlined.TagFaces"
+                                            Style="color: #9810fa; font-size: 2.5rem; margin-top: 0.5rem;" />
+                                    </div>
+                                </MudItem>
+                                <MudFlexBreak />
+                                <MudItem xs="12" Style="margin-bottom: -2rem;">
+                                    <MudText Typo="Typo.h3" Class="pa-5" Align="Align.Left"
+                                        Style="@($"color: {Colors.Gray.Darken3}; font-weight: bold;")">
+                                        Dentisteria Estética
+                                    </MudText>
+                                </MudItem>
+                                <MudFlexBreak />
+                                <MudItem xs="12">
+                                    <MudText Typo="Typo.h6" Class="pa-5" Align="Align.Left"
+                                        Style="@($"color: {Colors.Gray.Darken1}; font-weight: 250;")">
+                                        Facetas, colagem e transformações de sorrisos para lhe dar a confiança que merece
+                                    </MudText>
+                                </MudItem>
+                            </MudGrid>
+                        </MudPaper>
+                    </MudItem>
+
+                    <MudFlexBreak />
+                    <MudItem xs="10" sm="6">
+                        <MudPaper
+                            @onmouseover="OnMouseOverGreenPlaceholderShadowIncrease"
+                            @onmouseout="OnMouseOutGreenPlaceholderShadowDecrease"
+                            Style="@($"background-color: #ffffff; border-radius: 24px; box-shadow: {defaultGreenPlaceholderShadow} text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);")">
+                            <MudGrid Class="pa-2 mt-1">
+                                <MudItem xs="6" Style="margin-bottom: -1rem;">
+                                    <div style="margin-left: 1.2rem; background-color: #dcfce7; min-width: 3.5rem; min-height: 3.5rem; max-width: 4rem; max-height: 4rem; border-radius: 15%;">
+                                        <MudIcon 
+                                            Icon="@Icons.Material.Rounded.ContentCut"
+                                            Style="color: #00a63e; font-size: 2.5rem; margin-top: 0.5rem;" />
+                                    </div>
+                                </MudItem>
+                                <MudFlexBreak />
+                                <MudItem xs="12" Style="margin-bottom: -2rem;">
+                                    <MudText Typo="Typo.h3" Class="pa-5" Align="Align.Left"
+                                        Style="@($"color: {Colors.Gray.Darken3}; font-weight: bold;")">
+                                        Dentisteria Restauradora
+                                    </MudText>
+                                </MudItem>
+                                <MudFlexBreak />
+                                <MudItem xs="12">
+                                    <MudText Typo="Typo.h6" Class="pa-5" Align="Align.Left"
+                                        Style="@($"color: {Colors.Gray.Darken1}; font-weight: 250;")">
+                                        Obturações, coroas, pontes e implantes para restaurar a sua saúde dentária
+                                    </MudText>
+                                </MudItem>
+                            </MudGrid>
+                        </MudPaper>
+                    </MudItem>
+
+                    <MudFlexBreak />
+                    <MudItem xs="10" sm="6">
+                        <MudPaper
+                            @onmouseover="OnMouseOverRedPlaceholderShadowIncrease"
+                            @onmouseout="OnMouseOutRedPlaceholderShadowDecrease"
+                            Style="@($"background-color: #ffffff; border-radius: 24px; box-shadow: {defaultRedPlaceholderShadow} text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);")">
+                            <MudGrid Class="pa-2 mt-1">
+                                <MudItem xs="6" Style="margin-bottom: -1rem;">
+                                    <div style="margin-left: 1.2rem; background-color: #ffe2e2; min-width: 3.5rem; min-height: 3.5rem; max-width: 4rem; max-height: 4rem; border-radius: 15%;">
+                                        <MudIcon 
+                                            Icon="@Icons.Material.Outlined.ElectricBolt"
+                                            Style="color: #e7000b; font-size: 2.5rem; margin-top: 0.5rem;" />
+                                    </div>
+                                </MudItem>
+                                <MudFlexBreak />
+                                <MudItem xs="12" Style="margin-bottom: -2rem;">
+                                    <MudText Typo="Typo.h3" Class="pa-5" Align="Align.Left"
+                                        Style="@($"color: {Colors.Gray.Darken3}; font-weight: bold;")">
+                                        Atendimento de Emergência
+                                    </MudText>
+                                </MudItem>
+                                <MudFlexBreak />
+                                <MudItem xs="12">
+                                    <MudText Typo="Typo.h6" Class="pa-5" Align="Align.Left"
+                                        Style="@($"color: {Colors.Gray.Darken1}; font-weight: 250;")">
+                                        Consultas no próprio dia disponíveis para necessidades dentárias urgentes e emergências
+                                    </MudText>
+                                </MudItem>
+                            </MudGrid>
+                        </MudPaper>
+                    </MudItem>
+                </MudGrid>
+            </div>
+        }
+        else
+        {
+            <div class="services-container">
+                <h1 class="services-text">Os nossos serviços</h1>
+                <MudText 
+                    Typo="Typo.h6"
+                    Class="mt-1"
+                    Align="Align.Center"
+                    Style="font-weight: 250; color: #807f7f; font-size: 1.3rem;">
+                    Cuidados dentários abrangentes adaptados às suas necessidades
+                </MudText>
+                <MudGrid 
+                    Class="pa-1 mb-8"
+                    Justify="Justify.Center" 
+                    Spacing="8">
+                    <MudItem xs="6" sm="3">
+                        <MudPaper
+                            @onmouseover="OnMouseOverYellowPlaceholderShadowIncrease"
+                            @onmouseout="OnMouseOutYellowPlaceholderShadowDecrease"
+                            Style="@($"background-color: #ffffff; border-radius: 24px; box-shadow: {defaultYellowPlaceholderShadow} text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);")">
+                            <MudGrid Class="pa-2">
+                                <MudItem xs="6" Style="margin-bottom: -1rem;">
+                                    <div style="margin-left: 1.2rem; background-color: #fef9c2; min-width: 3.5rem; min-height: 3.5rem; max-width: 4rem; max-height: 4rem; border-radius: 15%;">
+                                        <MudIcon 
+                                            Icon="@Icons.Material.Outlined.AutoAwesome"
+                                            Style="color: #d08700; font-size: 2.5rem; margin-top: 0.5rem;" />
+                                    </div>
+                                </MudItem>
+                                <MudFlexBreak />
+                                <MudItem xs="12" Style="margin-bottom: -2rem;">
+                                    <MudText Typo="Typo.h3" Class="pa-5" Align="Align.Left"
+                                        Style="@($"color: {Colors.Gray.Darken3}; font-weight: bold;")">
+                                        Limpeza & Branqueamento
+                                    </MudText>
+                                </MudItem>
+                                <MudFlexBreak />
+                                <MudItem xs="12">
+                                    <MudText Typo="Typo.h6" Class="pa-5" Align="Align.Left"
+                                        Style="@($"color: {Colors.Gray.Darken1}; font-weight: 250;")">
+                                        Serviços profissionais de limpeza e branqueamento para manter o seu sorriso brilhante e saudável
+                                    </MudText>
+                                </MudItem>
+                            </MudGrid>
+                        </MudPaper>
+                    </MudItem>
+
+                    <MudItem xs="6" sm="3">
+                        <MudPaper
+                            @onmouseover="OnMouseOverBrownPlaceholderShadowIncrease"
+                            @onmouseout="OnMouseOutBrownPlaceholderShadowDecrease"
+                            Style="@($"background-color: #ffffff; border-radius: 24px; box-shadow: {defaultBrownPlaceholderShadow} text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);")">
+                            <MudGrid Class="pa-2">
+                                <MudItem xs="6" Style="margin-bottom: -1rem;">
+                                    <div style="margin-left: 1.2rem; background-color: #f5f2ef; min-width: 3.5rem; min-height: 3.5rem; max-width: 4rem; max-height: 4rem; border-radius: 15%;">
+                                        <MudIcon 
+                                            Icon="@Icons.Material.Outlined.Shield"
+                                            Style="color: #ad9587; font-size: 2.5rem; margin-top: 0.5rem;" />
+                                    </div>
+                                </MudItem>
+                                <MudFlexBreak />
+                                <MudItem xs="12" Style="margin-bottom: -2rem;">
+                                    <MudText Typo="Typo.h3" Class="pa-5" Align="Align.Left"
+                                        Style="@($"color: {Colors.Gray.Darken3}; font-weight: bold;")">
+                                        Cuidados Preventivos
+                                    </MudText>
+                                </MudItem>
+                                <MudFlexBreak />
+                                <MudItem xs="12">
+                                    <MudText Typo="Typo.h6" Class="pa-5" Align="Align.Left"
+                                        Style="@($"color: {Colors.Gray.Darken1}; font-weight: 250;")">
+                                        Check-ups regulares, radiografias e tratamentos preventivos para manter a saúde oral ideal
+                                    </MudText>
+                                </MudItem>
+                            </MudGrid>
+                        </MudPaper>
+                    </MudItem>
+
+                    <MudItem xs="6" sm="3">
+                        <MudPaper
+                            @onmouseover="OnMouseOverPinkPlaceholderShadowIncrease"
+                            @onmouseout="OnMouseOutPinkPlaceholderShadowDecrease"
+                            Style="@($"background-color: #ffffff; border-radius: 24px; box-shadow: {defaultPinkPlaceholderShadow} text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);")">
+                            <MudGrid Class="pa-2">
+                                <MudItem xs="6" Style="margin-bottom: -1rem;">
+                                    <div style="margin-left: 1rem; background-color: #fce7f3; min-width: 3.5rem; min-height: 3.5rem; max-width: 4rem; max-height: 4rem; border-radius: 15%;">
+                                        <MudIcon 
+                                            Icon="@Icons.Material.Outlined.ChildCare"
+                                            Style="color: #e60076; font-size: 2.5rem; margin-top: 0.5rem;" />
+                                    </div>
+                                </MudItem>
+                                <MudFlexBreak />
+                                <MudItem xs="12" Style="margin-bottom: -2rem;">
+                                    <MudText Typo="Typo.h3" Class="pa-5" Align="Align.Left"
+                                        Style="@($"color: {Colors.Gray.Darken3}; font-weight: bold;")">
+                                        Odontopediatria
+                                    </MudText>
+                                </MudItem>
+                                <MudFlexBreak />
+                                <MudItem xs="12">
+                                    <MudText Typo="Typo.h6" Class="pa-5" Align="Align.Left"
+                                        Style="@($"color: {Colors.Gray.Darken1}; font-weight: 250;")">
+                                        Cuidados especializados para crianças num ambiente divertido e confortável que reduz a ansiedade
+                                    </MudText>
+                                </MudItem>
+                            </MudGrid>
+                        </MudPaper>
+                    </MudItem>
+
+                    <MudFlexBreak />
+
+                    <MudItem xs="6" sm="3">
+                        <MudPaper
+                            @onmouseover="OnMouseOverPurplePlaceholderShadowIncrease"
+                            @onmouseout="OnMouseOutPurplePlaceholderShadowDecrease"
+                            Style="@($"background-color: #ffffff; border-radius: 24px; box-shadow: {defaultPurplePlaceholderShadow} text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);")">
+                            <MudGrid Class="pa-2 mt-1">
+                                <MudItem xs="6" Style="margin-bottom: -1rem;">
+                                    <div style="margin-left: 1.2rem; background-color: #f3e8ff; min-width: 3.5rem; min-height: 3.5rem; max-width: 4rem; max-height: 4rem; border-radius: 15%;">
+                                        <MudIcon 
+                                            Icon="@Icons.Material.Outlined.TagFaces"
+                                            Style="color: #9810fa; font-size: 2.5rem; margin-top: 0.5rem;" />
+                                    </div>
+                                </MudItem>
+                                <MudFlexBreak />
+                                <MudItem xs="12" Style="margin-bottom: -2rem;">
+                                    <MudText Typo="Typo.h3" Class="pa-5" Align="Align.Left"
+                                        Style="@($"color: {Colors.Gray.Darken3}; font-weight: bold;")">
+                                        Dentisteria Estética
+                                    </MudText>
+                                </MudItem>
+                                <MudFlexBreak />
+                                <MudItem xs="12">
+                                    <MudText Typo="Typo.h6" Class="pa-5" Align="Align.Left"
+                                        Style="@($"color: {Colors.Gray.Darken1}; font-weight: 250;")">
+                                        Facetas, colagem e transformações de sorrisos para lhe dar a confiança que merece
+                                    </MudText>
+                                </MudItem>
+                            </MudGrid>
+                        </MudPaper>
+                    </MudItem>
+
+                    <MudItem xs="6" sm="3">
+                        <MudPaper
+                            @onmouseover="OnMouseOverGreenPlaceholderShadowIncrease"
+                            @onmouseout="OnMouseOutGreenPlaceholderShadowDecrease"
+                            Style="@($"background-color: #ffffff; border-radius: 24px; box-shadow: {defaultGreenPlaceholderShadow} text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);")">
+                            <MudGrid Class="pa-2 mt-1">
+                                <MudItem xs="6" Style="margin-bottom: -1rem;">
+                                    <div style="margin-left: 1.2rem; background-color: #dcfce7; min-width: 3.5rem; min-height: 3.5rem; max-width: 4rem; max-height: 4rem; border-radius: 15%;">
+                                        <MudIcon 
+                                            Icon="@Icons.Material.Rounded.ContentCut"
+                                            Style="color: #00a63e; font-size: 2.5rem; margin-top: 0.5rem;" />
+                                    </div>
+                                </MudItem>
+                                <MudFlexBreak />
+                                <MudItem xs="12" Style="margin-bottom: -2rem;">
+                                    <MudText Typo="Typo.h3" Class="pa-5" Align="Align.Left"
+                                        Style="@($"color: {Colors.Gray.Darken3}; font-weight: bold;")">
+                                        Dentisteria Restauradora
+                                    </MudText>
+                                </MudItem>
+                                <MudFlexBreak />
+                                <MudItem xs="12">
+                                    <MudText Typo="Typo.h6" Class="pa-5" Align="Align.Left"
+                                        Style="@($"color: {Colors.Gray.Darken1}; font-weight: 250;")">
+                                        Obturações, coroas, pontes e implantes para restaurar a sua saúde dentária
+                                    </MudText>
+                                </MudItem>
+                            </MudGrid>
+                        </MudPaper>
+                    </MudItem>
+
+                    <MudItem xs="6" sm="3">
+                        <MudPaper
+                            @onmouseover="OnMouseOverRedPlaceholderShadowIncrease"
+                            @onmouseout="OnMouseOutRedPlaceholderShadowDecrease"
+                            Style="@($"background-color: #ffffff; border-radius: 24px; box-shadow: {defaultRedPlaceholderShadow} text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);")">
+                            <MudGrid Class="pa-2 mt-1">
+                                <MudItem xs="6" Style="margin-bottom: -1rem;">
+                                    <div style="margin-left: 1.2rem; background-color: #ffe2e2; min-width: 3.5rem; min-height: 3.5rem; max-width: 4rem; max-height: 4rem; border-radius: 15%;">
+                                        <MudIcon 
+                                            Icon="@Icons.Material.Outlined.ElectricBolt"
+                                            Style="color: #e7000b; font-size: 2.5rem; margin-top: 0.5rem;" />
+                                    </div>
+                                </MudItem>
+                                <MudFlexBreak />
+                                <MudItem xs="12" Style="margin-bottom: -2rem;">
+                                    <MudText Typo="Typo.h3" Class="pa-5" Align="Align.Left"
+                                        Style="@($"color: {Colors.Gray.Darken3}; font-weight: bold;")">
+                                        Atendimento de Emergência
+                                    </MudText>
+                                </MudItem>
+                                <MudFlexBreak />
+                                <MudItem xs="12">
+                                    <MudText Typo="Typo.h6" Class="pa-5" Align="Align.Left"
+                                        Style="@($"color: {Colors.Gray.Darken1}; font-weight: 250;")">
+                                        Consultas no próprio dia disponíveis para necessidades dentárias urgentes e emergências
+                                    </MudText>
+                                </MudItem>
+                            </MudGrid>
+                        </MudPaper>
+                    </MudItem>
+                </MudGrid>
+            </div>
+        }
+    </MudBreakpointProvider>
+    
+</section>
+
+@code 
+{
+    private MudBlazor.Breakpoint _currentBreakpoint;
+    private bool IsMobile => _currentBreakpoint < MudBlazor.Breakpoint.Sm;
+
+    private string defaultYellowPlaceholderShadow = "0px 0px 8px rgba(20, 20, 20, 0.15);";
+    private string defaultBrownPlaceholderShadow = "0px 0px 8px rgba(20, 20, 20, 0.15);";
+    private string defaultPinkPlaceholderShadow = "0px 0px 8px rgba(20, 20, 20, 0.15);";
+    private string defaultPurplePlaceholderShadow = "0px 0px 8px rgba(20, 20, 20, 0.15);";
+    private string defaultGreenPlaceholderShadow = "0px 0px 8px rgba(20, 20, 20, 0.15);";
+    private string defaultRedPlaceholderShadow = "0px 0px 8px rgba(20, 20, 20, 0.15);";
+
+    private void OnBreakpointChanged(MudBlazor.Breakpoint breakpoint)
+    {
+        _currentBreakpoint = breakpoint;
+        StateHasChanged();
+    }
+    
+    private void OnMouseOverYellowPlaceholderShadowIncrease(MouseEventArgs args)
+    {
+        defaultYellowPlaceholderShadow = "0px 4px 16px rgba(20, 20, 20, 0.25);";
+    }
+
+    private void OnMouseOutYellowPlaceholderShadowDecrease(MouseEventArgs args)
+    {
+        defaultYellowPlaceholderShadow = "0px 0px 8px rgba(20, 20, 20, 0.15);";
+    }
+
+    private void OnMouseOverBrownPlaceholderShadowIncrease(MouseEventArgs args)
+    {
+        defaultBrownPlaceholderShadow = "0px 4px 16px rgba(20, 20, 20, 0.25);";
+    }
+
+    private void OnMouseOutBrownPlaceholderShadowDecrease(MouseEventArgs args)
+    {
+        defaultBrownPlaceholderShadow = "0px 0px 8px rgba(20, 20, 20, 0.15);";
+    }
+
+    private void OnMouseOverPinkPlaceholderShadowIncrease(MouseEventArgs args)
+    {
+        defaultPinkPlaceholderShadow = "0px 4px 16px rgba(20, 20, 20, 0.25);";
+    }
+
+    private void OnMouseOutPinkPlaceholderShadowDecrease(MouseEventArgs args)
+    {
+        defaultPinkPlaceholderShadow = "0px 0px 8px rgba(20, 20, 20, 0.15);";
+    }
+
+    private void OnMouseOverPurplePlaceholderShadowIncrease(MouseEventArgs args)
+    {
+        defaultPurplePlaceholderShadow = "0px 4px 16px rgba(20, 20, 20, 0.25);";
+    }
+
+    private void OnMouseOutPurplePlaceholderShadowDecrease(MouseEventArgs args)
+    {
+        defaultPurplePlaceholderShadow = "0px 0px 8px rgba(20, 20, 20, 0.15);";
+    }
+
+    private void OnMouseOverGreenPlaceholderShadowIncrease(MouseEventArgs args)
+    {
+        defaultGreenPlaceholderShadow = "0px 4px 16px rgba(20, 20, 20, 0.25);";
+    }
+
+    private void OnMouseOutGreenPlaceholderShadowDecrease(MouseEventArgs args)
+    {
+        defaultGreenPlaceholderShadow = "0px 0px 8px rgba(20, 20, 20, 0.15);";
+    }
+
+    private void OnMouseOverRedPlaceholderShadowIncrease(MouseEventArgs args)
+    {
+        defaultRedPlaceholderShadow = "0px 4px 16px rgba(20, 20, 20, 0.25);";
+    }
+
+    private void OnMouseOutRedPlaceholderShadowDecrease(MouseEventArgs args)
+    {
+        defaultRedPlaceholderShadow = "0px 0px 8px rgba(20, 20, 20, 0.15);";
+    }
+}
