@@ -1,8 +1,12 @@
 ﻿<MudBreakpointProvider OnBreakpointChanged="OnBreakpointChanged">
-    <MudToolBar Style="position: sticky; top: 0; width: 100%; z-index: 1000; background-color: white;">
-        <MudImage Src="/images/loading-shadowed.png" Alt="HC Dental Clinic logótipo" Width="200" />
+    <MudToolBar Style="position: sticky; top: 0; width: 100%; z-index: 999999; background-color: white;">
+        <MudImage 
+            @onclick="@(() => Navigation.NavigateTo("/"))" 
+            Src="/images/loading-shadowed.webp" 
+            Alt="HC Dental Clinic logótipo" 
+            Width="200" />
         <MudSpacer />
-        @if(IsMobile)
+        @if(IsMobile || IsSmallTablet)
         {
             <MudButton 
                 Class="mr-5"
@@ -11,7 +15,7 @@
                 @onmouseover="OnMouseOverColorChange"
                 @onmouseout="OnMouseOutColorChange"
                 OnClick="@(async () => await ScrollToSection("contact-form"))"
-                Style="@($"color: white; background-color: {mudButtonBackgroundColor}; border-radius: 16px;")">
+                Style="@($"color: white; background-color: {mudButtonBackgroundColor}; border-radius: 16px; font-size: 1rem;")">
                 Marcação
             </MudButton>
         }
@@ -86,6 +90,8 @@
 {
     private MudBlazor.Breakpoint _currentBreakpoint;
     private bool IsMobile => _currentBreakpoint < MudBlazor.Breakpoint.Sm;
+    private bool IsSmallTablet => _currentBreakpoint is MudBlazor.Breakpoint.Sm;
+    private bool IsLargeTablet => _currentBreakpoint >= MudBlazor.Breakpoint.Md && _currentBreakpoint < MudBlazor.Breakpoint.Lg;
 
     private string mudMissaoTextColor = Colors.BlueGray.Darken2;
     private string mudServicosTextColor = Colors.BlueGray.Darken2;

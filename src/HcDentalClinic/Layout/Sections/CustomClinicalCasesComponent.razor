@@ -298,6 +298,8 @@
 {
     private MudBlazor.Breakpoint _currentBreakpoint;
     private bool IsMobile => _currentBreakpoint < MudBlazor.Breakpoint.Sm;
+    private bool IsSmallTablet => _currentBreakpoint is MudBlazor.Breakpoint.Sm;
+    private bool IsLargeTablet => _currentBreakpoint >= MudBlazor.Breakpoint.Md && _currentBreakpoint < MudBlazor.Breakpoint.Lg;
 
     private string defaultPreviousButtonShadow = "0px 2px 4px rgba(0, 0, 0, 0.1);";
     private string defaultPreviousButtonBackground = "white";

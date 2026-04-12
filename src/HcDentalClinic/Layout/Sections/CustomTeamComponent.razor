@@ -54,6 +54,136 @@
                 </MudContainer>
             </div>
         }
+        else if(IsSmallTablet)
+        {
+            <div class="team-container-mobile">
+                <h1 class="team-text">Conheça a Nossa Equipa</h1>
+                <MudContainer MaxWidth="MaxWidth.Large" Class="pa-4">
+                    <MudText 
+                        Typo="Typo.h5" 
+                        Class="mt-1 mb-20"
+                        Align="Align.Center"
+                        Style="font-weight: 250; color: #807f7f; font-size: 1.3rem;">
+                        Os nossos profissionais dentários experientes e simpáticos estão aqui para cuidar do seu sorriso
+                    </MudText>
+                    <div class="carousel-nav-wrapper mb-8" style="position: relative; width: 100%;">
+                        <div style="position: absolute; left: -1rem; top: 50%; transform: translateY(-50%); z-index: 2;">
+                            <div class="mud-button-root mud-icon-button mud-icon-button-color-inherit mud-ripple mud-ripple-icon"
+                                @onmouseover="OnMouseOverPreviousButton"
+                                @onmouseout="OnMouseOutPreviousButton"
+                                @onclick="Previous"
+                                style="border-radius: 24px; background-color: @defaultPreviousButtonBackground; box-shadow: @defaultPreviousButtonShadow; margin-left: 2rem; transition: all 0.3s ease;">
+                                <span class="mud-icon-button-label">
+                                    <MudIcon Class="mud-ripple mud-ripple-icon mud-icon-button-size-medium" Icon="@Icons.Material.Rounded.KeyboardArrowLeft" Color="@Color.Inherit" />
+                                </span>
+                            </div>
+                        </div>
+                        <MudGrid Justify="Justify.Center" Spacing="10" Style="align-content: center;">
+                            @foreach (var member in GetVisibleDesktopTeamMembers(2))
+                            {
+                                <MudItem xs="8" sm="4" md="3" Class="d-flex justify-center align-center">
+                                    <MudPaper
+                                        @onclick="@(() => OpenMemberDialogAsync(member))"
+                                        @onmouseover="@(() => OnMouseOverCard(member.Id))"
+                                        @onmouseout="@(() => OnMouseOutCard(member.Id))"
+                                        Style="@($"background-color: #ffffff; border-radius: 24px; box-shadow: {GetCardShadow(member.Id)}; text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25); cursor: pointer;")">
+                                        <MudCard Style="border-radius: 24px; overflow: hidden;">
+                                            <div class="team-media-container">
+                                                <MudCardMedia 
+                                                    Image="@member.ImageUrl"
+                                                    Style="@($"{GetCardImageStyle(member.Id)}")"
+                                                    Height="400"/>
+                                            </div>
+                                            <MudCardContent Style="height: 200px;">
+                                                <MudText Typo="Typo.body2" Style="font-size: 1.1rem;">@member.Name</MudText>
+                                                <MudText Typo="Typo.body2" Class="mt-2" Style="color: #ad9587;">@member.Position</MudText>
+                                                <MudText Typo="Typo.body2" Class="mt-2" Style="color: #807f7f;">@member.Description</MudText>
+                                            </MudCardContent>
+                                        </MudCard>
+                                    </MudPaper>
+                                </MudItem>
+                            }
+                        </MudGrid>
+                        <div style="position: absolute; right: 0rem; top: 50%; transform: translateY(-50%); z-index: 2;">
+                            <div class="mud-button-root mud-icon-button mud-icon-button-color-inherit mud-ripple mud-ripple-icon"
+                                @onmouseover="OnMouseOverNextButton"
+                                @onmouseout="OnMouseOutNextButton"
+                                @onclick="Next"
+                                style="border-radius: 24px; background-color: @defaultNextButtonBackground; box-shadow: @defaultNextButtonShadow; margin-right: 2rem; transition: all 0.3s ease;">
+                                <span class="mud-icon-button-label">
+                                    <MudIcon Class="mud-ripple mud-ripple-icon mud-icon-button-size-medium" Icon="@Icons.Material.Rounded.KeyboardArrowRight" Color="@Color.Inherit" />
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </MudContainer>
+            </div>
+        }
+        else if(IsLargeTablet)
+        {
+            <div class="team-container-mobile">
+                <h1 class="team-text">Conheça a Nossa Equipa</h1>
+                <MudContainer MaxWidth="MaxWidth.Large" Class="pa-4">
+                    <MudText 
+                        Typo="Typo.h5" 
+                        Class="mt-1 mb-20"
+                        Align="Align.Center"
+                        Style="font-weight: 250; color: #807f7f; font-size: 1.3rem;">
+                        Os nossos profissionais dentários experientes e simpáticos estão aqui para cuidar do seu sorriso
+                    </MudText>
+                    <div class="carousel-nav-wrapper mb-8" style="position: relative; width: 100%;">
+                        <div style="position: absolute; left: -1rem; top: 50%; transform: translateY(-50%); z-index: 2;">
+                            <div class="mud-button-root mud-icon-button mud-icon-button-color-inherit mud-ripple mud-ripple-icon"
+                                @onmouseover="OnMouseOverPreviousButton"
+                                @onmouseout="OnMouseOutPreviousButton"
+                                @onclick="Previous"
+                                style="border-radius: 24px; background-color: @defaultPreviousButtonBackground; box-shadow: @defaultPreviousButtonShadow; margin-left: 2rem; transition: all 0.3s ease;">
+                                <span class="mud-icon-button-label">
+                                    <MudIcon Class="mud-ripple mud-ripple-icon mud-icon-button-size-medium" Icon="@Icons.Material.Rounded.KeyboardArrowLeft" Color="@Color.Inherit" />
+                                </span>
+                            </div>
+                        </div>
+                        <MudGrid Justify="Justify.Center" Spacing="10" Style="align-content: center;">
+                            @foreach (var member in GetVisibleDesktopTeamMembers(3))
+                            {
+                                <MudItem xs="8" sm="4" md="3" Class="d-flex justify-center align-center">
+                                    <MudPaper
+                                        @onclick="@(() => OpenMemberDialogAsync(member))"
+                                        @onmouseover="@(() => OnMouseOverCard(member.Id))"
+                                        @onmouseout="@(() => OnMouseOutCard(member.Id))"
+                                        Style="@($"background-color: #ffffff; border-radius: 24px; box-shadow: {GetCardShadow(member.Id)}; text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25); cursor: pointer;")">
+                                        <MudCard Style="border-radius: 24px; overflow: hidden;">
+                                            <div class="team-media-container">
+                                                <MudCardMedia 
+                                                    Image="@member.ImageUrl"
+                                                    Style="@($"{GetCardImageStyle(member.Id)}")"
+                                                    Height="400"/>
+                                            </div>
+                                            <MudCardContent Style="height: 200px;">
+                                                <MudText Typo="Typo.body2" Style="font-size: 1.1rem;">@member.Name</MudText>
+                                                <MudText Typo="Typo.body2" Class="mt-2" Style="color: #ad9587;">@member.Position</MudText>
+                                                <MudText Typo="Typo.body2" Class="mt-2" Style="color: #807f7f;">@member.Description</MudText>
+                                            </MudCardContent>
+                                        </MudCard>
+                                    </MudPaper>
+                                </MudItem>
+                            }
+                        </MudGrid>
+                        <div style="position: absolute; right: 0rem; top: 50%; transform: translateY(-50%); z-index: 2;">
+                            <div class="mud-button-root mud-icon-button mud-icon-button-color-inherit mud-ripple mud-ripple-icon"
+                                @onmouseover="OnMouseOverNextButton"
+                                @onmouseout="OnMouseOutNextButton"
+                                @onclick="Next"
+                                style="border-radius: 24px; background-color: @defaultNextButtonBackground; box-shadow: @defaultNextButtonShadow; margin-right: 2rem; transition: all 0.3s ease;">
+                                <span class="mud-icon-button-label">
+                                    <MudIcon Class="mud-ripple mud-ripple-icon mud-icon-button-size-medium" Icon="@Icons.Material.Rounded.KeyboardArrowRight" Color="@Color.Inherit" />
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </MudContainer>
+            </div>
+        }
         else
         {
             <div class="team-container">
@@ -79,7 +209,7 @@
                             </div>
                         </div>
                         <MudGrid Justify="Justify.Center" Spacing="10" Style="align-content: center;">
-                            @foreach (var member in GetVisibleDesktopTeamMembers())
+                            @foreach (var member in GetVisibleDesktopTeamMembers(4))
                             {
                                 @* @onclick="@(() => OpenMemberDialogAsync())" *@
                                 @* @onclick="@(() => OpenMemberDialogAsync(member))" *@
@@ -137,13 +267,14 @@
 {
     private MudBlazor.Breakpoint _currentBreakpoint;
     private bool IsMobile => _currentBreakpoint < MudBlazor.Breakpoint.Sm;
+    private bool IsSmallTablet => _currentBreakpoint is MudBlazor.Breakpoint.Sm;
+    private bool IsLargeTablet => _currentBreakpoint >= MudBlazor.Breakpoint.Md && _currentBreakpoint < MudBlazor.Breakpoint.Lg;
 
     private string defaultPreviousButtonShadow = "0px 2px 4px rgba(0, 0, 0, 0.1);";
     private string defaultPreviousButtonBackground = "white";
     private string defaultNextButtonShadow = "0px 2px 4px rgba(0, 0, 0, 0.1);";
     private string defaultNextButtonBackground = "white";
     private int carouselIndex = 0;
-    private int visibleCount = 4;
 
     private List<TeamMember> team = new()
     {
@@ -153,7 +284,7 @@
             Name = "Dra. Sarah Johnson",
             Position = "Dentista Principal",
             Description = "Mais de 15 anos de experiência comprovada em dentisteria geral e estética",
-            ImageUrl = "images/team/doctor-2.jpg",
+            ImageUrl = "images/team/doctor-2.webp",
             Qualifications = "DDS - Universidade de Lisboa | Mestrado em Odontologia Estética",
             Specialties = new() { "Dentisteria Geral", "Estética Dental", "Implantes", "Branqueamento Dentário" },
             FullBio = "Com mais de 15 anos de experiência clínica, a Dra. Sarah é especialista em procedimentos de estética dental. Realiza regularmente cursos de atualização em técnicas avançadas."
@@ -164,7 +295,7 @@
             Name = "Dr. Michael Chen",
             Position = "Especialista em Pediatria",
             Description = "Especializado em tornar as visitas ao dentista divertidas e sem stress para crianças",
-            ImageUrl = "images/team/doctor-1.jpg",
+            ImageUrl = "images/team/doctor-1.webp",
             Qualifications = "DDS - Universidade do Porto | Especialização em Odontopediatria",
             Specialties = new() { "Odontopediatria", "Prevenção Dental", "Tratamento de Fobia Dentária", "Ortodontia Infantil" },
             FullBio = "Dr. Chen é apaixonado por criar ambientes confortáveis para crianças. Utiliza técnicas lúdicas e tecnologia para tornar cada visita uma experiência positiva."
@@ -175,7 +306,7 @@
             Name = "Dra. Emily Rodriguez",
             Position = "Ortodontista",
             Description = "Especialista em aparelhos e alinhadores invisíveis para sorrisos bonitos e direitos",
-            ImageUrl = "images/team/doctor-3.jpg",
+            ImageUrl = "images/team/doctor-3.webp",
             Qualifications = "DDS - Universidade de Coimbra | Mestrado em Ortodontia | Certificada em Invisalign",
             Specialties = new() { "Ortodontia", "Alinhadores Invisíveis", "Aparelhos Fixos", "Retenção Ortodôntica" },
             FullBio = "Especialista em posicionamento de dentes e correção de oclusão. A Dra. Rodriguez oferece soluções modernas e discretas para o alinhamento dentário."
@@ -186,7 +317,7 @@
             Name = "Dr. John White",
             Position = "Cirurgião Dentista",
             Description = "Especialista multidisciplinar em cirurgias dentárias complexas e implantes dentários",
-            ImageUrl = "images/team/doctor-4.jpg",
+            ImageUrl = "images/team/doctor-4.webp",
             Qualifications = "DDS - Universidade de Évora | Mestrado em Cirurgia Oral | Fellowship em Implantologia",
             Specialties = new() { "Cirurgia Oral", "Implantes Dentários", "Enxertos Ósseos", "Extrações Complexas" },
             FullBio = "Com formação especializada em cirurgia e implantologia, o Dr. White realiza procedimentos complexos com precisão e segurança, utilizando tecnologia de ponta."
@@ -197,7 +328,7 @@
             Name = "Dra. Chisty Wuang",
             Position = "Dentista Plástica",
             Description = "Especialista em estética dental e procedimentos de restauração estética",
-            ImageUrl = "images/team/doctor-5.jpg",
+            ImageUrl = "images/team/doctor-5.webp",
             Qualifications = "DDS - Universidade de Aveiro | Especialização em Dentística Estética | Certificada em Facetas",
             Specialties = new() { "Facetas de Porcelana", "Restaurações Estéticas", "Design de Sorriso", "Reabilitação Estética" },
             FullBio = "Dra. Wuang é dedicada à transformação de sorrisos através de soluções estéticas avançadas, combinando arte e ciência odontológica."
@@ -248,11 +379,10 @@
     }
 
     // Get visible team members (creates infinite carousel by cycling through)
-    private List<TeamMember> GetVisibleDesktopTeamMembers(bool isMobile = false)
+    private List<TeamMember> GetVisibleDesktopTeamMembers(int count = 4)
     {
-        // For mobile, show only 1 member at a time; for desktop, show 4 members, so this is only needed for desktop
         var result = new List<TeamMember>();
-        for (int i = 0; i < visibleCount; i++)
+        for (int i = 0; i < count; i++)
         {
             int idx = (carouselIndex + i) % team.Count;
             result.Add(team[idx]);
