@@ -1,15 +1,15 @@
-<MudDialog Style="background-color: #ffffff; border-radius: 24px; min-width: 50%; max-width: 85%; padding: 3.5rem; z-index: 9999;">
+<MudDialog Style="background-color: #ffffff; border-radius: 24px; min-width: 50%; max-width: 85%; padding: 3.5rem; z-index: 9999999;">
     <DialogContent>
         <MudBreakpointProvider OnBreakpointChanged="OnBreakpointChanged">
-            @if(IsMobile)
+            @if(IsMobile || IsSmallTablet)
             {
                 <MudGrid Spacing="2">
-                    <MudItem xs="12" sm="8" md="6">
+                    <MudItem xs="12" sm="12" md="8">
                         <div class="dialog-image-wrapper-mobile">
-                            <MudImage Src="@Member.ImageUrl" Alt="@Member.Name" Elevation="0" Class="rounded" Style="width: 100%; object-fit: cover; max-height: 25vh;" />
+                            <MudImage Src="@Member.ImageUrl" Alt="@Member.Name" Elevation="0" Style="width: 100%; object-fit: cover; max-height: 25vh;" />
                         </div>
                     </MudItem>
-                    <MudItem xs="12" sm="8" md="6">
+                    <MudItem xs="12" sm="12" md="8">
                         <MudText Typo="Typo.h4" Style="font-weight: 600; color: #333333;">@Member.Name</MudText>
                         <MudText Typo="Typo.h6" Style="color: #ad9587; margin-top: 0.5rem;">@Member.Position</MudText>
                         
@@ -30,7 +30,7 @@
                 <MudGrid Spacing="4">
                     <MudItem xs="12" sm="5" md="4">
                         <div class="dialog-image-wrapper">
-                            <MudImage Src="@Member.ImageUrl" Alt="@Member.Name" Elevation="0" Class="rounded" Style="width: 100%; object-fit: cover; height: 300px;" />
+                            <MudImage Src="@Member.ImageUrl" Alt="@Member.Name" Elevation="0" Style="width: 100%; object-fit: cover; height: 300px;" />
                         </div>
                     </MudItem>
                     <MudItem xs="12" sm="7" md="8">
@@ -60,6 +60,8 @@
 {
     private MudBlazor.Breakpoint _currentBreakpoint;
     private bool IsMobile => _currentBreakpoint < MudBlazor.Breakpoint.Sm;
+    private bool IsSmallTablet => _currentBreakpoint is MudBlazor.Breakpoint.Sm;
+    private bool IsLargeTablet => _currentBreakpoint >= MudBlazor.Breakpoint.Md && _currentBreakpoint < MudBlazor.Breakpoint.Lg;
 
     [CascadingParameter]
     [Required(ErrorMessage = "MudDialog is required.")]

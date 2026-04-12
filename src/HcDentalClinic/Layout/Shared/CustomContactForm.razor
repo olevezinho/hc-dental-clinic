@@ -73,7 +73,7 @@
                             FullWidth="true"
                             Required="true"
                             RequiredError="Motivo obrigatório!"
-                            Style="background-color: #ededed; border-radius: 16px; overflow: hidden; z-index: 999999;"
+                            Style="background-color: #ededed; border-radius: 16px; overflow: hidden; z-index: 99999;"
                             PopoverClass="mud-select-popover-custom"> 
                             @foreach (var reason in _reasons)
                             {
@@ -83,7 +83,7 @@
                     </MudItem>
                     
                     <!-- Row 3: Message -->
-                    <MudItem xs="12">
+                    <MudItem xs="12" sm="12" md="12">
                         <MudText Class="pa-1 mb-2" Align="Align.Left" Style="color:#333333; font-weight: 450;">Mensagem</MudText>
                         <MudTextField 
                             T="string" 
@@ -154,7 +154,6 @@
 
 @code 
 {
-
     // EmailJS configuration constants
     private const string EmailJSPublicKey = "public_key_placeholder";
     private const string EmailJSServiceID = "service_id_placeholder";

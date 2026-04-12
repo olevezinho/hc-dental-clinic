@@ -41,7 +41,3 @@
     border-radius: 0;
     width: 100%;
 }
-
-.my-custom-class {
-    backdrop-filter: blur(10px);
-}

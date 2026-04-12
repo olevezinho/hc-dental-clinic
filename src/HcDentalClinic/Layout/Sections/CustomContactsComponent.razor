@@ -16,7 +16,7 @@
                     MaxWidth="MaxWidth.Large">
                     <MudGrid Class="pa-10 mt-10" Justify="Justify.Center" Spacing="6">
                         <!-- Phone -->
-                        <MudItem xs="12" sm="8" md="3" Class="d-flex justify-center" Style="height: auto;">
+                        <MudItem xs="12" sm="8" Class="d-flex justify-center" Style="height: auto;">
                             <MudPaper
                                 @onmouseover="OnMouseOverPhoneShadow"
                                 @onmouseout="OnMouseOutPhoneShadow"
@@ -37,7 +37,7 @@
                         </MudItem>
 
                         <!-- Email -->
-                        <MudItem xs="12" sm="8" md="3" Class="d-flex justify-center" Style="height: auto;">
+                        <MudItem xs="12" sm="8" Class="d-flex justify-center" Style="height: auto;">
                             <MudPaper
                                 @onmouseover="OnMouseOverEmailShadow"
                                 @onmouseout="OnMouseOutEmailShadow"
@@ -60,7 +60,7 @@
                         </MudItem>
 
                         <!-- Address -->
-                        <MudItem xs="12" sm="8" md="3" Class="d-flex justify-center" Style="height: auto;">
+                        <MudItem xs="12" sm="8" Class="d-flex justify-center" Style="height: auto;">
                             <MudPaper
                                 @onmouseover="OnMouseOverAddressShadow"
                                 @onmouseout="OnMouseOutAddressShadow"
@@ -80,7 +80,118 @@
                         </MudItem>
 
                         <!-- Schedule -->
-                        <MudItem xs="12" sm="8" md="3" Class="d-flex justify-center" Style="height: auto;">
+                        <MudItem xs="12" sm="8" Class="d-flex justify-center" Style="height: auto;">
+                            <MudPaper
+                                @onmouseover="OnMouseOverScheduleShadow"
+                                @onmouseout="OnMouseOutScheduleShadow"
+                                Elevation="0"
+                                Class="pa-8"
+                                Style="@($"background-color: #ffffff; border-radius: 24px; box-shadow: {scheduleShadow}; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s ease;")">
+                                <div style="height: 12rem; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; width: 100%;">
+                                    <div style="margin-top: 1rem; background-color: #f5f2ef; width: 4rem; height: 4rem; aspect-ratio: 1; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; flex-shrink: 0;">
+                                        <MudIcon Icon="@Icons.Material.Outlined.AccessTime" Size="Size.Large" Style="color: #ad9587; font-size: 2rem;" />
+                                    </div>
+                                    <MudText Typo="Typo.h4" Align="Align.Center" Style="color: #333333; font-weight: 600; margin-bottom: 0;">Horário</MudText>
+                                </div>
+                                <div style="flex-grow: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; margin-bottom: 1rem;">
+                                    <MudText Typo="Typo.body2" Align="Align.Center" Style="color: #666666; margin-bottom: 0.5rem; font-weight: 500;">Segunda a Sexta</MudText>
+                                    <MudText Typo="Typo.body2" Align="Align.Center" Style="color: #ad9587; font-weight: 600;">09:00 - 12:30 <br/>14:00 - 19:30</MudText>
+                                    <MudText Typo="Typo.body2" Align="Align.Center" Style="color: #666666; margin-bottom: 0.5rem; font-weight: 500; margin-top: 0.5rem;">Sábado</MudText>
+                                    <MudText Typo="Typo.body2" Align="Align.Center" Style="color: #ad9587; font-weight: 600;">09:00 - 13:00</MudText>
+                                </div>
+                            </MudPaper>
+                        </MudItem>
+                    </MudGrid>
+                </MudContainer> 
+                <MudContainer
+                    MaxWidth="MaxWidth.Large" 
+                    Class="pa-4 mb-8" >
+                    <MudPaper Height="100%" Width="100%" Style="color:#f5f2ef box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.1); border-radius: 24px;">
+                    </MudPaper>
+                </MudContainer>
+            </div>
+        }
+        else if(IsSmallTablet || IsLargeTablet)
+        {
+            <div class="contact-container-mobile">
+                <h1 class="contact-text">Contacto</h1>
+                <MudText 
+                    Typo="Typo.h5" 
+                    Class="pa-12 mt-4"
+                    Align="Align.Center"
+                    Style="font-weight: 250; color: #807f7f; font-size: 1.3rem;">
+                    Encontre-nos ou entre em contacto connosco através dos seguintes meios
+                </MudText>
+                <MudContainer 
+                    Class="pa-4 mb-8" 
+                    MaxWidth="MaxWidth.Large">
+                    <MudGrid Class="pa-10 mt-10" Justify="Justify.Center" Spacing="6">
+                        <!-- Phone -->
+                        <MudItem sm="10" md="6" Class="d-flex justify-center" Style="height: auto;">
+                            <MudPaper
+                                @onmouseover="OnMouseOverPhoneShadow"
+                                @onmouseout="OnMouseOutPhoneShadow"
+                                Elevation="0"
+                                Class="pa-8"
+                                Style="@($"background-color: #ffffff; border-radius: 24px; box-shadow: {phoneShadow}; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s ease;")">
+                                <div style="height: 12rem; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; width: 100%;">
+                                    <div style="margin-top: 1rem; background-color: #f5f2ef; width: 4rem; height: 4rem; aspect-ratio: 1; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; flex-shrink: 0;">
+                                        <MudIcon Icon="@Icons.Material.Outlined.Phone" Size="Size.Large" Style="color: #ad9587; font-size: 2rem;" />
+                                    </div>
+                                    <MudText Typo="Typo.h4" Align="Align.Center" Style="color: #333333; font-weight: 600; margin-bottom: 0;">Telefone</MudText>
+                                </div>
+                                <div style="flex-grow: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; margin-bottom: 2rem;">
+                                    <MudText Typo="Typo.body2" Align="Align.Center" Style="color: #666666; margin-bottom: 0.5rem; font-weight: 500;">Atendimento</MudText>
+                                    <MudText Typo="Typo.body2" Align="Align.Center" Style="color: #ad9587; font-weight: 600; margin-bottom: 1rem;">+351 255 336 369 /<br/> +351 965 345 367</MudText>
+                                </div>
+                            </MudPaper>
+                        </MudItem>
+
+                        <!-- Email -->
+                        <MudItem sm="10" md="6" Class="d-flex justify-center" Style="height: auto;">
+                            <MudPaper
+                                @onmouseover="OnMouseOverEmailShadow"
+                                @onmouseout="OnMouseOutEmailShadow"
+                                Elevation="0"
+                                Class="pa-8"
+                                Style="@($"background-color: #ffffff; border-radius: 24px; box-shadow: {emailShadow}; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s ease;")">
+                                <div style="height: 12rem; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; width: 100%;">
+                                    <div style="margin-top: 1rem; background-color: #f5f2ef; width: 4rem; height: 4rem; aspect-ratio: 1; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; flex-shrink: 0;">
+                                        <MudIcon Icon="@Icons.Material.Outlined.Email" Size="Size.Large" Style="color: #ad9587; font-size: 2rem;" />
+                                    </div>
+                                    <MudText Typo="Typo.h4" Align="Align.Center" Style="color: #333333; font-weight: 600; margin-bottom: 0;">E-mail</MudText>
+                                </div>
+                                <div style="flex-grow: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; margin-bottom: 1rem;">
+                                    <MudText Typo="Typo.body2" Align="Align.Center" Style="color: #666666; margin-bottom: 0.5rem; font-weight: 500;">Geral</MudText>
+                                    <MudText Typo="Typo.body2" Align="Align.Center" Style="color: #ad9587; font-weight: 600; margin-bottom: 1rem;">geral@hcdentalclinic.pt</MudText>
+                                    <MudText Typo="Typo.body2" Align="Align.Center" Style="color: #666666; margin-bottom: 0.5rem; font-weight: 500;">Marcações</MudText>
+                                    <MudText Typo="Typo.body2" Align="Align.Center" Style="color: #ad9587; font-weight: 600;">marcacoes@hcdentalclinic.pt</MudText>
+                                </div>
+                            </MudPaper>
+                        </MudItem>
+
+                        <!-- Address -->
+                        <MudItem sm="10" md="6" Class="d-flex justify-center" Style="height: auto;">
+                            <MudPaper
+                                @onmouseover="OnMouseOverAddressShadow"
+                                @onmouseout="OnMouseOutAddressShadow"
+                                Elevation="0"
+                                Class="pa-8"
+                                Style="@($"background-color: #ffffff; border-radius: 24px; box-shadow: {addressShadow}; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s ease;")">
+                                <div style="height: 12rem; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; width: 100%;">
+                                    <div style="margin-top: 1rem; background-color: #f5f2ef; width: 4rem; height: 4rem; aspect-ratio: 1; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; flex-shrink: 0;">
+                                        <MudIcon Icon="@Icons.Material.Outlined.LocationOn" Size="Size.Large" Style="color: #ad9587; font-size: 2rem;" />
+                                    </div>
+                                    <MudText Typo="Typo.h4" Align="Align.Center" Style="color: #333333; font-weight: 600; margin-bottom: 0;">Morada</MudText>
+                                </div>
+                                <div style="flex-grow: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; margin-bottom: 2rem;">
+                                    <MudText Typo="Typo.body2" Align="Align.Center" Style="color: #666666; font-weight: 500;">Rua Nicolau Coelho<br/>nº 521 Bloco 3,<br/>Frac D3, r/c dto<br/>4610-202 Felgueiras</MudText>
+                                </div>
+                            </MudPaper>
+                        </MudItem>
+
+                        <!-- Schedule -->
+                        <MudItem sm="10" md="6" Class="d-flex justify-center" Style="height: auto;">
                             <MudPaper
                                 @onmouseover="OnMouseOverScheduleShadow"
                                 @onmouseout="OnMouseOutScheduleShadow"
@@ -229,6 +340,8 @@
 {
     private MudBlazor.Breakpoint _currentBreakpoint;
     private bool IsMobile => _currentBreakpoint < MudBlazor.Breakpoint.Sm;
+    private bool IsSmallTablet => _currentBreakpoint is MudBlazor.Breakpoint.Sm;
+    private bool IsLargeTablet => _currentBreakpoint >= MudBlazor.Breakpoint.Md && _currentBreakpoint < MudBlazor.Breakpoint.Lg;
 
     private string phoneShadow = "0px 0px 6px rgba(20, 20, 20, 0.1);";
     private string emailShadow = "0px 0px 6px rgba(20, 20, 20, 0.1);";
