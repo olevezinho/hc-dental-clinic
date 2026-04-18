@@ -50,6 +50,16 @@ public class ComponentTests
     }
 
     [Test]
+    public void NavMenu_ContainsHomeLink()
+    {
+        var cut = _bunitContext.Render<NavMenu>();
+
+        var homeLink = cut.Find("a.nav-link");
+        Assert.That(homeLink.GetAttribute("href"), Is.EqualTo(string.Empty));
+        Assert.That(homeLink.TextContent, Does.Contain("Home"));
+    }
+
+    [Test]
     public void MainLayout_RendersBodyAndNavigation()
     {
         RenderFragment body = builder => builder.AddMarkupContent(0, "<h1>Conteúdo de teste</h1>");
