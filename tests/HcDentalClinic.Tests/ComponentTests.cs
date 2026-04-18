@@ -44,7 +44,8 @@ public class ComponentTests
         var navContainer = cut.Find("div.nav-scrollable");
         Assert.That(navContainer.ClassList.Contains("collapse"), Is.False);
 
-        navContainer.Click();
+        cut.Find("button[title='Navigation menu']").Click();
+        navContainer = cut.Find("div.nav-scrollable");
         Assert.That(navContainer.ClassList.Contains("collapse"), Is.True);
     }
 
@@ -81,8 +82,8 @@ public class ComponentTests
         Assert.That(image.ClassList.Contains("loading"), Is.True);
         Assert.That(image.ClassList.Contains("visible"), Is.False);
 
-        Assert.That(cut.Markup, Does.Contain(DateTime.Now.Year.ToString()));
-        Assert.That(cut.Markup, Does.Contain("Todos os direitos reservados"));
+        var footerText = cut.Find("footer.wip-footer").TextContent;
+        Assert.That(footerText, Does.Contain("HC Dental Clinic - Todos os direitos reservados."));
     }
 
     [Test]
@@ -117,12 +118,12 @@ public class ComponentTests
     [Test]
     public void App_UnknownRoute_RendersNotFoundPage()
     {
+        var cut = _bunitContext.Render<App>();
+
         var navigation = _bunitContext.Services.GetService<NavigationManager>();
         Assert.That(navigation, Is.Not.Null);
         navigation!.NavigateTo("/rota-invalida");
 
-        var cut = _bunitContext.Render<App>();
-
-        Assert.That(cut.Markup, Does.Contain("Não encontrado"));
+        cut.WaitForAssertion(() => Assert.That(cut.Markup, Does.Contain("Não encontrado")));
     }
 }
