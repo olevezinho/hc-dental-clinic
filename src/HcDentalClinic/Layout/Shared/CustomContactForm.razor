@@ -152,15 +152,14 @@
     </MudContainer>
 }
 
-@code 
+@code
 {
-    // EmailJS configuration constants
-    private const string EmailJSPublicKey = "public_key_placeholder";
-    private const string EmailJSServiceID = "service_id_placeholder";
-    private const string EmailJSTemplateID = "template_id_placeholder";
-
-    // Verifalia configuration constants
-    private const string VerifaliaAPIKey = "verifalia_api_key_placeholder";
+    // Configuration-backed properties
+    private string EmailJSPublicKey => Configuration["EmailJS:PublicKey"] ?? "";
+    private string EmailJSServiceID => Configuration["EmailJS:ServiceID"] ?? "";
+    private string EmailJSTemplateID => Configuration["EmailJS:TemplateID"] ?? "";
+    private string VerifaliaAPIKey => Configuration["Verifalia:ApiKey"] ?? "";
+    private bool VerifaliaEmailChecksEnabled => Configuration.GetValue<bool>("Options:ContactForm:VerifaliaEmailChecksEnabled");
 
     private string mudButtonDisabledBackgroundColor = "#ededed !important";
     private string mudButtonBackgroundColor = Colors.Brown.Lighten3;
@@ -245,12 +244,15 @@
 
         try
         {
-            var emailValidationResult = await DoubleCheckEmailAsync(_email);
-            if (emailValidationResult is not null)
+            if (VerifaliaEmailChecksEnabled)
             {
-                _alertSeverity = Severity.Error;
-                _alertMessage = emailValidationResult;
-                return;
+                var emailValidationResult = await DoubleCheckEmailAsync(_email);
+                if (emailValidationResult is not null)
+                {
+                    _alertSeverity = Severity.Error;
+                    _alertMessage = emailValidationResult;
+                    return;
+                }
             }
 
             var result = await JSRuntime.InvokeAsync<EmailJSResponse>(
@@ -345,8 +347,8 @@
                         ResetForm();
                         // There was a different status, so let's log the status
                         _alertSeverity = Severity.Error;
-                        _alertMessage = $"Foi reportado um status diferente do esperado. Tente novamente mais tarde";
-                        return $"Foi reportado um estado diferente do esperado. Estado: '{firstEntry.Status}'";
+                        _alertMessage = $"Foi reportado um status diferente do esperado. Estado: '{firstEntry.Status}'. Tente novamente mais tarde";
+                        return $"O E-mail especificado não é válido.";
                     }
                 }
                 else 
@@ -377,5 +379,5 @@
         }
     }
 
-    private record EmailJSResponse(bool Success, string Status, string Text);
+    private record EmailJSResponse(bool Success, int Status, string Text);
 }

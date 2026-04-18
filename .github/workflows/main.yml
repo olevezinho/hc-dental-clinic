@@ -33,6 +33,22 @@ jobs:
     # - name: Change base-image-path in CustomPage.razor from /images to /hc-dental-clinic/images
     #   run: sed -i 's|/images/|/hc-dental-clinic/images/|g' src/HcDentalClinic/Pages/LandingPage.razor
 
+    # generates appsettings.Production.json from GitHub secrets
+    - name: Generate appsettings.Production.json
+      run: |
+        cat > src/HcDentalClinic/wwwroot/appsettings.Production.json << EOF
+        {
+          "EmailJS": {
+            "PublicKey": "${{ secrets.EMAILJS_PUBLIC_KEY }}",
+            "ServiceID": "${{ secrets.EMAILJS_SERVICE_ID }}",
+            "TemplateID": "${{ secrets.EMAILJS_TEMPLATE_ID }}"
+          },
+          "Verifalia": {
+            "ApiKey": "${{ secrets.VERIFALIA_API_KEY }}"
+          }
+        }
+        EOF
+
     # publishes Blazor project to the release-folder
     - name: Publish .NET Core project
       run: dotnet publish -c Release -o release --nologo
