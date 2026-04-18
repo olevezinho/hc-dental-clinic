@@ -19,6 +19,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".docker", ".docker", "{955B
 		docker-compose.yml = docker-compose.yml
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{0AB3BF05-4346-4AA6-1389-037BE0695223}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HcDentalClinic.Tests", "tests\HcDentalClinic.Test\HcDentalClinic.Tests.csproj", "{E44F7212-7D5A-41D7-A136-50F53506535C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +45,18 @@ Global
 		{E4A613B0-1A7A-485D-9AFB-A7B89E4A53BC}.Release|x64.Build.0 = Release|Any CPU
 		{E4A613B0-1A7A-485D-9AFB-A7B89E4A53BC}.Release|x86.ActiveCfg = Release|Any CPU
 		{E4A613B0-1A7A-485D-9AFB-A7B89E4A53BC}.Release|x86.Build.0 = Release|Any CPU
+		{E44F7212-7D5A-41D7-A136-50F53506535C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E44F7212-7D5A-41D7-A136-50F53506535C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E44F7212-7D5A-41D7-A136-50F53506535C}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{E44F7212-7D5A-41D7-A136-50F53506535C}.Debug|x64.Build.0 = Debug|Any CPU
+		{E44F7212-7D5A-41D7-A136-50F53506535C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E44F7212-7D5A-41D7-A136-50F53506535C}.Debug|x86.Build.0 = Debug|Any CPU
+		{E44F7212-7D5A-41D7-A136-50F53506535C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E44F7212-7D5A-41D7-A136-50F53506535C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E44F7212-7D5A-41D7-A136-50F53506535C}.Release|x64.ActiveCfg = Release|Any CPU
+		{E44F7212-7D5A-41D7-A136-50F53506535C}.Release|x64.Build.0 = Release|Any CPU
+		{E44F7212-7D5A-41D7-A136-50F53506535C}.Release|x86.ActiveCfg = Release|Any CPU
+		{E44F7212-7D5A-41D7-A136-50F53506535C}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,5 +64,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{E4A613B0-1A7A-485D-9AFB-A7B89E4A53BC} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
 		{07505D0E-B97B-43E0-98DD-AEE6C9E6F72D} = {A508EFC4-0EDB-31DF-620D-ECD3B3B4B781}
+		{E44F7212-7D5A-41D7-A136-50F53506535C} = {0AB3BF05-4346-4AA6-1389-037BE0695223}
 	EndGlobalSection
 EndGlobal
