@@ -54,8 +54,7 @@ public class ComponentTests
     {
         var cut = _bunitContext.Render<NavMenu>();
 
-        var homeLink = cut.Find("a.nav-link");
-        Assert.That(homeLink.GetAttribute("href"), Is.EqualTo(string.Empty));
+        var homeLink = cut.Find("a.nav-link[href='']");
         Assert.That(homeLink.TextContent, Does.Contain("Home"));
     }
 
