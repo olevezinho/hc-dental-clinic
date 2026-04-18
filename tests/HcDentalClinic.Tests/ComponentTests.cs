@@ -7,24 +7,24 @@ namespace HcDentalClinic.Tests;
 [TestFixture]
 public class ComponentTests
 {
-    private BunitContext _context = null!;
+    private BunitContext _bunitContext = null!;
 
     [SetUp]
     public void Setup()
     {
-        _context = new BunitContext();
+        _bunitContext = new BunitContext();
     }
 
     [TearDown]
     public void Cleanup()
     {
-        _context.Dispose();
+        _bunitContext.Dispose();
     }
 
     [Test]
     public void NavMenu_StartsCollapsed()
     {
-        var cut = _context.Render<NavMenu>();
+        var cut = _bunitContext.Render<NavMenu>();
 
         var navContainer = cut.Find("div.nav-scrollable");
 
@@ -34,7 +34,7 @@ public class ComponentTests
     [Test]
     public void NavMenu_ToggleButton_ExpandsMenu()
     {
-        var cut = _context.Render<NavMenu>();
+        var cut = _bunitContext.Render<NavMenu>();
 
         cut.Find("button[title='Navigation menu']").Click();
 
@@ -45,7 +45,7 @@ public class ComponentTests
     [Test]
     public void NotFound_ShowsExpectedMessage()
     {
-        var cut = _context.Render<NotFound>();
+        var cut = _bunitContext.Render<NotFound>();
 
         Assert.That(cut.Markup, Does.Contain("Não encontrado"));
         Assert.That(cut.Markup, Does.Contain("Pedimos desculpa"));
