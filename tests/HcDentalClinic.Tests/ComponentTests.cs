@@ -120,9 +120,8 @@ public class ComponentTests
     {
         var cut = _bunitContext.Render<App>();
 
-        var navigation = _bunitContext.Services.GetService<NavigationManager>();
-        Assert.That(navigation, Is.Not.Null);
-        navigation!.NavigateTo("/rota-invalida");
+        var navigation = _bunitContext.Services.GetRequiredService<NavigationManager>();
+        navigation.NavigateTo("/rota-invalida");
 
         cut.WaitForAssertion(() => Assert.That(cut.Markup, Does.Contain("Não encontrado")));
     }
