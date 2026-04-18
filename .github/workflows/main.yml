@@ -35,16 +35,21 @@ jobs:
 
     # generates appsettings.Production.json from GitHub secrets
     - name: Generate appsettings.Production.json
+      env: 
+        EMAILJS_PUBLIC_KEY: ${{ secrets.EMAILJS_PUBLIC_KEY }}
+        EMAILJS_SERVICE_ID: ${{ secrets.EMAILJS_SERVICE_ID }}
+        EMAILJS_TEMPLATE_ID: ${{ secrets.EMAILJS_TEMPLATE_ID }}
+        VERIFALIA_API_KEY: ${{ secrets.VERIFALIA_API_KEY }}
       run: |
         cat > src/HcDentalClinic/wwwroot/appsettings.Production.json << EOF
         {
           "EmailJS": {
-            "PublicKey": "${{ secrets.EMAILJS_PUBLIC_KEY }}",
-            "ServiceID": "${{ secrets.EMAILJS_SERVICE_ID }}",
-            "TemplateID": "${{ secrets.EMAILJS_TEMPLATE_ID }}"
+            "PublicKey": "$EMAILJS_PUBLIC_KEY",
+            "ServiceID": "$EMAILJS_SERVICE_ID",
+            "TemplateID": "$EMAILJS_TEMPLATE_ID"
           },
           "Verifalia": {
-            "ApiKey": "${{ secrets.VERIFALIA_API_KEY }}"
+            "ApiKey": "$VERIFALIA_API_KEY"
           }
         }
         EOF
