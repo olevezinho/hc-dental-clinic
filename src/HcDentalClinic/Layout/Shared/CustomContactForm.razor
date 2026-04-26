@@ -110,6 +110,16 @@
                             </ChildContent>
                         </MudCheckBox>
                     </MudItem>
+
+                    <!-- Honeypot: if this hidden field is filled, ignore submission as bot-like -->
+                    <MudItem xs="12" Class="honeypot-field" aria-hidden="true">
+                        <input
+                            type="text"
+                            name="website"
+                            @bind="_website"
+                            tabindex="-1"
+                            autocomplete="off" />
+                    </MudItem>
                     
                     <!-- Row 5: Submit Button -->
                     <MudItem xs="12">
@@ -178,6 +188,7 @@
     private string _contact = string.Empty;
     private string _reason = string.Empty;
     private string _message = string.Empty;
+    private string _website = string.Empty;
     private bool _agreement { get; set; } = false;
 
     public string[] _reasons =[
@@ -227,6 +238,16 @@
 
         if (!_form.IsValid || !_agreement)
             return;
+
+        if (IsLikelyBotSubmission())
+        {
+            _alertSeverity = Severity.Success;
+            _alertMessage = "Pedido de marcação enviado com sucesso! Entraremos em contacto em breve.";
+            _submitted = true;
+            _invalid = false;
+            ResetForm();
+            return;
+        }
 
         _sending = true;
         _submitted = false;
@@ -308,9 +329,12 @@
         _contact = string.Empty;
         _reason = string.Empty;
         _message = string.Empty;
+        _website = string.Empty;
         _agreement = false;
         _form.ResetAsync();
     }
+
+    private bool IsLikelyBotSubmission() => !string.IsNullOrWhiteSpace(_website);
 
     private async Task<string?> DoubleCheckEmailAsync(string email)
     {
