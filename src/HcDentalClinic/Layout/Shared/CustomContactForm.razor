@@ -112,13 +112,15 @@
                     </MudItem>
 
                     <!-- Honeypot: if this hidden field is filled, ignore submission as bot-like -->
-                    <MudItem xs="12" Class="honeypot-field" aria-hidden="true">
-                        <input
-                            type="text"
-                            name="website"
-                            @bind="_website"
-                            tabindex="-1"
-                            autocomplete="off" />
+                    <MudItem xs="12" style="height: 0.1rem; background-color: #faf9f7; z-index: -1;">
+                        <MudTextField 
+                            T="string" 
+                            @bind-Value="_website"
+                            Label="Informações adicionais ou preferências de horário ..."
+                            Variant="Variant.Filled" 
+                            Required="false"
+                            Lines="4"
+                            Style="background-color: #ededed; border-radius: 16px; overflow: hidden;"/>
                     </MudItem>
                     
                     <!-- Row 5: Submit Button -->
@@ -126,7 +128,7 @@
                         <MudButton 
                             Variant="Variant.Filled"
                             FullWidth="true"
-                            Disabled="@(!_isValid || _sending)"
+                            Disabled="@(!_isValid || _sending || IsLikelyBotSubmission())"
                             OnClick="SubmitFormAsync"
                             @onmouseover="OnMouseOverColorChange"
                             @onmouseout="OnMouseOutColorChange"
@@ -170,6 +172,9 @@
     private string EmailJSTemplateID => Configuration["EmailJS:TemplateID"] ?? "";
     private string VerifaliaAPIKey => Configuration["Verifalia:ApiKey"] ?? "";
     private bool VerifaliaEmailChecksEnabled => Configuration.GetValue<bool>("Options:ContactForm:VerifaliaEmailChecksEnabled");
+    private const int SubmissionCooldownSeconds = 14400;
+    private const string LastSubmissionEpochKey = "contact-form:last-submission-epoch";
+    private const string GenericSubmissionMessage = "A sua mensagem foi recebida. Entraremos em contacto em breve.";
 
     private string mudButtonDisabledBackgroundColor = "#ededed !important";
     private string mudButtonBackgroundColor = Colors.Brown.Lighten3;
@@ -239,10 +244,24 @@
         if (!_form.IsValid || !_agreement)
             return;
 
+        _invalid = false;
+        _submitted = false;
+
         if (IsLikelyBotSubmission())
         {
             _alertSeverity = Severity.Success;
-            _alertMessage = "Pedido de marcação enviado com sucesso! Entraremos em contacto em breve.";
+            _alertMessage = GenericSubmissionMessage;
+            _submitted = true;
+            _invalid = false;
+            ResetForm();
+            return;
+        }
+
+        var cooldownRemaining = await GetCooldownRemainingAsync();
+        if (cooldownRemaining > 0)
+        {
+            _alertSeverity = Severity.Success;
+            _alertMessage = GenericSubmissionMessage;
             _submitted = true;
             _invalid = false;
             ResetForm();
@@ -250,7 +269,6 @@
         }
 
         _sending = true;
-        _submitted = false;
 
         StateHasChanged();
 
@@ -285,7 +303,8 @@
             if (result.Success)
             {
                 _alertSeverity = Severity.Success;
-                _alertMessage = "Pedido de marcação enviado com sucesso! Entraremos em contacto em breve.";
+                _alertMessage = GenericSubmissionMessage;
+                await RegisterSubmissionTimestampAsync();
                 ResetForm();
             }
             else
@@ -335,6 +354,41 @@
     }
 
     private bool IsLikelyBotSubmission() => !string.IsNullOrWhiteSpace(_website);
+
+    private async Task<int> GetCooldownRemainingAsync()
+    {
+        try
+        {
+            var now = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+            var lastSubmissionRaw = await JSRuntime.InvokeAsync<string?>("localStorage.getItem", LastSubmissionEpochKey);
+
+            if (!long.TryParse(lastSubmissionRaw, out var lastSubmissionEpoch))
+                return 0;
+
+            var elapsed = now - lastSubmissionEpoch;
+            if (elapsed >= SubmissionCooldownSeconds)
+                return 0;
+
+            return (int)(SubmissionCooldownSeconds - elapsed);
+        }
+        catch
+        {
+            return 0;
+        }
+    }
+
+    private async Task RegisterSubmissionTimestampAsync()
+    {
+        try
+        {
+            var now = DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString();
+            await JSRuntime.InvokeVoidAsync("localStorage.setItem", LastSubmissionEpochKey, now);
+        }
+        catch
+        {
+            // If localStorage is unavailable, fail open and keep form usable.
+        }
+    }
 
     private async Task<string?> DoubleCheckEmailAsync(string email)
     {

@@ -485,3 +485,4 @@ $RECYCLE.BIN/
 
 # Vim temporary swap files
 *.swp
+.playwright-mcp/page-2026-04-18T18-38-17-758Z.yml

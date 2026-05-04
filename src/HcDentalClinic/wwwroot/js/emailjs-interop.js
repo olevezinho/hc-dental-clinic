@@ -1,7 +1,10 @@
 // EmailJS interop.js
 globalThis.EmailJSInterop = {
     init: function(publicKey) {
-        emailjs.init({ publicKey: publicKey });
+        emailjs.init({
+            publicKey: publicKey,
+            blockHeadless: true,
+        });
     },
     send: async function (serviceId, templateId, templateParams) {
         try {
