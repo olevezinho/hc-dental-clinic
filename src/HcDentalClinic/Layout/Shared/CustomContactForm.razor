@@ -227,7 +227,7 @@
             return "Email obrigatório!";
 
         var emailPattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
-        if (!System.Text.RegularExpressions.Regex.IsMatch(email, emailPattern))
+        if (!System.Text.RegularExpressions.Regex.IsMatch(email, emailPattern, System.Text.RegularExpressions.RegexOptions.None, TimeSpan.FromMilliseconds(100)))
             return "Email inválido!";
 
         return null;
@@ -239,7 +239,7 @@
             return "Contacto obrigatório!";
 
         var phonePattern = @"^\+?\d{9}$";
-        if (!System.Text.RegularExpressions.Regex.IsMatch(phone, phonePattern))
+        if (!System.Text.RegularExpressions.Regex.IsMatch(phone, phonePattern, System.Text.RegularExpressions.RegexOptions.None, TimeSpan.FromMilliseconds(100)))
             return "Contacto inválido! Use o formato 912 345 678";
 
         return null;
