@@ -1,0 +1,20 @@
+.contact-form-icon-container {
+    margin-top: 4rem;
+    background-color: #f5f2ef; 
+    min-width: 4.5rem; 
+    min-height: 4.5rem; 
+    max-width: 5rem; 
+    max-height: 5rem; 
+    border-radius: 50%;
+}
+
+.contact-form-text {
+    /* Use clamp for fluid typography: clamp(MIN, PREFERRED, MAX) */
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    color: #ad9587; /* Change text color to white */
+    padding-top: 1.5rem; /* Add some space from the top */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* Soft shadow for text */
+    padding-inline: 1rem; /* Ensures minimum space on both edges of the viewport */
+    font-weight: 300;
+    letter-spacing: 0.05em;
+}

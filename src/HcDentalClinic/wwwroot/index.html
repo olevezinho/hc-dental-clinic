@@ -4,10 +4,11 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Página web da HC Dental Clinic. 
+            Cuidamos do seu sorriso com excelência e dedicação desde 2026." />
     <title>HC | Dental Clinic</title>
     <base href="/" />
     <link rel="preload" id="webassembly" />
-    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/app.css" />
     <link rel="icon" type="image/png" href="favicon.png" />
     <link href="HcDentalClinic.styles.css" rel="stylesheet" />
@@ -18,13 +19,24 @@
 
     <!-- Font Type -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- Update font type to match the one in the template -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=GFS+Didot&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LWHC5SWYL0"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-LWHC5SWYL0');
+    </script>
 </head>
 
 <body>
     <div id="app">
-        <img src="/images/loading.png" alt="HC Dental Clinic Logo" class="loading-logo" />
+        <img src="/images/loading.webp" alt="HC Dental Clinic Logo" class="loading-logo" />
     </div>
 
     <div id="blazor-error-ui">
@@ -32,8 +44,15 @@
         <a href="." class="reload">Reload</a>
         <span class="dismiss">🗙</span>
     </div>
-    <script src="_framework/blazor.webassembly#[.{fingerprint}].js"></script>
-    <script src="_content/MudBlazor/MudBlazor.min.js"></script>
+    <script rel="preload" src="_framework/blazor.webassembly#[.{fingerprint}].js"></script>
+    <!-- MudBlazor -->
+    <script rel="preload" src="_content/MudBlazor/MudBlazor.min.js"></script>
+    <!-- EmailJS -->
+    <script defer src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4.4.1/dist/email.min.js" integrity="sha384-SALc35EccAf6RzGw4iNsyj7kTPr33K7RoGzYu+7heZhT8s0GZouafRiCg1qy44AS" crossorigin="anonymous"></script>
+    <!-- JS Files -->
+    <script src="js/animations.js"></script>
+    <script src="js/emailjs-interop.js"></script>
+    <script src="js/window-interop.js"></script>
 </body>
 
 </html>

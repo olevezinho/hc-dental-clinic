@@ -1,0 +1,30 @@
+.privacy-policy-page {
+    /* Set a background color */
+    background-color: #ffffff;
+
+    /* Ensure it fills the viewport and center content */
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; Pushes children to top and bottom */
+    align-items: center;
+    text-align: center;
+}
+
+.privacy-policy-text { 
+    background-color: #faf9f7;
+    padding: 9rem;
+    text-align: justify;
+    font-weight: normal;
+    font-size: 1.3rem;
+    border-radius: 24px;
+}
+
+.privacy-policy-text-mobile { 
+    background-color: #faf9f7;
+    padding: 3rem;
+    text-align: justify;
+    font-weight: normal;
+    font-size: 1rem;
+    border-radius: 24px;
+}

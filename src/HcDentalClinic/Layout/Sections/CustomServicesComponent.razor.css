@@ -1,0 +1,45 @@
+.services-container {
+    /* Set a background color */
+    background-color: #ffffff;
+
+    /* Keep the section immersive, but allow it to grow on shorter screens */
+    min-height: 95svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 1rem;
+    align-items: center;
+    text-align: center;
+    padding-bottom: 4rem;
+}
+
+.services-container-mobile {
+    /* Set a background color */
+    background-color: #ffffff;
+
+    /* Ensure it fills the viewport and center content */
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Pushes children to top and bottom */
+    align-items: center;
+    text-align: center;/* Add any other custom styles for mobile */
+    padding-bottom: 3rem;
+}
+
+.services-text {
+    /* Use clamp for fluid typography: clamp(MIN, PREFERRED, MAX) */
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    color: #ad9587; /* Change text color to white */
+    padding-top: 4rem; /* Add some space from the top */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* Soft shadow for text */
+    padding-inline: 1rem; /* Ensures minimum space on both edges of the viewport */
+    font-weight: 300;
+    letter-spacing: 0.05em;
+}
+
+/* Compress the content of the nested grids' grid items*/
+.mud-grid-spacing-xs-6>.mud-grid-item {
+    padding-left: 24px;
+    padding-top: 0px;
+}

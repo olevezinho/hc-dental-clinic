@@ -13,11 +13,11 @@ jobs:
     # uses GitHub's checkout action to checkout code from the main branch
     - uses: actions/checkout@v2
 
-    # sets up .NET Core SDK 10.0.100
+    # sets up .NET Core SDK 10.0.105
     - name: Setup .NET Core SDK
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 10.0.100
+        dotnet-version: 10.0.201
 
     # sets up python3
     # - name: installs python3
@@ -32,6 +32,27 @@ jobs:
     # changes the base-image-path in CustomPage.razor from '/curriculum-vitae/' to '../curriculum-vitae/' to match base blazor template
     # - name: Change base-image-path in CustomPage.razor from /images to /hc-dental-clinic/images
     #   run: sed -i 's|/images/|/hc-dental-clinic/images/|g' src/HcDentalClinic/Pages/LandingPage.razor
+
+    # generates appsettings.Production.json from GitHub secrets
+    - name: Generate appsettings.Production.json
+      env: 
+        EMAILJS_PUBLIC_KEY: ${{ secrets.EMAILJS_PUBLIC_KEY }}
+        EMAILJS_SERVICE_ID: ${{ secrets.EMAILJS_SERVICE_ID }}
+        EMAILJS_TEMPLATE_ID: ${{ secrets.EMAILJS_TEMPLATE_ID }}
+        VERIFALIA_API_KEY: ${{ secrets.VERIFALIA_API_KEY }}
+      run: |
+        cat > src/HcDentalClinic/wwwroot/appsettings.Production.json << EOF
+        {
+          "EmailJS": {
+            "PublicKey": "$EMAILJS_PUBLIC_KEY",
+            "ServiceID": "$EMAILJS_SERVICE_ID",
+            "TemplateID": "$EMAILJS_TEMPLATE_ID"
+          },
+          "Verifalia": {
+            "ApiKey": "$VERIFALIA_API_KEY"
+          }
+        }
+        EOF
 
     # publishes Blazor project to the release-folder
     - name: Publish .NET Core project

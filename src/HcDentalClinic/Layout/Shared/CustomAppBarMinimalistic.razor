@@ -1,0 +1,42 @@
+﻿<MudToolBar Style="position: sticky; top: 0; width: 100%; z-index: 999999; background-color: white;">
+    <div @onclick="@(() => Navigation.NavigateTo("/"))" Style="cursor: pointer;">
+        <MudImage Src="/images/loading-shadowed.webp" Alt="HC Dental Clinic logótipo" Width="200" />
+    </div>
+    <MudSpacer />
+    <MudButton 
+        Class="mr-5"
+        Variant="Variant.Filled"
+        Href="/contact-request"
+        @onmouseover="OnMouseOverColorChange"
+        @onmouseout="OnMouseOutColorChange"
+        OnClick="@(() => Navigation.NavigateTo("contact-request"))"
+        Style="@($"color: white; background-color: {mudButtonBackgroundColor}; border-radius: 16px; font-size: 1rem;")">
+        Marcação
+    </MudButton>
+</MudToolBar>
+
+@code
+{
+    private string mudMarcacaoTextColor = Colors.BlueGray.Darken2;
+    private string mudButtonBackgroundColor = Colors.Brown.Lighten3;
+
+    private void OnMouseOverTextMarcacaoColorChange(MouseEventArgs args)
+    {
+        mudMarcacaoTextColor = Colors.Brown.Lighten3;
+    }
+
+    private void OnMouseOutTextMarcacaoColorChange(MouseEventArgs args)
+    {
+        mudMarcacaoTextColor = Colors.BlueGray.Darken2;
+    }
+
+    private void OnMouseOverColorChange(MouseEventArgs args)
+    {
+        mudButtonBackgroundColor = Colors.Brown.Lighten2;
+    }
+
+    private void OnMouseOutColorChange(MouseEventArgs args)
+    {
+        mudButtonBackgroundColor = Colors.Brown.Lighten3;
+    }
+}

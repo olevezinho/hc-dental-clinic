@@ -1,0 +1,27 @@
+.contact-form-container {
+    /* Set a background color */
+    background-color: #ffffff;
+
+    /* Let the form dictate the height when the viewport is shorter */
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    padding-block: 4rem;
+}
+
+.contact-form-container-mobile {
+    /* Set a background color */
+    background-color: #ffffff;
+
+    /* Ensure it fills the viewport and center content */
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Pushes children to top and bottom */
+    align-items: center;
+    text-align: center;
+    padding-block: 3rem;
+}

@@ -1,0 +1,30 @@
+﻿<section id="contact-form">
+    <MudBreakpointProvider OnBreakpointChanged="OnBreakpointChanged">
+        @if(IsMobile || IsSmallTablet || IsLargeTablet)
+        {
+            <div class="contact-form-container-mobile">
+                <CustomContactForm />
+            </div>
+        }
+        else
+        {
+            <div class="contact-form-container">
+                <CustomContactForm />
+            </div>
+        }
+    </MudBreakpointProvider>
+</section>
+
+@code 
+{
+    private MudBlazor.Breakpoint _currentBreakpoint;
+    private bool IsMobile => _currentBreakpoint < MudBlazor.Breakpoint.Sm;
+    private bool IsSmallTablet => _currentBreakpoint is MudBlazor.Breakpoint.Sm;
+    private bool IsLargeTablet => _currentBreakpoint >= MudBlazor.Breakpoint.Md && _currentBreakpoint < MudBlazor.Breakpoint.Lg;
+    
+    private void OnBreakpointChanged(MudBlazor.Breakpoint breakpoint)
+    {
+        _currentBreakpoint = breakpoint;
+        StateHasChanged();
+    }
+}

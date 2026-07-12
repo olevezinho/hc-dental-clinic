@@ -1,0 +1,87 @@
+.carousel {
+  position: relative;
+  height: 100vh;
+}
+
+.carousel .carousel-item {
+  position: relative;
+  height: 100vh;
+}
+
+.carousel-mobile {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(200, 172, 156, 0.52); /* More transparent overlay */
+  z-index: 1;
+}
+
+.hero-content {
+  position: absolute;
+  top: 74%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.15rem;
+}
+
+.hero-cta-wrapper {
+  opacity: 0;
+  animation: heroCtaEnter 0.9s ease-out 0.25s forwards;
+}
+
+.hero-cta-button {
+  animation: heroCtaFloat 3.2s ease-in-out 1.15s infinite;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
+}
+
+.hero-cta-button:hover {
+  animation-play-state: paused;
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes heroCtaFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes heroCtaEnter {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-cta-wrapper {
+    opacity: 1;
+    animation: none;
+  }
+
+  .hero-cta-button {
+    animation: none;
+  }
+}

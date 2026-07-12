@@ -1,0 +1,392 @@
+﻿<section id="team">
+    <MudBreakpointProvider OnBreakpointChanged="OnBreakpointChanged">
+        @if(IsMobile)
+        {
+            <div class="team-container-mobile">
+                <h1 class="team-text">Conheça a Nossa Equipa</h1>
+                <MudContainer MaxWidth="MaxWidth.Large" Class="pa-4">
+                    <MudText 
+                        Typo="Typo.h5" 
+                        Class="pa-12 mt-2 mb-20"
+                        Align="Align.Center"
+                        Style="font-weight: 250; color: #807f7f; font-size: 1.3rem;">
+                        Os nossos profissionais dentários experientes e simpáticos estão aqui para cuidar do seu sorriso
+                    </MudText>
+                    <MudCarousel 
+                        Class="pa-1 mb-8"
+                        ItemsSource="team"
+                        ShowArrows="false"
+                        ShowBullets="false"
+                        EnableSwipeGesture="true"
+                        ArrowsPosition="Position.Center"
+                        TData="TeamMember"
+                        AutoCycle="true"
+                        Style="min-height: 650px;">
+                        <ItemTemplate>
+                            <MudGrid 
+                                Justify="Justify.Center" 
+                                Spacing="4"
+                                Style="align-content: center; height: 100%;">
+                                <MudItem xs="10" sm="6" md="3" Class="d-flex justify-center align-center">
+                                    <MudPaper
+                                        @onclick="@(() => OpenMemberDialogAsync(context))"
+                                        @onmouseover="@(() => OnMouseOverCard(context.Id))"
+                                        @onmouseout="@(() => OnMouseOutCard(context.Id))"
+                                        Style="@($"background-color: #ffffff; border-radius: 24px; box-shadow: {GetCardShadow(context.Id)}; text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25); cursor: pointer;")">
+                                        <MudCard Style="border-radius: 24px; overflow: hidden;">
+                                                <div class="team-media-container">
+                                                <MudCardMedia 
+                                                    Image="@context.ImageUrl"
+                                                    Style="@($"{GetCardImageStyle(context.Id)}")"
+                                                    Height="@_mediaHeight"/>
+                                            </div>
+                                            <MudCardContent Style="height: 240px;">
+                                                <MudText Typo="Typo.body2" Style="font-size: 1.1rem;">@context.Name</MudText>
+                                                <MudText Typo="Typo.body2" Class="mt-2" Style="color: #ad9587;">@context.PositionText</MudText>
+                                                <MudText Typo="Typo.body2" Class="mt-2" Style="color: #807f7f;">@context.Description</MudText>
+                                            </MudCardContent>
+                                        </MudCard>
+                                    </MudPaper>
+                                </MudItem>
+                            </MudGrid>
+                        </ItemTemplate>
+                    </MudCarousel>
+                </MudContainer>
+            </div>
+        }
+        else if(IsSmallTablet)
+        {
+            <div class="team-container-mobile">
+                <h1 class="team-text">Conheça a Nossa Equipa</h1>
+                <MudContainer MaxWidth="MaxWidth.Large" Class="pa-4">
+                    <MudText 
+                        Typo="Typo.h5" 
+                        Class="mt-1 mb-20"
+                        Align="Align.Center"
+                        Style="font-weight: 250; color: #807f7f; font-size: 1.3rem;">
+                        Os nossos profissionais dentários experientes e simpáticos estão aqui para cuidar do seu sorriso
+                    </MudText>
+                    <div class="carousel-nav-wrapper mb-8" style="position: relative; width: 100%;">
+                        <div style="position: absolute; left: -1rem; top: 50%; transform: translateY(-50%); z-index: 2;">
+                            <div class="mud-button-root mud-icon-button mud-icon-button-color-inherit mud-ripple mud-ripple-icon"
+                                @onmouseover="OnMouseOverPreviousButton"
+                                @onmouseout="OnMouseOutPreviousButton"
+                                @onclick="Previous"
+                                style="border-radius: 24px; background-color: @defaultPreviousButtonBackground; box-shadow: @defaultPreviousButtonShadow; margin-left: 2rem; transition: all 0.3s ease;">
+                                <span class="mud-icon-button-label">
+                                    <MudIcon Class="mud-ripple mud-ripple-icon mud-icon-button-size-medium" Icon="@Icons.Material.Rounded.KeyboardArrowLeft" Color="@Color.Inherit" />
+                                </span>
+                            </div>
+                        </div>
+                        <MudGrid Justify="Justify.Center" Spacing="10" Style="align-content: center; margin-top: -1.5rem;">
+                            @foreach (var member in GetVisibleDesktopTeamMembers(2))
+                            {
+                                <MudItem xs="8" sm="4" md="3" Class="d-flex justify-center align-center">
+                                    <MudPaper
+                                        @onclick="@(() => OpenMemberDialogAsync(member))"
+                                        @onmouseover="@(() => OnMouseOverCard(member.Id))"
+                                        @onmouseout="@(() => OnMouseOutCard(member.Id))"
+                                        Style="@($"background-color: #ffffff; border-radius: 24px; box-shadow: {GetCardShadow(member.Id)}; text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25); cursor: pointer;")">
+                                        <MudCard Style="border-radius: 24px; overflow: hidden;">
+                                            <div class="team-media-container">
+                                                <MudCardMedia 
+                                                    Image="@member.ImageUrl"
+                                                    Style="@($"{GetCardImageStyle(member.Id)}")"
+                                                    Height="@_mediaHeight"/>
+                                            </div>
+                                            <MudCardContent Style="height: 240px;">
+                                                <MudText Typo="Typo.body2" Style="font-size: 1.1rem;">@member.Name</MudText>
+                                                <MudText Typo="Typo.body2" Class="mt-2" Style="color: #ad9587;">@member.PositionText</MudText>
+                                                <MudText Typo="Typo.body2" Class="mt-2" Style="color: #807f7f;">@member.Description</MudText>
+                                            </MudCardContent>
+                                        </MudCard>
+                                    </MudPaper>
+                                </MudItem>
+                            }
+                        </MudGrid>
+                        <div style="position: absolute; right: 0rem; top: 50%; transform: translateY(-50%); z-index: 2;">
+                            <div class="mud-button-root mud-icon-button mud-icon-button-color-inherit mud-ripple mud-ripple-icon"
+                                @onmouseover="OnMouseOverNextButton"
+                                @onmouseout="OnMouseOutNextButton"
+                                @onclick="Next"
+                                style="border-radius: 24px; background-color: @defaultNextButtonBackground; box-shadow: @defaultNextButtonShadow; margin-right: 2rem; transition: all 0.3s ease;">
+                                <span class="mud-icon-button-label">
+                                    <MudIcon Class="mud-ripple mud-ripple-icon mud-icon-button-size-medium" Icon="@Icons.Material.Rounded.KeyboardArrowRight" Color="@Color.Inherit" />
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </MudContainer>
+            </div>
+        }
+        else if(IsLargeTablet)
+        {
+            <div class="team-container-mobile">
+                <h1 class="team-text">Conheça a Nossa Equipa</h1>
+                <MudContainer MaxWidth="MaxWidth.Large" Class="pa-4">
+                    <MudText 
+                        Typo="Typo.h5" 
+                        Class="mt-1 mb-20"
+                        Align="Align.Center"
+                        Style="font-weight: 250; color: #807f7f; font-size: 1.3rem;">
+                        Os nossos profissionais dentários experientes e simpáticos estão aqui para cuidar do seu sorriso
+                    </MudText>
+                    <div class="carousel-nav-wrapper mb-8" style="position: relative; width: 100%;">
+                        <div style="position: absolute; left: -1rem; top: 50%; transform: translateY(-50%); z-index: 2;">
+                            <div class="mud-button-root mud-icon-button mud-icon-button-color-inherit mud-ripple mud-ripple-icon"
+                                @onmouseover="OnMouseOverPreviousButton"
+                                @onmouseout="OnMouseOutPreviousButton"
+                                @onclick="Previous"
+                                style="border-radius: 24px; background-color: @defaultPreviousButtonBackground; box-shadow: @defaultPreviousButtonShadow; margin-left: 2rem; transition: all 0.3s ease;">
+                                <span class="mud-icon-button-label">
+                                    <MudIcon Class="mud-ripple mud-ripple-icon mud-icon-button-size-medium" Icon="@Icons.Material.Rounded.KeyboardArrowLeft" Color="@Color.Inherit" />
+                                </span>
+                            </div>
+                        </div>
+                        <MudGrid Justify="Justify.Center" Spacing="10" Style="align-content: center; margin-top: -1.5rem;">
+                            @foreach (var member in GetVisibleDesktopTeamMembers(3))
+                            {
+                                <MudItem xs="8" sm="4" md="3" Class="d-flex justify-center align-center">
+                                    <MudPaper
+                                        @onclick="@(() => OpenMemberDialogAsync(member))"
+                                        @onmouseover="@(() => OnMouseOverCard(member.Id))"
+                                        @onmouseout="@(() => OnMouseOutCard(member.Id))"
+                                        Style="@($"background-color: #ffffff; border-radius: 24px; box-shadow: {GetCardShadow(member.Id)}; text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25); cursor: pointer;")">
+                                        <MudCard Style="border-radius: 24px; overflow: hidden;">
+                                            <div class="team-media-container">
+                                                <MudCardMedia 
+                                                    Image="@member.ImageUrl"
+                                                    Style="@($"{GetCardImageStyle(member.Id)}")"
+                                                    Height="@_mediaHeight"/>
+                                            </div>
+                                            <MudCardContent Style="height: 240px;">
+                                                <MudText Typo="Typo.body2" Style="font-size: 1.1rem;">@member.Name</MudText>
+                                                <MudText Typo="Typo.body2" Class="mt-2" Style="color: #ad9587;">@member.PositionText</MudText>
+                                                <MudText Typo="Typo.body2" Class="mt-2" Style="color: #807f7f;">@member.Description</MudText>
+                                            </MudCardContent>
+                                        </MudCard>
+                                    </MudPaper>
+                                </MudItem>
+                            }
+                        </MudGrid>
+                        <div style="position: absolute; right: 0rem; top: 50%; transform: translateY(-50%); z-index: 2;">
+                            <div class="mud-button-root mud-icon-button mud-icon-button-color-inherit mud-ripple mud-ripple-icon"
+                                @onmouseover="OnMouseOverNextButton"
+                                @onmouseout="OnMouseOutNextButton"
+                                @onclick="Next"
+                                style="border-radius: 24px; background-color: @defaultNextButtonBackground; box-shadow: @defaultNextButtonShadow; margin-right: 2rem; transition: all 0.3s ease;">
+                                <span class="mud-icon-button-label">
+                                    <MudIcon Class="mud-ripple mud-ripple-icon mud-icon-button-size-medium" Icon="@Icons.Material.Rounded.KeyboardArrowRight" Color="@Color.Inherit" />
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </MudContainer>
+            </div>
+        }
+        else
+        {
+            <div class="team-container">
+                <h1 class="team-text">Conheça a Nossa Equipa</h1>
+                <MudContainer MaxWidth="MaxWidth.Large" Class="pa-4">
+                    <MudText 
+                        Typo="Typo.h5" 
+                        Class="mb-2"
+                        Align="Align.Center"
+                        Style="font-weight: 250; color: #807f7f; font-size: 1.3rem;">
+                        Os nossos profissionais dentários experientes e simpáticos estão aqui para cuidar do seu sorriso
+                    </MudText>
+                    <div class="carousel-nav-wrapper mb-16" style="position: relative; width: 100%;">
+                        <div style="position: absolute; left: -7rem; top: 50%; transform: translateY(-50%); z-index: 2;">
+                            <div class="mud-button-root mud-icon-button mud-icon-button-color-inherit mud-ripple mud-ripple-icon"
+                                @onmouseover="OnMouseOverPreviousButton"
+                                @onmouseout="OnMouseOutPreviousButton"
+                                @onclick="Previous"
+                                style="border-radius: 24px; background-color: @defaultPreviousButtonBackground; box-shadow: @defaultPreviousButtonShadow; margin-left: 2rem; transition: all 0.3s ease;">
+                                <span class="mud-icon-button-label">
+                                    <MudIcon Class="mud-ripple mud-ripple-icon mud-icon-button-size-medium" Icon="@Icons.Material.Rounded.KeyboardArrowLeft" Color="@Color.Inherit" />
+                                </span>
+                            </div>
+                        </div>
+                        <MudGrid Justify="Justify.Center" Spacing="10" Style="align-content: center; margin-top: -1.5rem;">
+                            @foreach (var member in GetVisibleDesktopTeamMembers(4))
+                            {
+                                @* @onclick="@(() => OpenMemberDialogAsync())" *@
+                                @* @onclick="@(() => OpenMemberDialogAsync(member))" *@
+
+                                <MudItem xs="8" sm="4" md="3" Class="d-flex justify-center align-center">
+                                    <MudPaper
+                                        @onclick="@(() => OpenMemberDialogAsync(member))"
+                                        @onmouseover="@(() => OnMouseOverCard(member.Id))"
+                                        @onmouseout="@(() => OnMouseOutCard(member.Id))"
+                                        Style="@($"background-color: #ffffff; border-radius: 24px; box-shadow: {GetCardShadow(member.Id)}; text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25); cursor: pointer;")">
+                                        <MudCard Style="border-radius: 24px; overflow: hidden;">
+                                            <div class="team-media-container">
+                                                <MudCardMedia 
+                                                    Image="@member.ImageUrl"
+                                                    Style="@($"{GetCardImageStyle(member.Id)}")"
+                                                    Height="@_mediaHeight"/>
+                                            </div>
+                                            <MudCardContent Style="height: 240px;">
+                                                <MudText Typo="Typo.body2" Style="font-size: 1.1rem;">@member.Name</MudText>
+                                                <MudText Typo="Typo.body2" Class="mt-2" Style="color: #ad9587;">@member.PositionText</MudText>
+                                                <MudText Typo="Typo.body2" Class="mt-2" Style="color: #807f7f;">@member.Description</MudText>
+                                            </MudCardContent>
+                                        </MudCard>
+                                    </MudPaper>
+                                </MudItem>
+                            }
+                        </MudGrid>
+                        <div style="position: absolute; right: -7rem; top: 50%; transform: translateY(-50%); z-index: 2;">
+                            <div class="mud-button-root mud-icon-button mud-icon-button-color-inherit mud-ripple mud-ripple-icon"
+                                @onmouseover="OnMouseOverNextButton"
+                                @onmouseout="OnMouseOutNextButton"
+                                @onclick="Next"
+                                style="border-radius: 24px; background-color: @defaultNextButtonBackground; box-shadow: @defaultNextButtonShadow; margin-right: 2rem; transition: all 0.3s ease;">
+                                <span class="mud-icon-button-label">
+                                    <MudIcon Class="mud-ripple mud-ripple-icon mud-icon-button-size-medium" Icon="@Icons.Material.Rounded.KeyboardArrowRight" Color="@Color.Inherit" />
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </MudContainer>
+            </div>
+        }
+    </MudBreakpointProvider>
+</section>
+
+@code 
+{
+    private MudBlazor.Breakpoint _currentBreakpoint;
+    private bool IsMobile => _currentBreakpoint < MudBlazor.Breakpoint.Sm;
+    private bool IsSmallTablet => _currentBreakpoint is MudBlazor.Breakpoint.Sm;
+    private bool IsLargeTablet => _currentBreakpoint >= MudBlazor.Breakpoint.Md && _currentBreakpoint < MudBlazor.Breakpoint.Lg;
+
+    private int _mediaHeight = 400;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            var windowHeight = await JSRuntime.InvokeAsync<int>("getWindowHeight");
+            _mediaHeight = windowHeight switch
+            {
+                >= 700 => 400,
+                >= 600 => 325,
+                _      => 250
+            };
+            StateHasChanged();
+        }
+    }
+
+    private string defaultPreviousButtonShadow = "0px 2px 4px rgba(0, 0, 0, 0.1);";
+    private string defaultPreviousButtonBackground = "white";
+    private string defaultNextButtonShadow = "0px 2px 4px rgba(0, 0, 0, 0.1);";
+    private string defaultNextButtonBackground = "white";
+    private int carouselIndex = 0;
+
+    private List<TeamMember> team = TeamData.Members;
+
+    private Dictionary<int, string> cardShadows = new();
+    private Dictionary<int, string> cardImageStyles = new();
+
+    private void OnBreakpointChanged(MudBlazor.Breakpoint breakpoint)
+    {
+        _currentBreakpoint = breakpoint;
+        StateHasChanged();
+    }
+
+    protected override void OnInitialized()
+    {
+        // Initialize shadow and image styles for all team members
+        foreach (var member in team)
+        {
+            cardShadows[member.Id] = "1px 1px 6px rgba(20, 20, 20, 0.1);";
+            cardImageStyles[member.Id] = "object-fit: cover; object-position: center; transition: transform 0.8s ease;";
+        }
+    }
+
+    private void OnMouseOverPreviousButton(MouseEventArgs args)
+    {
+        defaultPreviousButtonShadow = "0px 4px 8px rgba(0, 0, 0, 0.2);";
+        defaultPreviousButtonBackground = "#f5f5f5";
+    }
+
+    private void OnMouseOutPreviousButton(MouseEventArgs args)
+    {
+        defaultPreviousButtonShadow = "0px 2px 4px rgba(0, 0, 0, 0.1);";
+        defaultPreviousButtonBackground = "white";
+    }
+
+    private void OnMouseOverNextButton(MouseEventArgs args)
+    {
+        defaultNextButtonShadow = "0px 4px 8px rgba(0, 0, 0, 0.2);";
+        defaultNextButtonBackground = "#f5f5f5";
+    }
+
+    private void OnMouseOutNextButton(MouseEventArgs args)
+    {
+        defaultNextButtonShadow = "0px 2px 4px rgba(0, 0, 0, 0.1);";
+        defaultNextButtonBackground = "white";
+    }
+
+    // Get visible team members (creates infinite carousel by cycling through)
+    private List<TeamMember> GetVisibleDesktopTeamMembers(int count = 4)
+    {
+        var result = new List<TeamMember>();
+        for (int i = 0; i < count; i++)
+        {
+            int idx = (carouselIndex + i) % team.Count;
+            result.Add(team[idx]);
+        }
+        return result;
+    }
+
+    private void Next()
+    {
+        carouselIndex = (carouselIndex + 1) % team.Count;
+    }
+    
+    private void Previous()
+    {
+        carouselIndex = (carouselIndex - 1 + team.Count) % team.Count;
+    }
+
+    private string GetCardShadow(int memberId)
+    {
+        return cardShadows.ContainsKey(memberId) ? cardShadows[memberId] : "1px 1px 6px rgba(20, 20, 20, 0.1);";
+    }
+
+    private string GetCardImageStyle(int memberId)
+    {
+        return cardImageStyles.ContainsKey(memberId) ? cardImageStyles[memberId] : "object-fit: cover; object-position: center; transition: transform 0.8s ease;";
+    }
+
+    private void OnMouseOverCard(int memberId)
+    {
+        cardShadows[memberId] = "4px 4px 12px rgba(20, 20, 20, 0.25);";
+        cardImageStyles[memberId] = "transform: scale(1.05); display: block; object-fit: cover;";
+    }
+
+    private void OnMouseOutCard(int memberId)
+    {
+        cardShadows[memberId] = "1px 1px 6px rgba(20, 20, 20, 0.1);";
+        cardImageStyles[memberId] = "object-fit: cover; object-position: center; transition: transform 0.8s ease;";
+    }
+
+    private async Task OpenMemberDialogAsync(TeamMember member)
+    {        
+        var parameters = new DialogParameters 
+        { 
+            ["Member"] = member
+        };
+
+        var options = new DialogOptions 
+        { 
+            BackgroundClass = "dialog-styles", 
+            NoHeader = true
+        };
+        var dialog = await Dialog.ShowAsync<TeamMemberDialog>("", parameters, options);
+        await dialog.Result;
+    }
+}

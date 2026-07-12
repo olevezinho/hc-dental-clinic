@@ -1,0 +1,39 @@
+.contact-container {
+    /* Set a background color */
+    background-color: #faf9f7;
+
+    /* Keep the section immersive, but allow it to grow on shorter screens */
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 1rem;
+    align-items: center;
+    text-align: center;
+    padding-bottom: 4rem;
+}
+
+.contact-container-mobile {
+    /* Set a background color */
+    background-color: #faf9f7;
+
+    /* Ensure it fills the viewport and center content */
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Pushes children to top and bottom */
+    align-items: center;
+    text-align: center;
+    padding-bottom: 3rem;
+}
+
+.contact-text {
+    /* Use clamp for fluid typography: clamp(MIN, PREFERRED, MAX) */
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    color: #ad9587; /* Change text color to white */
+    padding-top: 4rem; /* Add some space from the top */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* Soft shadow for text */
+    padding-inline: 1rem; /* Ensures minimum space on both edges of the viewport */
+    font-weight: 300;
+    letter-spacing: 0.05em;
+}

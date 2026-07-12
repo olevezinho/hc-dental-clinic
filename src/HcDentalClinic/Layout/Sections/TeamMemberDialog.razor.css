@@ -1,0 +1,43 @@
+.dialog-image-wrapper {
+	border-radius: 24px;
+	overflow: hidden;
+	width: 240px;
+	min-width: 220px;
+	height: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.dialog-image-wrapper-mobile {
+	border-radius: 1rem;
+	overflow: hidden;
+	width: 60%;
+	height: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.dialog-actions-mobile {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	padding-top: 0.25rem;
+}
+
+.dialog-close-button-mobile:hover {
+	background-color: #f5f5f5;
+	color: #a1887f;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.16);
+}
+
+.team-member-dialog {
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+}

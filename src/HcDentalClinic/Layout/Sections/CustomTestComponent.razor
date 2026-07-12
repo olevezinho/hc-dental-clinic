@@ -1,0 +1,143 @@
+﻿<MudBreakpointProvider OnBreakpointChanged="OnBreakpointChanged">
+    @if(IsMobile)
+    {
+        <div class="carousel-mobile">
+            <div class="d-flex" style="display: flex; justify-content: center; align-items: center; position: relative; height: 100vh; z-index: -1;">
+                <MudImage Class="mx-auto my-auto" 
+                    Src="images/background-test-image.webp"
+                    Style="min-width: 250%; min-height: 100%; height: 100%; width: 250%; object-fit: cover;" 
+                    Alt="HC Dental Clinic Background Slider" />
+            </div>
+            <div class="overlay">
+                <div class="hero-content">
+                    <MudGrid>
+                        <MudItem xs="12">
+                            <MudText 
+                                Class="pa-8"
+                                Style="@($"text-align: center;color: #ffffff; font-weight: 700; z-index: 2; font-size: 1.2rem; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.55); letter-spacing: 0.02em;")">
+                                O seu sorriso é a nossa prioridade.
+                            </MudText>
+                        </MudItem>
+                        <MudItem xs="12">
+                            <MudText 
+                                Class="pa-4"
+                                Style="@($"text-align: center;color: #ffffff; font-weight: 500; z-index: 2; font-size: 1.45rem; line-height: 1.35; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.55); letter-spacing: 0.01em;")">
+                                Cuidados dentários de qualidade para toda a família num ambiente acolhedor
+                            </MudText>
+                        </MudItem>
+                    </MudGrid>
+                    <div class="hero-cta-wrapper">
+                        <MudButton 
+                            Class="pa-4 hero-cta-button"
+                            Variant="Variant.Filled"
+                            EndIcon="@Icons.Material.Filled.ArrowDownward"
+                            IconSize="Size.Small"
+                            Href="#mission"
+                            @onmouseover="OnMouseOverColorChange"
+                            @onmouseout="OnMouseOutColorChange"
+                            Style="@($"margin-top: 0.6rem; min-width: 9%; display: flex; justify-content: center; align-items: center; color: {mudButtonTextColor}; background-color: white; border-radius: 50px; z-index: 2;")">
+                            Saiba mais
+                        </MudButton>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <MudCarousel 
+            Class="mud-width-full" 
+            Style="height: 100vh;" 
+            AutoCycle="false" 
+            ShowBullets="false" 
+            TData="object">
+            <ChildContent>
+                <MudCarouselItem 
+                    Color="@Color.Inherit" 
+                    Transition="Transition.Fade">
+                    <div class="carousel">
+                        <div class="carousel-item">
+                            <div class="d-flex" style="justify-content: center; align-items: center; width: 100%; min-height: 100vh; position: relative; overflow: hidden;">
+                            @* For mobile, this will have to be adjusted to fit better. *@
+                            @* <div class="d-flex" style="display: flex; justify-content: center; align-items: center; position: ; top: 0; left: 0; right: 0; bottom: 0; z-index: -1;"> *@
+                                <MudImage Class="mx-auto my-auto" 
+                                    Src="images/team/equipa.webp"
+                                    Style="width: 100%; height: 100%; object-fit: cover; object-position: center center;" 
+                                    Alt="HC Dental Clinic Background Slider" />
+                            </div>
+                            <div class="overlay">
+                                <div class="hero-content">
+                                <MudGrid>
+                                    <MudItem xs="12">
+                                        <MudText Class="pa-4"
+                                            Style="@($"text-align: center;color: #ffffff; font-weight: 700; z-index: 2; font-size: 1.2rem; text-shadow: 0 8px 10px rgba(0, 0, 0, 0.55); letter-spacing: 0.02em;")">
+                                            O seu sorriso é a nossa prioridade
+                                        </MudText>
+                                    </MudItem>
+                                    @* <MudItem xs="12">
+                                        <MudText Class="pa-4"
+                                            Style="@($"text-align: center;color: #ffffff; font-weight: 500; z-index: 2; font-size: 1.45rem; line-height: 1.35; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.55); letter-spacing: 0.01em;")">
+                                            Cuidados dentários de qualidade para toda a família num<br />ambiente acolhedor
+                                        </MudText>
+                                    </MudItem> *@
+                                </MudGrid>
+                                <div class="hero-cta-wrapper">
+                                    <MudButton 
+                                        Class="pa-4 hero-cta-button"
+                                        Variant="Variant.Filled"
+                                        EndIcon="@Icons.Material.Filled.ArrowDownward"
+                                        IconSize="Size.Small"
+                                        Href="#mission"
+                                        @onmouseover="OnMouseOverColorChange"
+                                        @onmouseout="OnMouseOutColorChange"
+                                        Style="@($"margin-top: 0.6rem; min-width: 9%; display: flex; justify-content: center; align-items: center; color: {mudButtonTextColor}; background-color: white; border-radius: 50px; z-index: 2;")">
+                                        Saiba mais
+                                    </MudButton>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </MudCarouselItem>
+                <MudCarouselItem Color="@Color.Inherit" Transition="Transition.Fade">
+                    <div class="carousel">
+                        <div class="carousel-item">
+                            <div class="d-flex" style="height:100%">
+                                <MudImage Class="mx-auto my-auto" 
+                                    Src="images/background-test-image-2.webp"
+                                    Style="max-width: 100%;" 
+                                    Alt="HC Dental Clinic Background Alternative Slider" />
+                            </div>
+                            <div class="overlay" />
+                        </div>
+                    </div>
+                </MudCarouselItem>
+            </ChildContent>
+        </MudCarousel>
+    }
+    
+</MudBreakpointProvider>
+
+@code
+{
+    private MudBlazor.Breakpoint _currentBreakpoint;
+    private bool IsMobile => _currentBreakpoint < MudBlazor.Breakpoint.Sm;
+
+    private void OnBreakpointChanged(MudBlazor.Breakpoint breakpoint)
+    {
+        _currentBreakpoint = breakpoint;
+        StateHasChanged();
+    }
+
+    private string mudButtonTextColor = Colors.BlueGray.Darken2;
+
+    private void OnMouseOverColorChange(MouseEventArgs args)
+    {
+        mudButtonTextColor = Colors.Brown.Lighten3;
+    }
+
+    private void OnMouseOutColorChange(MouseEventArgs args)
+    {
+        mudButtonTextColor = Colors.BlueGray.Darken2;
+    }
+}

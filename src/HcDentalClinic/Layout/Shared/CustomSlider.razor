@@ -1,0 +1,96 @@
+﻿<MudBreakpointProvider OnBreakpointChanged="OnBreakpointChanged">
+    @if(IsMobile)
+    {
+        <div class="carousel-static carousel-static-mobile">
+            <img
+                Class="carousel-static-image"
+                src="images/frontpage-mobile.webp"
+                Alt="HC Dental Clinic Background Slider" />
+            <div class="overlay">
+                <div class="hero-content">
+                    <MudGrid>
+                        <MudItem xs="12">
+                            <MudText 
+                                Class="pa-8"
+                                Style="@($"text-align: center;color: #ffffff; font-weight: 700; z-index: 2; font-size: 1.2rem; text-shadow: 0 2px 2px rgba(0, 0, 0, 0.55); letter-spacing: 0.02em;")">
+                                O seu sorriso é a nossa prioridade.
+                            </MudText>
+                        </MudItem>
+                    </MudGrid>
+                    <div class="hero-cta-wrapper">
+                        <MudButton 
+                            Class="pa-4 hero-cta-button"
+                            Variant="Variant.Filled"
+                            EndIcon="@Icons.Material.Filled.ArrowDownward"
+                            IconSize="Size.Small"
+                            Href="#mission"
+                            @onmouseover="OnMouseOverColorChange"
+                            @onmouseout="OnMouseOutColorChange"
+                            Style="@($"margin-top: 0.6rem; min-width: 9%; display: flex; justify-content: center; align-items: center; color: {mudButtonTextColor}; background-color: white; border-radius: 50px; z-index: 2;")">
+                            Saiba mais
+                        </MudButton>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="carousel-static carousel-static-desktop">
+            <img
+                Class="carousel-static-image"
+                src="images/frontpage-desktop.webp"
+                Alt="HC Dental Clinic Background Slider" />
+            <div class="overlay">
+                <div class="hero-content">
+                    <MudGrid>
+                        <MudItem xs="12">
+                            <MudText Class="pa-4"
+                                Style="@($"text-align: center;color: #ffffff; font-weight: 700; z-index: 2; font-size: 1.2rem; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.55); letter-spacing: 0.02em;")">
+                                O seu sorriso é a nossa prioridade
+                            </MudText>
+                        </MudItem>
+                    </MudGrid>
+                    <div class="hero-cta-wrapper">
+                        <MudButton 
+                            Class="pa-4 hero-cta-button"
+                            Variant="Variant.Filled"
+                            EndIcon="@Icons.Material.Filled.ArrowDownward"
+                            IconSize="Size.Small"
+                            Href="#mission"
+                            @onmouseover="OnMouseOverColorChange"
+                            @onmouseout="OnMouseOutColorChange"
+                            Style="@($"margin-top: 0.6rem; min-width: 9%; display: flex; justify-content: center; align-items: center; color: {mudButtonTextColor}; background-color: white; border-radius: 50px; z-index: 2;")">
+                            Saiba mais
+                        </MudButton>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    
+</MudBreakpointProvider>
+
+@code
+{
+    private MudBlazor.Breakpoint _currentBreakpoint;
+    private bool IsMobile => _currentBreakpoint < MudBlazor.Breakpoint.Sm;
+
+    private void OnBreakpointChanged(MudBlazor.Breakpoint breakpoint)
+    {
+        _currentBreakpoint = breakpoint;
+        StateHasChanged();
+    }
+
+    private string mudButtonTextColor = Colors.BlueGray.Darken2;
+
+    private void OnMouseOverColorChange(MouseEventArgs args)
+    {
+        mudButtonTextColor = Colors.Brown.Lighten3;
+    }
+
+    private void OnMouseOutColorChange(MouseEventArgs args)
+    {
+        mudButtonTextColor = Colors.BlueGray.Darken2;
+    }
+}
