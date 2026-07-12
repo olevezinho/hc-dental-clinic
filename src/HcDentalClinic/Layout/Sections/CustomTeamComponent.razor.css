@@ -3,10 +3,10 @@
     background-color: #faf9f7;
 
     /* Ensure it fills the viewport and center content */
-    height: 100vh;
+    height: auto;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Pushes children to top and bottom */
+    justify-content: flex-start; /* Pushes children to top and bottom */
     align-items: center;
     text-align: center;
 }
@@ -37,7 +37,11 @@
 
 .team-media-container {
     overflow: hidden;
-    height: 400px;
+    height: auto;
     border-radius: 0;
     width: 100%;
+}
+
+.dialog-styles {
+    backdrop-filter: blur(10px);
 }

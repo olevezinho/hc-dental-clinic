@@ -29,6 +29,7 @@
                         <MudTextField 
                             T="string" 
                             @bind-Value="_name"
+                            @bind-Value:after="SaveDraftAsync"
                             Label="O seu nome completo" 
                             Variant="Variant.Filled" 
                             AdornmentColor="Color.Inherit"
@@ -41,6 +42,7 @@
                         <MudTextField 
                             T="string"
                             @bind-Value="_email"
+                            @bind-Value:after="SaveDraftAsync"
                             Label="oseu@email.com"
                             Variant="Variant.Filled" 
                             Validation="@(new Func<string, string?>(ValidateEmail))"
@@ -56,6 +58,7 @@
                         <MudTextField 
                             T="string"
                             @bind-Value="_contact"
+                            @bind-Value:after="SaveDraftAsync"
                             Label="912 345 678"
                             Variant="Variant.Filled" 
                             Validation="@(new Func<string, string?>(ValidatePhone))"
@@ -68,6 +71,7 @@
                         <MudSelect 
                             T="string"
                             @bind-Value="_reason"
+                            @bind-Value:after="SaveDraftAsync"
                             Label="Motivo da consulta"
                             Variant="Variant.Filled"
                             FullWidth="true"
@@ -88,6 +92,7 @@
                         <MudTextField 
                             T="string" 
                             @bind-Value="_message"
+                            @bind-Value:after="SaveDraftAsync"
                             Label="Informações adicionais ou preferências de horário ..."
                             Variant="Variant.Filled" 
                             Required="true"
@@ -179,6 +184,8 @@
     private string mudButtonDisabledBackgroundColor = "#ededed !important";
     private string mudButtonBackgroundColor = Colors.Brown.Lighten3;
 
+    private string _draftKey = "contactFormDraft";
+
     private MudForm _form = null!;
     private bool _isValid;
     private bool _sending;
@@ -210,6 +217,7 @@
         if (firstRender)
         {
             await JSRuntime.InvokeVoidAsync("EmailJSInterop.init", EmailJSPublicKey);
+            await LoadDraftAsync();
         }
     }
 
@@ -351,6 +359,7 @@
         _website = string.Empty;
         _agreement = false;
         _form.ResetAsync();
+        _ = ClearDraftAsync();
     }
 
     private bool IsLikelyBotSubmission() => !string.IsNullOrWhiteSpace(_website);
@@ -454,6 +463,63 @@
             _alertSeverity = Severity.Error;
             _alertMessage = "Aconteceu um erro inesperado. Por favor, tente novamente mais tarde." ;
             return $"Ocorreu um erro ao validar o e-mail {email}. Detalhes: {ex.Message}";
+        }
+    }
+
+    private async Task SaveDraftAsync()
+    {
+        try
+        {
+            var draft = new 
+            {
+                Name = _name,
+                Email = _email,
+                Contact = _contact,
+                Reason = _reason,
+                Message = _message
+            };
+            var json = System.Text.Json.JsonSerializer.Serialize(draft);
+            await JSRuntime.InvokeVoidAsync("localStorage.setItem", _draftKey, json);
+        }
+        catch
+        {
+            // Ignore if localStorage is unavailable
+        }
+    }
+
+    private async Task LoadDraftAsync()
+    {
+        try
+        {
+            var json = await JSRuntime.InvokeAsync<string>("localStorage.getItem", _draftKey);
+            if (!string.IsNullOrWhiteSpace(json))
+            {
+                using var doc = System.Text.Json.JsonDocument.Parse(json);
+                if (doc.RootElement.TryGetProperty("Name", out var nameProp)) _name = nameProp.GetString() ?? string.Empty;
+                if (doc.RootElement.TryGetProperty("Email", out var emailProp)) _email = emailProp.GetString() ?? string.Empty;
+                if (doc.RootElement.TryGetProperty("Contact", out var contactProp)) _contact = contactProp.GetString() ?? string.Empty;
+                if (doc.RootElement.TryGetProperty("Reason", out var reasonProp)) _reason = reasonProp.GetString() ?? string.Empty;
+                if (doc.RootElement.TryGetProperty("Message", out var messageProp)) _message = messageProp.GetString() ?? string.Empty;
+                
+                StateHasChanged();
+                await _form.ValidateAsync();
+            }
+        }
+        catch
+        {
+            // Ignore if JSON invalid or localStorage unavailable
+        }
+    }
+
+    private async Task ClearDraftAsync()
+    {
+        try
+        {
+            await JSRuntime.InvokeVoidAsync("localStorage.removeItem", _draftKey);
+        }
+        catch
+        {
+            // Ignore
         }
     }
 

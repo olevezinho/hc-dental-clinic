@@ -2,13 +2,15 @@
     /* Set a background color */
     background-color: #faf9f7;
 
-    /* Ensure it fills the viewport and center content */
-    height: 100vh;
+    /* Keep the section immersive, but allow it to grow on shorter screens */
+    min-height: 100svh;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Pushes children to top and bottom */
+    justify-content: flex-start;
+    gap: 1rem;
     align-items: center;
     text-align: center;
+    padding-bottom: 4rem;
 }
 
 .contact-container-mobile {
@@ -22,6 +24,7 @@
     justify-content: space-between; /* Pushes children to top and bottom */
     align-items: center;
     text-align: center;
+    padding-bottom: 3rem;
 }
 
 .contact-text {

@@ -2,13 +2,14 @@
     /* Set a background color */
     background-color: #ffffff;
 
-    /* Ensure it fills the viewport and center content */
-    height: 110vh;
+    /* Let the form dictate the height when the viewport is shorter */
+    min-height: 100svh;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Pushes children to top and bottom */
+    justify-content: flex-start;
     align-items: center;
     text-align: center;
+    padding-block: 4rem;
 }
 
 .contact-form-container-mobile {
@@ -22,4 +23,5 @@
     justify-content: space-between; /* Pushes children to top and bottom */
     align-items: center;
     text-align: center;
+    padding-block: 3rem;
 }

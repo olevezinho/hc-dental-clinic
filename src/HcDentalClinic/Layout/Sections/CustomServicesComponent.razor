@@ -417,21 +417,21 @@
                 <h1 class="services-text">Os nossos serviços</h1>
                 <MudText 
                     Typo="Typo.h6"
-                    Class="mt-1"
+                    Class="mt-1 mb-6"
                     Align="Align.Center"
                     Style="font-weight: 250; color: #807f7f; font-size: 1.3rem;">
                     Cuidados dentários abrangentes adaptados às suas necessidades
                 </MudText>
                 <MudGrid 
-                    Class="pa-1 mb-8"
+                    Class="pa-1 mt-4 mb-8"
                     Justify="Justify.Center" 
                     Spacing="8">
-                    <MudItem xs="6" sm="3">
+                    <MudItem xs="6" sm="3" Class="d-flex">
                         <MudPaper
                             @onmouseover="OnMouseOverYellowPlaceholderShadowIncrease"
                             @onmouseout="OnMouseOutYellowPlaceholderShadowDecrease"
-                            Style="@($"background-color: #ffffff; border-radius: 24px; box-shadow: {defaultYellowPlaceholderShadow} text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);")">
-                            <MudGrid Class="pa-2">
+                            Style="@($"background-color: #ffffff; border-radius: 24px; box-shadow: {defaultYellowPlaceholderShadow} text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25); width: 100%;")">
+                            <MudGrid Class="pa-2 mt-1">
                                 <MudItem xs="6" Style="margin-bottom: -1rem;">
                                     <div style="margin-left: 1.2rem; background-color: #fef9c2; min-width: 3.5rem; min-height: 3.5rem; max-width: 4rem; max-height: 4rem; border-radius: 15%;">
                                         <MudIcon 
@@ -457,12 +457,12 @@
                         </MudPaper>
                     </MudItem>
 
-                    <MudItem xs="6" sm="3">
+                    <MudItem xs="6" sm="3" Class="d-flex">
                         <MudPaper
                             @onmouseover="OnMouseOverBrownPlaceholderShadowIncrease"
                             @onmouseout="OnMouseOutBrownPlaceholderShadowDecrease"
-                            Style="@($"background-color: #ffffff; border-radius: 24px; box-shadow: {defaultBrownPlaceholderShadow} text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);")">
-                            <MudGrid Class="pa-2">
+                            Style="@($"background-color: #ffffff; border-radius: 24px; box-shadow: {defaultBrownPlaceholderShadow} text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25); width: 100%;")">
+                            <MudGrid Class="pa-2 mt-1">
                                 <MudItem xs="6" Style="margin-bottom: -1rem;">
                                     <div style="margin-left: 1.2rem; background-color: #f5f2ef; min-width: 3.5rem; min-height: 3.5rem; max-width: 4rem; max-height: 4rem; border-radius: 15%;">
                                         <MudIcon 
@@ -488,12 +488,12 @@
                         </MudPaper>
                     </MudItem>
 
-                    <MudItem xs="6" sm="3">
+                    <MudItem xs="6" sm="3" Class="d-flex">
                         <MudPaper
                             @onmouseover="OnMouseOverPinkPlaceholderShadowIncrease"
                             @onmouseout="OnMouseOutPinkPlaceholderShadowDecrease"
-                            Style="@($"background-color: #ffffff; border-radius: 24px; box-shadow: {defaultPinkPlaceholderShadow} text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);")">
-                            <MudGrid Class="pa-2">
+                            Style="@($"background-color: #ffffff; border-radius: 24px; box-shadow: {defaultPinkPlaceholderShadow} text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25); width: 100%;")">
+                            <MudGrid Class="pa-2 mt-1">
                                 <MudItem xs="6" Style="margin-bottom: -1rem;">
                                     <div style="margin-left: 1rem; background-color: #fce7f3; min-width: 3.5rem; min-height: 3.5rem; max-width: 4rem; max-height: 4rem; border-radius: 15%;">
                                         <MudIcon 
@@ -521,11 +521,11 @@
 
                     <MudFlexBreak />
 
-                    <MudItem xs="6" sm="3">
+                    <MudItem xs="6" sm="3" Class="d-flex">
                         <MudPaper
                             @onmouseover="OnMouseOverPurplePlaceholderShadowIncrease"
                             @onmouseout="OnMouseOutPurplePlaceholderShadowDecrease"
-                            Style="@($"background-color: #ffffff; border-radius: 24px; box-shadow: {defaultPurplePlaceholderShadow} text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);")">
+                            Style="@($"background-color: #ffffff; border-radius: 24px; box-shadow: {defaultPurplePlaceholderShadow} text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25); width: 100%;")">
                             <MudGrid Class="pa-2 mt-1">
                                 <MudItem xs="6" Style="margin-bottom: -1rem;">
                                     <div style="margin-left: 1.2rem; background-color: #f3e8ff; min-width: 3.5rem; min-height: 3.5rem; max-width: 4rem; max-height: 4rem; border-radius: 15%;">
@@ -552,11 +552,11 @@
                         </MudPaper>
                     </MudItem>
 
-                    <MudItem xs="6" sm="3">
+                    <MudItem xs="6" sm="3" Class="d-flex">
                         <MudPaper
                             @onmouseover="OnMouseOverGreenPlaceholderShadowIncrease"
                             @onmouseout="OnMouseOutGreenPlaceholderShadowDecrease"
-                            Style="@($"background-color: #ffffff; border-radius: 24px; box-shadow: {defaultGreenPlaceholderShadow} text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);")">
+                            Style="@($"background-color: #ffffff; border-radius: 24px; box-shadow: {defaultGreenPlaceholderShadow} text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25); width: 100%;")">
                             <MudGrid Class="pa-2 mt-1">
                                 <MudItem xs="6" Style="margin-bottom: -1rem;">
                                     <div style="margin-left: 1.2rem; background-color: #dcfce7; min-width: 3.5rem; min-height: 3.5rem; max-width: 4rem; max-height: 4rem; border-radius: 15%;">
@@ -583,11 +583,11 @@
                         </MudPaper>
                     </MudItem>
 
-                    <MudItem xs="6" sm="3">
+                    <MudItem xs="6" sm="3" Class="d-flex">
                         <MudPaper
                             @onmouseover="OnMouseOverRedPlaceholderShadowIncrease"
                             @onmouseout="OnMouseOutRedPlaceholderShadowDecrease"
-                            Style="@($"background-color: #ffffff; border-radius: 24px; box-shadow: {defaultRedPlaceholderShadow} text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);")">
+                            Style="@($"background-color: #ffffff; border-radius: 24px; box-shadow: {defaultRedPlaceholderShadow} text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25); width: 100%;")">
                             <MudGrid Class="pa-2 mt-1">
                                 <MudItem xs="6" Style="margin-bottom: -1rem;">
                                     <div style="margin-left: 1.2rem; background-color: #ffe2e2; min-width: 3.5rem; min-height: 3.5rem; max-width: 4rem; max-height: 4rem; border-radius: 15%;">

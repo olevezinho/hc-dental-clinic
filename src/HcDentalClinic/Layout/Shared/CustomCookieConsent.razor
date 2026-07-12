@@ -1,0 +1,65 @@
+@if (_isVisible)
+{
+    <MudPaper Class="cookie-consent-banner pb-2" Elevation="4" Outlined="false">
+        <MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="d-flex align-center justify-space-between flex-wrap gap-4 py-3 px-6">
+            <div class="d-flex align-center" style="gap: 1rem;">
+                <MudIcon Icon="@Icons.Material.Outlined.Cookie" Size="Size.Large" Style="color: #ad9587;" />
+                <MudText Typo="Typo.body2" Style="color: #807f7f; max-width: 800px;">
+                    Utilizamos cookies para melhorar a sua experiência, analisar o tráfego do site e personalizar conteúdo. 
+                    Ao clicar em "Aceitar", concorda com a nossa utilização de cookies.
+                </MudText>
+            </div>
+            <div class="d-flex align-center" style="gap: 0.5rem; justify-content: flex-end;">
+                <MudButton Variant="Variant.Text" 
+                           Color="Color.Default" 
+                           Href="/privacy" 
+                           Style="color: #a1887f;">
+                    Política de Privacidade
+                </MudButton>
+                <MudButton Variant="Variant.Filled" 
+                           OnClick="AcceptCookiesAsync" 
+                           Style="background-color: #ad9587; color: white; border-radius: 20px;" 
+                           Class="px-6">
+                    Aceitar
+                </MudButton>
+            </div>
+        </MudContainer>
+    </MudPaper>
+}
+
+@* Needs to be here, and not isolated in a razor.css file, or else it will be pushed to the bottom of the page. *@
+<style>
+    .cookie-consent-banner {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 10000;
+        background-color: #faf9f7;
+        border-top: 1px solid rgba(0,0,0,0.05);
+        border-radius: 0; /* Override MudPaper border radius */
+    }
+</style>
+
+@code {
+    private bool _isVisible;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            var consent = await JSRuntime.InvokeAsync<string>("localStorage.getItem", "cookieConsent");
+            if (consent != "true")
+            {
+                _isVisible = true;
+                StateHasChanged();
+            }
+        }
+    }
+
+    private async Task AcceptCookiesAsync()
+    {
+        await JSRuntime.InvokeVoidAsync("localStorage.setItem", "cookieConsent", "true");
+        _isVisible = false;
+    }
+}

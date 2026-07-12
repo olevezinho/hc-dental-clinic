@@ -125,6 +125,7 @@ code {
 
 /* MudDialog index configuration */
 :root {
+    --mud-zindex-popover: 9998 !important;
     --mud-zindex-dialog: 9999 !important; /* Valor padrão costuma ser 1300 */
 }
 

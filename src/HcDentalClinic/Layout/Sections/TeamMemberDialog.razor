@@ -1,27 +1,51 @@
-<MudDialog Style="background-color: #ffffff; border-radius: 24px; min-width: 50%; max-width: 85%; padding: 3.5rem; z-index: 9999999;">
+<MudDialog Class="team-member-dialog" Style="@($"position: relative; background-color: #ffffff; border-radius: 24px; min-width: 50%; max-width: 85%; padding: 3.5rem; z-index: 9999999; max-height: 90vh; margin-top: 5vh")">
     <DialogContent>
         <MudBreakpointProvider OnBreakpointChanged="OnBreakpointChanged">
             @if(IsMobile || IsSmallTablet)
             {
                 <MudGrid Spacing="2">
-                    <MudItem xs="12" sm="12" md="8">
+                    <MudItem xs="12" sm="8" md="6">
                         <div class="dialog-image-wrapper-mobile">
-                            <MudImage Src="@Member.ImageUrl" Alt="@Member.Name" Elevation="0" Style="width: 100%; object-fit: cover; max-height: 25vh;" />
+                            <MudImage Src="@Member.ImageUrl" Alt="@Member.Name" Elevation="0" Style="width: 100%; object-fit: cover; max-height: 18vh;" />
                         </div>
                     </MudItem>
                     <MudItem xs="12" sm="12" md="8">
                         <MudText Typo="Typo.h4" Style="font-weight: 600; color: #333333;">@Member.Name</MudText>
-                        <MudText Typo="Typo.h6" Style="color: #ad9587; margin-top: 0.5rem;">@Member.Position</MudText>
+
+                        <MudText Typo="Typo.subtitle1" Style="font-weight: 600; color: #333333; margin-top: 1rem;">Posição</MudText>
+                        <ul style="list-style-type: disc; padding-left: 1.5rem; margin-top: 0.5rem;">
+                            @foreach (var position in Member.Position)
+                            {
+                                <li>
+                                    <MudText Typo="Typo.body2" Class="dialog-body-text" Style="color: #ad9587; margin-top: 0.5rem;">@position</MudText>
+                                </li>
+                            }
+                        </ul>
                         
                         <MudDivider Class="mt-4"></MudDivider>
                         
                         <MudText Typo="Typo.subtitle1" Style="font-weight: 600; color: #333333; margin-top: 1rem;">Qualificações</MudText>
-                        <MudText Typo="Typo.body2" Style="color: #666666; margin-top: 0.5rem;">@Member.Qualifications</MudText>
+                        <ul style="list-style-type: disc; padding-left: 1.5rem; margin-top: 0.5rem;">
+                            @foreach (var qualification in Member.Qualifications)
+                            {
+                                <li>
+                                    <MudText Typo="Typo.body2" Class="dialog-body-text" Style="color: #666666; margin-top: 0.5rem;">@qualification</MudText>
+                                </li>
+                            }
+                        </ul>
                         
                         <MudText Typo="Typo.subtitle1" Style="font-weight: 600; color: #333333; margin-top: 1.5rem;">Especializações</MudText>
+                        <ul style="list-style-type: disc; padding-left: 1.5rem; margin-top: 0.5rem;">    
+                            @foreach (var specialty in Member.Specialties)
+                            {
+                                <li>   
+                                    <MudText Typo="Typo.body2" Class="dialog-body-text" Style="color: #666666; margin-top: 0.5rem;">@specialty.Trim()</MudText>
+                                </li>
+                            }
+                        </ul>
                         
                         <MudText Typo="Typo.subtitle1" Style="font-weight: 600; color: #333333; margin-top: 1.5rem;">Sobre</MudText>
-                        <MudText Typo="Typo.body2" Style="color: #666666; margin-top: 0.5rem;">@Member.FullBio</MudText>
+                        <MudText Typo="Typo.body2" Class="dialog-body-text" Style="color: #666666; margin-top: 0.5rem; text-align: justify; text-justify: inter-word;">@Member.FullBio</MudText>
                     </MudItem>
                 </MudGrid>
             }
@@ -30,30 +54,63 @@
                 <MudGrid Spacing="4">
                     <MudItem xs="12" sm="5" md="4">
                         <div class="dialog-image-wrapper">
-                            <MudImage Src="@Member.ImageUrl" Alt="@Member.Name" Elevation="0" Style="width: 100%; object-fit: cover; height: 300px;" />
+                            <MudImage Src="@Member.ImageUrl" Alt="@Member.Name" Elevation="0" Style="width: 150%; object-fit: cover; height: 100%;" />
                         </div>
                     </MudItem>
                     <MudItem xs="12" sm="7" md="8">
                         <MudText Typo="Typo.h4" Style="font-weight: 600; color: #333333;">@Member.Name</MudText>
-                        <MudText Typo="Typo.h6" Style="color: #ad9587; margin-top: 0.5rem;">@Member.Position</MudText>
+
+                        <MudText Typo="Typo.subtitle1" Style="font-weight: 600; color: #333333; margin-top: 1rem;">Posição</MudText>
+                        <ul style="list-style-type: disc; padding-left: 1.5rem; margin-top: 0.5rem;">
+                            @foreach (var position in Member.Position)
+                            {
+                                <li>
+                                    <MudText Typo="Typo.body2" Class="dialog-body-text" Style="color: #ad9587; margin-top: 0.5rem;">@position</MudText>
+                                </li>
+                            }
+                        </ul>
                         
                         <MudDivider Class="my-4"></MudDivider>
                         
                         <MudText Typo="Typo.subtitle1" Style="font-weight: 600; color: #333333; margin-top: 1rem;">Qualificações</MudText>
-                        <MudText Typo="Typo.body2" Style="color: #666666; margin-top: 0.5rem;">@Member.Qualifications</MudText>
+                        <ul style="list-style-type: disc; padding-left: 1.5rem; margin-top: 0.5rem;">
+                            @foreach (var qualification in Member.Qualifications)
+                            {
+                                <li>
+                                    <MudText Typo="Typo.body2" Class="dialog-body-text" Style="color: #666666; margin-top: 0.5rem;">@qualification</MudText>
+                                </li>
+                            }
+                        </ul>
                         
                         <MudText Typo="Typo.subtitle1" Style="font-weight: 600; color: #333333; margin-top: 1.5rem;">Especializações</MudText>
+                        <ul style="list-style-type: disc; padding-left: 1.5rem; margin-top: 0.5rem;">    
+                            @foreach (var specialty in Member.Specialties)
+                            {
+                                <li>   
+                                    <MudText Typo="Typo.body2" Class="dialog-body-text" Style="color: #666666; margin-top: 0.5rem;">@specialty.Trim()</MudText>
+                                </li>
+                            }
+                        </ul>
                         
                         <MudText Typo="Typo.subtitle1" Style="font-weight: 600; color: #333333; margin-top: 1.5rem;">Sobre</MudText>
-                        <MudText Typo="Typo.body2" Style="color: #666666; margin-top: 0.5rem;">@Member.FullBio</MudText>
+                        <MudText Typo="Typo.body2" Class="dialog-body-text" Style="color: #666666; margin-top: 0.5rem;">@Member.FullBio</MudText>
                     </MudItem>
                 </MudGrid>
             }
         </MudBreakpointProvider>
     </DialogContent>
-    @* <DialogActions>
-        <MudButton OnClick="Close" >Fechar</MudButton>
-    </DialogActions> *@
+    <DialogActions>
+        @if (IsMobile || IsSmallTablet)
+        {
+            <div class="dialog-actions-mobile">
+                <MudIconButton
+                    Icon="@Icons.Material.Filled.Close"
+                    Class="dialog-close-button dialog-close-button-mobile"
+                    Style="border-radius: 24px; color: #bcaaa4; background-color: #f5f5f5; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); margin-top: 3rem;"
+                    @onclick="Close"/>
+            </div>
+        }
+    </DialogActions>
 </MudDialog>
 
 @code 
@@ -63,11 +120,11 @@
     private bool IsSmallTablet => _currentBreakpoint is MudBlazor.Breakpoint.Sm;
     private bool IsLargeTablet => _currentBreakpoint >= MudBlazor.Breakpoint.Md && _currentBreakpoint < MudBlazor.Breakpoint.Lg;
 
-    [CascadingParameter]
+    [CascadingParameter, EditorRequired]
     [Required(ErrorMessage = "MudDialog is required.")]
     private IMudDialogInstance MudDialog { get; set; } = default!;
 
-    [Parameter]
+    [Parameter, EditorRequired]
     [Required(ErrorMessage = "TeamMember is required.")]
     public TeamMember Member { get; set; } = default!;
 

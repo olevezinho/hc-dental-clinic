@@ -24,14 +24,3 @@ globalThis.animateCarouselSlide = function (gridId, direction) {
         grid.style.transform = 'translateX(0)';
     }, 400);
 };
-
-
-// JavaScript function for Google Maps Initialization
-// function initMap() {
-//   var mapOptions = {
-//     center: { lat: 40.12150192260742, lng: -100.45039367675781 },
-//     zoom: 12
-//   };
-
-//   var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-// }

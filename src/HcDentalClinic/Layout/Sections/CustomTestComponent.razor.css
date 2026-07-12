@@ -1,43 +1,87 @@
-.team-container {
-    /* Set a background color */
-    background-color: #faf9f7;
-
-    /* Ensure it fills the viewport and center content */
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; /* Pushes children to top and bottom */
-    align-items: center;
-    text-align: center;
+.carousel {
+  position: relative;
+  height: 100vh;
 }
 
-.team-container-mobile {
-    /* Set a background color */
-    background-color: #faf9f7;
-
-    /* Ensure it fills the viewport and center content */
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; /* Pushes children to top and bottom */
-    align-items: center;
-    text-align: center;
+.carousel .carousel-item {
+  position: relative;
+  height: 100vh;
 }
 
-.team-text {
-    /* Use clamp for fluid typography: clamp(MIN, PREFERRED, MAX) */
-    font-size: clamp(1.5rem, 5vw, 2.5rem);
-    color: #ad9587; /* Change text color to white */
-    padding-top: 4rem; /* Add some space from the top */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* Soft shadow for text */
-    padding-inline: 1rem; /* Ensures minimum space on both edges of the viewport */
-    font-weight: 300;
-    letter-spacing: 0.05em;
+.carousel-mobile {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
 }
 
-.team-media-container {
-    overflow: hidden;
-    height: 400px;
-    border-radius: 0;
-    width: 100%;
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(200, 172, 156, 0.52); /* More transparent overlay */
+  z-index: 1;
+}
+
+.hero-content {
+  position: absolute;
+  top: 74%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.15rem;
+}
+
+.hero-cta-wrapper {
+  opacity: 0;
+  animation: heroCtaEnter 0.9s ease-out 0.25s forwards;
+}
+
+.hero-cta-button {
+  animation: heroCtaFloat 3.2s ease-in-out 1.15s infinite;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
+}
+
+.hero-cta-button:hover {
+  animation-play-state: paused;
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes heroCtaFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes heroCtaEnter {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-cta-wrapper {
+    opacity: 1;
+    animation: none;
+  }
+
+  .hero-cta-button {
+    animation: none;
+  }
 }
