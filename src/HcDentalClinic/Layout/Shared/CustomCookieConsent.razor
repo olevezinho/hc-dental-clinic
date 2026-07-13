@@ -41,16 +41,30 @@
     }
 </style>
 
-@code {
+@code 
+{
     private bool _isVisible;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {
-            var consent = await JSRuntime.InvokeAsync<string>("localStorage.getItem", "cookieConsent");
-            if (consent != "true")
+            try 
             {
+                // Chamamos a função "wrapper" que criámos no JS
+                var consent = await JSRuntime.InvokeAsync<string>("getCookieConsent");
+                
+                if (consent != "true")
+                {
+                    _isVisible = true;
+                    StateHasChanged();
+                }
+            }
+            catch (Exception ex) 
+            {
+                // É sempre boa prática ter um try-catch no JSInterop inicial
+                Console.WriteLine($"Erro ao verificar cookies: {ex.Message}");
+                // Em caso de erro (ex: prerendering), assumimos que não há consentimento
                 _isVisible = true;
                 StateHasChanged();
             }
@@ -59,7 +73,15 @@
 
     private async Task AcceptCookiesAsync()
     {
-        await JSRuntime.InvokeVoidAsync("localStorage.setItem", "cookieConsent", "true");
-        _isVisible = false;
+        try
+        {
+            // Chamamos a função para gravar
+            await JSRuntime.InvokeVoidAsync("setCookieConsent");
+            _isVisible = false;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Erro ao gravar consentimento: {ex.Message}");
+        }
     }
 }
