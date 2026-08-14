@@ -1,10 +1,10 @@
 ﻿<MudBreakpointProvider OnBreakpointChanged="OnBreakpointChanged">
-    <MudToolBar Style="position: sticky; top: 0; width: 100%; z-index: 999999; background-color: white;">
+    <MudToolBar Style="position: sticky; top: 0; width: 100%; z-index: 999999; background-color: black;">
         <MudImage 
             @onclick="@(() => Navigation.NavigateTo("/"))" 
-            Src="/images/loading-shadowed.webp" 
+            Src="/images/loading-light.webp" 
             Alt="HC Dental Clinic logótipo" 
-            Width="200" />
+            Width="180" />
         <MudSpacer />
         @if(IsMobile || IsSmallTablet)
         {
@@ -15,7 +15,7 @@
                 @onmouseover="OnMouseOverColorChange"
                 @onmouseout="OnMouseOutColorChange"
                 OnClick="@(async () => await ScrollToSection("contact-form"))"
-                Style="@($"color: white; background-color: {mudButtonBackgroundColor}; border-radius: 16px; font-size: 1rem;")">
+                Style="@($"color: {mudButtonTextColor}; background-color: {mudButtonBackgroundColor}; border-radius: 16px; font-size: 1rem;")">
                 Marcação
             </MudButton>
         }
@@ -76,10 +76,10 @@
                 Class="mr-5"
                 Variant="Variant.Filled"
                 Href="test/#contact"
-                @onmouseover="OnMouseOverColorChange"
-                @onmouseout="OnMouseOutColorChange"
+                @onmouseover="OnMouseOverContactColorChange"
+                @onmouseout="OnMouseOutContactColorChange"
                 OnClick="@(async () => await ScrollToSection("contact"))"
-                Style="@($"color: white; background-color: {mudButtonBackgroundColor}; border-radius: 16px;")">
+                Style="@($"color: {mudContactButtonTextColor}; background-color: {mudContactButtonBackgroundColor}; border-radius: 16px;")">
                 Contacto
             </MudButton>
         }
@@ -93,12 +93,15 @@
     private bool IsSmallTablet => _currentBreakpoint is MudBlazor.Breakpoint.Sm;
     private bool IsLargeTablet => _currentBreakpoint >= MudBlazor.Breakpoint.Md && _currentBreakpoint < MudBlazor.Breakpoint.Lg;
 
-    private string mudMissaoTextColor = Colors.BlueGray.Darken2;
-    private string mudServicosTextColor = Colors.BlueGray.Darken2;
-    private string mudEquipaTextColor = Colors.BlueGray.Darken2;
-    private string mudCasosClinicosTextColor = Colors.BlueGray.Darken2;
-    private string mudMarcacaoTextColor = Colors.BlueGray.Darken2;
-    private string mudButtonBackgroundColor = Colors.Brown.Lighten3;
+    private string mudMissaoTextColor = Colors.Gray.Lighten5;
+    private string mudServicosTextColor = Colors.Gray.Lighten5;
+    private string mudEquipaTextColor = Colors.Gray.Lighten5;
+    private string mudCasosClinicosTextColor = Colors.Gray.Lighten5;
+    private string mudMarcacaoTextColor = Colors.Gray.Lighten5;
+    private string mudButtonTextColor = Colors.Shades.White;
+    private string mudButtonBackgroundColor = Colors.BlueGray.Darken4;
+    private string mudContactButtonTextColor = Colors.Shades.White;
+    private string mudContactButtonBackgroundColor = Colors.BlueGray.Darken4;
 
     private void OnBreakpointChanged(MudBlazor.Breakpoint breakpoint)
     {
@@ -114,61 +117,75 @@
 
     private void OnMouseOverTextMissaoColorChange(MouseEventArgs args)
     {
-        mudMissaoTextColor = Colors.Brown.Lighten3;
+        mudMissaoTextColor = Colors.Brown.Lighten4;
     }
 
     private void OnMouseOutTextMissaoColorChange(MouseEventArgs args)
     {
-        mudMissaoTextColor = Colors.BlueGray.Darken2;
+        mudMissaoTextColor = Colors.Gray.Lighten5;
     }
 
     private void OnMouseOverTextServicosColorChange(MouseEventArgs args)
     {
-        mudServicosTextColor = Colors.Brown.Lighten3;
+        mudServicosTextColor = Colors.Brown.Lighten4;
     }
     
     private void OnMouseOutTextServicosColorChange(MouseEventArgs args)
     {
-        mudServicosTextColor = Colors.BlueGray.Darken2;
+        mudServicosTextColor = Colors.Gray.Lighten5;
     }
 
     private void OnMouseOverTextCasosClinicosColorChange(MouseEventArgs args)
     {
-        mudCasosClinicosTextColor = Colors.Brown.Lighten3;
+        mudCasosClinicosTextColor = Colors.Brown.Lighten4;
     }
 
     private void OnMouseOutTextCasosClinicosColorChange(MouseEventArgs args)
     {
-        mudCasosClinicosTextColor = Colors.BlueGray.Darken2;
+        mudCasosClinicosTextColor = Colors.Gray.Lighten5;
     }
 
     private void OnMouseOverTextEquipaColorChange(MouseEventArgs args)
     {
-        mudEquipaTextColor = Colors.Brown.Lighten3;
+        mudEquipaTextColor = Colors.Brown.Lighten4;
     }
 
     private void OnMouseOutTextEquipaColorChange(MouseEventArgs args)
     {
-        mudEquipaTextColor = Colors.BlueGray.Darken2;
+        mudEquipaTextColor = Colors.Gray.Lighten5;
     }
 
     private void OnMouseOverTextMarcacaoColorChange(MouseEventArgs args)
     {
-        mudMarcacaoTextColor = Colors.Brown.Lighten3;
+        mudMarcacaoTextColor = Colors.Brown.Lighten4;
     }
 
     private void OnMouseOutTextMarcacaoColorChange(MouseEventArgs args)
     {
-        mudMarcacaoTextColor = Colors.BlueGray.Darken2;
+        mudMarcacaoTextColor = Colors.Gray.Lighten5;
     }
 
     private void OnMouseOverColorChange(MouseEventArgs args)
     {
-        mudButtonBackgroundColor = Colors.Brown.Lighten2;
+        mudButtonTextColor = Colors.Gray.Lighten3;
+        mudButtonBackgroundColor = Colors.Brown.Lighten3;
     }
 
     private void OnMouseOutColorChange(MouseEventArgs args)
     {
-        mudButtonBackgroundColor = Colors.Brown.Lighten3;
+        mudButtonTextColor = Colors.Shades.White;
+        mudButtonBackgroundColor = Colors.BlueGray.Darken4;
+    }
+
+    private void OnMouseOverContactColorChange(MouseEventArgs args)
+    {
+        mudContactButtonTextColor = Colors.Gray.Lighten3;
+        mudContactButtonBackgroundColor = "#ad9587";
+    }
+
+    private void OnMouseOutContactColorChange(MouseEventArgs args)
+    {
+        mudContactButtonTextColor = Colors.Shades.White;
+        mudContactButtonBackgroundColor = Colors.BlueGray.Darken4;
     }
 }

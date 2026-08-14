@@ -2,15 +2,30 @@
   position: relative;
   height: 100vh;
   overflow: hidden;
+  background-color: #000; /* Fallback background color */
+  flex-direction: column;
+  justify-content: space-between; /* Pushes children to top and bottom */
+  align-items: center;
+  text-align: center;
 }
 
 .carousel-static-image {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center center;
+  /* position: absolute; */
+  /* inset: 0; */
+  max-width: 50vw;
+  height: auto;
+  object-fit: contain;
+  max-height: 75vh;
+}
+
+.carousel-static-mobile .carousel-static-image {
+  transform: scale(1.75) translateY(-12.5%);
+  transform-origin: center;
+}
+
+.carousel-static-desktop .carousel-static-image {
+  transform: scale(2.25) translateY(-2.5%);
+  transform-origin: center;
 }
 
 .overlay {
@@ -19,7 +34,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(200, 172, 156, 0.784); /* Change the color code here */
+  background-color: rgba(0, 0, 0, 0.0); /* Change the color code here */
   z-index: 1;
 }
 

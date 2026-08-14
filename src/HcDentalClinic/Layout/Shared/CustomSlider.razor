@@ -4,7 +4,8 @@
         <div class="carousel-static carousel-static-mobile">
             <img
                 Class="carousel-static-image"
-                src="images/frontpage-mobile.webp"
+                src="images/background-mobile.webp"
+                Style="width: 100vw; height: 100vh; max-width: none; max-height: none; object-fit: cover;"
                 Alt="HC Dental Clinic Background Slider" />
             <div class="overlay">
                 <div class="hero-content">
@@ -24,9 +25,9 @@
                             EndIcon="@Icons.Material.Filled.ArrowDownward"
                             IconSize="Size.Small"
                             Href="#mission"
-                            @onmouseover="OnMouseOverColorChange"
-                            @onmouseout="OnMouseOutColorChange"
-                            Style="@($"margin-top: 0.6rem; min-width: 9%; display: flex; justify-content: center; align-items: center; color: {mudButtonTextColor}; background-color: white; border-radius: 50px; z-index: 2;")">
+                            @onmouseover="OnMouseOverButtonColorChange"
+                            @onmouseout="OnMouseOutButtonColorChange"
+                            Style="@($"margin-top: 0.6rem; min-width: 9%; display: flex; justify-content: center; align-items: center; color: {mudButtonTextColor}; background-color: {mudButtonBackgroundColor}; border-radius: 50px; z-index: 2;")">
                             Saiba mais
                         </MudButton>
                     </div>
@@ -39,7 +40,8 @@
         <div class="carousel-static carousel-static-desktop">
             <img
                 Class="carousel-static-image"
-                src="images/frontpage-desktop.webp"
+                src="images/background-white.webp"
+                Style="width: 100vw; height: 100vh; max-width: none; max-height: none; object-fit: cover;"
                 Alt="HC Dental Clinic Background Slider" />
             <div class="overlay">
                 <div class="hero-content">
@@ -58,9 +60,9 @@
                             EndIcon="@Icons.Material.Filled.ArrowDownward"
                             IconSize="Size.Small"
                             Href="#mission"
-                            @onmouseover="OnMouseOverColorChange"
-                            @onmouseout="OnMouseOutColorChange"
-                            Style="@($"margin-top: 0.6rem; min-width: 9%; display: flex; justify-content: center; align-items: center; color: {mudButtonTextColor}; background-color: white; border-radius: 50px; z-index: 2;")">
+                            @onmouseover="OnMouseOverButtonColorChange"
+                            @onmouseout="OnMouseOutButtonColorChange"
+                            Style="@($"margin-top: 0.6rem; min-width: 9%; display: flex; justify-content: center; align-items: center; color: {mudButtonTextColor}; background-color: {mudButtonBackgroundColor}; border-radius: 50px; z-index: 2;")">
                             Saiba mais
                         </MudButton>
                     </div>
@@ -82,15 +84,18 @@
         StateHasChanged();
     }
 
-    private string mudButtonTextColor = Colors.BlueGray.Darken2;
+    private string mudButtonTextColor = Colors.Shades.White;
+    private string mudButtonBackgroundColor = Colors.BlueGray.Darken4;
 
-    private void OnMouseOverColorChange(MouseEventArgs args)
+    private void OnMouseOverButtonColorChange(MouseEventArgs args)
     {
-        mudButtonTextColor = Colors.Brown.Lighten3;
+        mudButtonTextColor = Colors.Gray.Lighten3;
+        mudButtonBackgroundColor = "#ad9587";
     }
 
-    private void OnMouseOutColorChange(MouseEventArgs args)
+    private void OnMouseOutButtonColorChange(MouseEventArgs args)
     {
-        mudButtonTextColor = Colors.BlueGray.Darken2;
+        mudButtonTextColor = Colors.Shades.White;
+        mudButtonBackgroundColor = Colors.BlueGray.Darken4;
     }
 }
