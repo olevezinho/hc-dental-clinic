@@ -1,4 +1,10 @@
-﻿<section id="team">
+﻿<style>
+    .mud-overlay.dialog-styles {
+        backdrop-filter: blur(10px);
+    }
+</style>
+
+<section id="team">
     <MudBreakpointProvider OnBreakpointChanged="OnBreakpointChanged">
         @if(IsMobile)
         {
@@ -32,18 +38,22 @@
                                         @onclick="@(() => OpenMemberDialogAsync(context))"
                                         @onmouseover="@(() => OnMouseOverCard(context.Id))"
                                         @onmouseout="@(() => OnMouseOutCard(context.Id))"
-                                        Style="@($"background-color: #ffffff; border-radius: 24px; box-shadow: {GetCardShadow(context.Id)}; text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25); cursor: pointer;")">
-                                        <MudCard Style="border-radius: 24px; overflow: hidden;">
+                                        Style="@($"background-color: #ffffff; border-radius: 24px; box-shadow: {GetCardShadow(context.Id)}; text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25); cursor: pointer; width: 100%;")">
+                                        <MudCard Style="border-radius: 24px; overflow: hidden; width: 100%;">
                                                 <div class="team-media-container">
                                                 <MudCardMedia 
                                                     Image="@context.ImageUrl"
                                                     Style="@($"{GetCardImageStyle(context.Id)}")"
                                                     Height="@_mediaHeight"/>
                                             </div>
-                                            <MudCardContent Style="height: 240px;">
+                                            <MudCardContent Style="height: 10rem;">
                                                 <MudText Typo="Typo.body2" Style="font-size: 1.1rem;">@context.Name</MudText>
-                                                <MudText Typo="Typo.body2" Class="mt-2" Style="color: #ad9587;">@context.PositionText</MudText>
-                                                <MudText Typo="Typo.body2" Class="mt-2" Style="color: #807f7f;">@context.Description</MudText>
+                                                <ul style="list-style: none; padding: 0; margin: 0.5rem 0 0; color: #ad9587;">
+                                                    @foreach (var position in context.Position)
+                                                    {
+                                                        <li>@position</li>
+                                                    }
+                                                </ul>
                                             </MudCardContent>
                                         </MudCard>
                                     </MudPaper>
@@ -86,18 +96,22 @@
                                         @onclick="@(() => OpenMemberDialogAsync(member))"
                                         @onmouseover="@(() => OnMouseOverCard(member.Id))"
                                         @onmouseout="@(() => OnMouseOutCard(member.Id))"
-                                        Style="@($"background-color: #ffffff; border-radius: 24px; box-shadow: {GetCardShadow(member.Id)}; text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25); cursor: pointer;")">
-                                        <MudCard Style="border-radius: 24px; overflow: hidden;">
+                                        Style="@($"background-color: #ffffff; border-radius: 24px; box-shadow: {GetCardShadow(member.Id)}; text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25); cursor: pointer; width: 100%;")">
+                                        <MudCard Style="border-radius: 24px; overflow: hidden; width: 100%;">
                                             <div class="team-media-container">
                                                 <MudCardMedia 
                                                     Image="@member.ImageUrl"
                                                     Style="@($"{GetCardImageStyle(member.Id)}")"
                                                     Height="@_mediaHeight"/>
                                             </div>
-                                            <MudCardContent Style="height: 240px;">
+                                            <MudCardContent Style="height: 10rem;">
                                                 <MudText Typo="Typo.body2" Style="font-size: 1.1rem;">@member.Name</MudText>
-                                                <MudText Typo="Typo.body2" Class="mt-2" Style="color: #ad9587;">@member.PositionText</MudText>
-                                                <MudText Typo="Typo.body2" Class="mt-2" Style="color: #807f7f;">@member.Description</MudText>
+                                                <ul style="list-style: none; padding: 0; margin: 0.5rem 0 0; color: #ad9587;">
+                                                    @foreach (var position in member.Position)
+                                                    {
+                                                        <li>@position</li>
+                                                    }
+                                                </ul>
                                             </MudCardContent>
                                         </MudCard>
                                     </MudPaper>
@@ -151,18 +165,22 @@
                                         @onclick="@(() => OpenMemberDialogAsync(member))"
                                         @onmouseover="@(() => OnMouseOverCard(member.Id))"
                                         @onmouseout="@(() => OnMouseOutCard(member.Id))"
-                                        Style="@($"background-color: #ffffff; border-radius: 24px; box-shadow: {GetCardShadow(member.Id)}; text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25); cursor: pointer;")">
-                                        <MudCard Style="border-radius: 24px; overflow: hidden;">
+                                        Style="@($"background-color: #ffffff; border-radius: 24px; box-shadow: {GetCardShadow(member.Id)}; text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25); cursor: pointer; width: 100%;")">
+                                        <MudCard Style="border-radius: 24px; overflow: hidden; width: 100%;">
                                             <div class="team-media-container">
                                                 <MudCardMedia 
                                                     Image="@member.ImageUrl"
                                                     Style="@($"{GetCardImageStyle(member.Id)}")"
                                                     Height="@_mediaHeight"/>
                                             </div>
-                                            <MudCardContent Style="height: 240px;">
+                                            <MudCardContent Style="height: 10rem;">
                                                 <MudText Typo="Typo.body2" Style="font-size: 1.1rem;">@member.Name</MudText>
-                                                <MudText Typo="Typo.body2" Class="mt-2" Style="color: #ad9587;">@member.PositionText</MudText>
-                                                <MudText Typo="Typo.body2" Class="mt-2" Style="color: #807f7f;">@member.Description</MudText>
+                                                <ul style="list-style: none; padding: 0; margin: 0.5rem 0 0; color: #ad9587;">
+                                                    @foreach (var position in member.Position)
+                                                    {
+                                                        <li>@position</li>
+                                                    }
+                                                </ul>
                                             </MudCardContent>
                                         </MudCard>
                                     </MudPaper>
@@ -211,26 +229,27 @@
                         <MudGrid Justify="Justify.Center" Spacing="10" Style="align-content: center; margin-top: -1.5rem;">
                             @foreach (var member in GetVisibleDesktopTeamMembers(4))
                             {
-                                @* @onclick="@(() => OpenMemberDialogAsync())" *@
-                                @* @onclick="@(() => OpenMemberDialogAsync(member))" *@
-
                                 <MudItem xs="8" sm="4" md="3" Class="d-flex justify-center align-center">
                                     <MudPaper
                                         @onclick="@(() => OpenMemberDialogAsync(member))"
                                         @onmouseover="@(() => OnMouseOverCard(member.Id))"
                                         @onmouseout="@(() => OnMouseOutCard(member.Id))"
-                                        Style="@($"background-color: #ffffff; border-radius: 24px; box-shadow: {GetCardShadow(member.Id)}; text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25); cursor: pointer;")">
-                                        <MudCard Style="border-radius: 24px; overflow: hidden;">
+                                        Style="@($"background-color: #ffffff; border-radius: 24px; box-shadow: {GetCardShadow(member.Id)}; text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25); cursor: pointer; width: 100%;")">
+                                        <MudCard Style="border-radius: 24px; overflow: hidden; width: 100%;">
                                             <div class="team-media-container">
                                                 <MudCardMedia 
                                                     Image="@member.ImageUrl"
                                                     Style="@($"{GetCardImageStyle(member.Id)}")"
                                                     Height="@_mediaHeight"/>
                                             </div>
-                                            <MudCardContent Style="height: 240px;">
+                                            <MudCardContent Style="min-height: 10rem;">
                                                 <MudText Typo="Typo.body2" Style="font-size: 1.1rem;">@member.Name</MudText>
-                                                <MudText Typo="Typo.body2" Class="mt-2" Style="color: #ad9587;">@member.PositionText</MudText>
-                                                <MudText Typo="Typo.body2" Class="mt-2" Style="color: #807f7f;">@member.Description</MudText>
+                                                <ul style="list-style: none; padding: 0; margin: 0.5rem 0 0; color: #ad9587;">
+                                                    @foreach (var position in member.Position)
+                                                    {
+                                                        <li>@position</li>
+                                                    }
+                                                </ul>
                                             </MudCardContent>
                                         </MudCard>
                                     </MudPaper>
