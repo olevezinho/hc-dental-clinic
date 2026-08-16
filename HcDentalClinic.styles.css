@@ -233,10 +233,6 @@
     border-radius: 0;
     width: 100%;
 }
-
-.dialog-styles[b-hryuojhj9g] {
-    backdrop-filter: blur(10px);
-}
 /* /Layout/Sections/CustomTestComponent.razor.rz.scp.css */
 .carousel[b-ovm84jr5s6] {
   position: relative;
@@ -327,28 +323,11 @@
 }
 /* /Layout/Sections/TeamMemberDialog.razor.rz.scp.css */
 .dialog-image-wrapper[b-ad9lw72eez] {
-	border-radius: 24px;
-	overflow: hidden;
-	width: 240px;
-	min-width: 220px;
-	height: 100%;
-	margin-left: auto;
-	margin-right: auto;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-
-.dialog-image-wrapper-mobile[b-ad9lw72eez] {
-	border-radius: 1rem;
-	overflow: hidden;
-	width: 60%;
-	height: 100%;
-	margin-left: auto;
-	margin-right: auto;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+    width: 80%;
+    height: auto;
+    margin: auto;
+    border-radius: 2rem;
+    overflow: hidden;
 }
 
 .dialog-actions-mobile[b-ad9lw72eez] {
@@ -441,15 +420,30 @@ gmp-map {
   position: relative;
   height: 100vh;
   overflow: hidden;
+  background-color: #000; /* Fallback background color */
+  flex-direction: column;
+  justify-content: space-between; /* Pushes children to top and bottom */
+  align-items: center;
+  text-align: center;
 }
 
 .carousel-static-image[b-jrknv8edj1] {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center center;
+  /* position: absolute; */
+  /* inset: 0; */
+  max-width: 50vw;
+  height: auto;
+  object-fit: contain;
+  max-height: 75vh;
+}
+
+.carousel-static-mobile .carousel-static-image[b-jrknv8edj1] {
+  transform: scale(1.75) translateY(-12.5%);
+  transform-origin: center;
+}
+
+.carousel-static-desktop .carousel-static-image[b-jrknv8edj1] {
+  transform: scale(2.25) translateY(-2.5%);
+  transform-origin: center;
 }
 
 .overlay[b-jrknv8edj1] {
@@ -458,7 +452,7 @@ gmp-map {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(200, 172, 156, 0.784); /* Change the color code here */
+  background-color: rgba(0, 0, 0, 0.0); /* Change the color code here */
   z-index: 1;
 }
 
