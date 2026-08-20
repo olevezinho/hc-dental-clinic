@@ -1,39 +1,23 @@
-name: Deploy to GitHub Pages
+name: Deploy to Cloudflare Pages
 
-# Run workflow on every push to main
 on:
   push:
     branches: [ main ]
 
 jobs:
-  deploy-to-github-pages:
-    # use ubuntu-latest image to run steps on
+  deploy-to-cloudflare-pages:
     runs-on: ubuntu-latest
     steps:
-    # uses GitHub's checkout action to checkout code from the main branch
-    - uses: actions/checkout@v2
+    # Obtém o código do repositório
+    - uses: actions/checkout@v4
 
-    # sets up .NET Core SDK 10.0.105
+    # Configura o .NET SDK
     - name: Setup .NET Core SDK
-      uses: actions/setup-dotnet@v1
+      uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 10.0.301
 
-    # sets up python3
-    # - name: installs python3
-    #   uses: actions/setup-python@v5
-    #   with:
-    #     python-version: '3.13' 
-
-    # restores blazor wasm workloads
-    # - name: Restore WASM workloads
-    #   run: dotnet workload install wasm-
-
-    # changes the base-image-path in CustomPage.razor from '/curriculum-vitae/' to '../curriculum-vitae/' to match base blazor template
-    # - name: Change base-image-path in CustomPage.razor from /images to /hc-dental-clinic/images
-    #   run: sed -i 's|/images/|/hc-dental-clinic/images/|g' src/HcDentalClinic/Pages/LandingPage.razor
-
-    # generates appsettings.Production.json from GitHub secrets
+    # Gera o appsettings.Production.json a partir dos GitHub Secrets
     - name: Generate appsettings.Production.json
       env: 
         EMAILJS_PUBLIC_KEY: ${{ secrets.EMAILJS_PUBLIC_KEY }}
@@ -54,28 +38,20 @@ jobs:
         }
         EOF
 
-    # publishes Blazor project to the release-folder
+    # Compila o projeto Blazor WASM
     - name: Publish .NET Core project
       run: dotnet publish -c Release -o release --nologo
 
-    # - name: Change image paths in release index.html to /hc-dental-clinic/images
-    #   run: sed -i 's|/images/|/hc-dental-clinic/images/|g' release/wwwroot/index.html
+    # Adiciona o ficheiro de redirecionamento para SPAs no Cloudflare
+    - name: Add SPA _redirects file
+      run: echo "/*  /index.html  200" > release/wwwroot/_redirects
 
-    # changes the base-tag in index.html from '/' to 'hc-dental-clinic' to match GitHub Pages repository subdirectory
-    # - name: Change base-tag in index.html from / to hc-dental-clinic
-    #   run: sed -i 's/<base href="\/" \/>/<base href="\/hc-dental-clinic\/" \/>/g' release/wwwroot/index.html
-
-    # copy index.html to 404.html to serve the same file when a file is not found
-    - name: copy index.html to 404.html
-      run: cp release/wwwroot/index.html release/wwwroot/404.html
-
-    # add .nojekyll file to tell GitHub pages not to treat this as a Jekyll project. (Allow files and folders starting with an underscore)
-    - name: Add .nojekyll file
-      run: touch release/wwwroot/.nojekyll
-
-    - name: Commit wwwroot to GitHub pages
-      uses: JamesIves/github-pages-deploy-action@3.7.1
+    # Publica os ficheiros estáticos diretamente no Cloudflare Pages
+    - name: Deploy to Cloudflare Pages
+      uses: cloudflare/pages-action@v1
       with:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        BRANCH: gh-pages
-        FOLDER: release/wwwroot
+        apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        projectName: 'hc-dental-clinic'
+        directory: 'release/wwwroot'
+        gitBranch: 'main'
