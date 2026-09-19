@@ -1,4 +1,4 @@
-.clinical-cases-container {
+.patient-testemonials-container {
     /* Set a background color */
     background-color: #ffffff;
 
@@ -11,7 +11,7 @@
     text-align: center;
 }
 
-.clinical-cases-container-mobile {
+.patient-testemonials-container-mobile {
     /* Set a background color */
     background-color: #ffffff;
 
@@ -24,7 +24,7 @@
     text-align: center;
 }
 
-.clinical-cases-text {
+.patient-testemonials-text {
     /* Use clamp for fluid typography: clamp(MIN, PREFERRED, MAX) */
     font-size: clamp(1.5rem, 5vw, 2.5rem);
     color: #ad9587; /* Change text color to white */

@@ -15,7 +15,7 @@
 <MudContainer 
     MaxWidth="MaxWidth.Medium" 
     Class="pa-4 mb-8" >
-    <MudPaper Height="100%" Width="100%" Style="color:#ad9587; box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.1); border-radius: 24px;">
+    <MudPaper Height="100%" Width="100%" Style="color:#171717; box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.1); border-radius: 24px;">
         <MudCard>
             <MudForm 
                 @ref="_form"
@@ -25,20 +25,20 @@
                 <MudGrid Spacing="2">
                     <!-- Row 1: Name and Email -->
                     <MudItem xs="12" sm="6">
-                        <MudText Class="pa-1 mb-2" Align="Align.Left" Style="color:#333333; font-weight: 450;">Nome</MudText>
+                        <MudText Class="pa-1 mb-2" Align="Align.Left" Style="color:#ad9587; font-weight: 550;">Nome</MudText>
                         <MudTextField 
                             T="string" 
                             @bind-Value="_name"
                             @bind-Value:after="SaveDraftAsync"
                             Label="O seu nome completo" 
                             Variant="Variant.Filled" 
-                            AdornmentColor="Color.Inherit"
+                            AdornmentColor="Color.Dark"
                             Required="true" 
                             RequiredError="Nome obrigatório!"
-                            Style="background-color: #ededed; border-radius: 16px; overflow: hidden;"/>
+                            Style="background-color: #f3f3f3; border-radius: 16px; overflow: hidden;"/>
                     </MudItem>
                     <MudItem xs="12" sm="6">
-                        <MudText Class="pa-1 mb-2" Align="Align.Left" Style="color:#333333; font-weight: 450;">Email</MudText>
+                        <MudText Class="pa-1 mb-2" Align="Align.Left" Style="color:#ad9587; font-weight: 550;">Email</MudText>
                         <MudTextField 
                             T="string"
                             @bind-Value="_email"
@@ -46,15 +46,15 @@
                             Label="oseu@email.com"
                             Variant="Variant.Filled" 
                             Validation="@(new Func<string, string?>(ValidateEmail))"
-                            AdornmentColor="Color.Inherit"
+                            AdornmentColor="Color.Dark"
                             Required="true" 
                             RequiredError="Email obrigatório!"
-                            Style="background-color: #ededed; border-radius: 16px; overflow: hidden;"/>
+                            Style="background-color: #f3f3f3; border-radius: 16px; overflow: hidden;"/>
                     </MudItem>
                     
                     <!-- Row 2: Phone and Contact Reason -->
                     <MudItem xs="12" sm="6">
-                        <MudText Class="pa-1 mb-2" Align="Align.Left" Style="color:#333333; font-weight: 450;">Contacto</MudText>
+                        <MudText Class="pa-1 mb-2" Align="Align.Left" Style="color:#ad9587; font-weight: 550;">Contacto</MudText>
                         <MudTextField 
                             T="string"
                             @bind-Value="_contact"
@@ -64,10 +64,10 @@
                             Validation="@(new Func<string, string?>(ValidatePhone))"
                             Required="true" 
                             RequiredError="Contacto obrigatório!"
-                            Style="background-color: #ededed; border-radius: 16px; overflow: hidden;"/>
+                            Style="background-color: #f3f3f3; border-radius: 16px; overflow: hidden;"/>
                     </MudItem>
                     <MudItem xs="12" sm="6">
-                        <MudText Class="pa-1 mb-2" Align="Align.Left" Style="color:#333333; font-weight: 450;">Motivo</MudText>
+                        <MudText Class="pa-1 mb-2" Align="Align.Left" Style="color:#ad9587; font-weight: 550;">Motivo</MudText>
                         <MudSelect 
                             T="string"
                             @bind-Value="_reason"
@@ -77,7 +77,7 @@
                             FullWidth="true"
                             Required="true"
                             RequiredError="Motivo obrigatório!"
-                            Style="background-color: #ededed; border-radius: 16px; overflow: hidden; z-index: 99999;"
+                            Style="background-color: #f3f3f3; border-radius: 16px; overflow: hidden; z-index: 99999;"
                             PopoverClass="mud-select-popover-custom"> 
                             @foreach (var reason in _reasons)
                             {
@@ -88,7 +88,7 @@
                     
                     <!-- Row 3: Message -->
                     <MudItem xs="12" sm="12" md="12">
-                        <MudText Class="pa-1 mb-2" Align="Align.Left" Style="color:#333333; font-weight: 450;">Mensagem</MudText>
+                        <MudText Class="pa-1 mb-2" Align="Align.Left" Style="color:#ad9587; font-weight: 550;">Mensagem</MudText>
                         <MudTextField 
                             T="string" 
                             @bind-Value="_message"
@@ -98,7 +98,7 @@
                             Required="true"
                             Lines="4"
                             RequiredError="Mensagem obrigatória!"
-                            Style="background-color: #ededed; border-radius: 16px; overflow: hidden;"/>
+                            Style="background-color: #f3f3f3; border-radius: 16px; overflow: hidden;"/>
                     </MudItem>
 
                     <!-- Row 4: Data agreement -->
@@ -109,7 +109,7 @@
                             Dense="true" 
                             Required="true"
                             RequiredError="Tem de aceitar a política de privacidade para continuar."
-                            Color="Color.Inherit">
+                            Style="color:#ad9587; font-weight: 550;">
                             <ChildContent>
                                 Li e aceito a <MudLink Href="/privacy" Target="_blank">política de privacidade</MudLink>
                             </ChildContent>
@@ -125,7 +125,7 @@
                             Variant="Variant.Filled" 
                             Required="false"
                             Lines="4"
-                            Style="background-color: #ededed; border-radius: 16px; overflow: hidden;"/>
+                            Style="background-color: #f3f3f3; border-radius: 16px; overflow: hidden;"/>
                     </MudItem>
                     
                     <!-- Row 5: Submit Button -->
@@ -133,13 +133,13 @@
                         <MudButton 
                             Variant="Variant.Filled"
                             FullWidth="true"
-                            Disabled="@(!_isValid || _sending || IsLikelyBotSubmission())"
+                            Disabled="@IsSubmitDisabled"
                             OnClick="SubmitFormAsync"
                             @onmouseover="OnMouseOverColorChange"
                             @onmouseout="OnMouseOutColorChange"
                             EndIcon="@Icons.Material.Outlined.Send" 
                             Class="mt-4"
-                            Style="@($"color: white; background-color: {((!_isValid || _sending) ? mudButtonDisabledBackgroundColor : mudButtonBackgroundColor)}; border-radius: 16px;")">
+                            Style="@($"color: {(IsSubmitDisabled ? DisabledTextColor : "white")} !important; background-color: {(IsSubmitDisabled ? DisabledBackgroundColor : mudButtonBackgroundColor)} !important; border-radius: 16px;")">
                             @if(_sending)
                             {
                                 <span>A solicitar ...</span>
@@ -181,8 +181,11 @@
     private const string LastSubmissionEpochKey = "contact-form:last-submission-epoch";
     private const string GenericSubmissionMessage = "A sua mensagem foi recebida. Entraremos em contacto em breve.";
 
-    private string mudButtonDisabledBackgroundColor = "#ededed !important";
+    private const string DisabledBackgroundColor = "#ededed";
+    private const string DisabledTextColor = "#ad9587";
     private string mudButtonBackgroundColor = Colors.Brown.Lighten3;
+
+    private bool IsSubmitDisabled => !_isValid || _sending || IsLikelyBotSubmission();
 
     private string _draftKey = "contactFormDraft";
 
