@@ -54,12 +54,12 @@
             <MudButton 
                 Class="mr-5"
                 Variant="Variant.Text"
-                Href="test/#clinical-cases"
-                @onmouseover="OnMouseOverTextCasosClinicosColorChange"
-                @onmouseout="OnMouseOutTextCasosClinicosColorChange"
-                OnClick="@(async () => await ScrollToSection("clinical-cases"))"
-                Style="@($"color: {mudCasosClinicosTextColor}; transition: color 0.3s;")">
-                Casos Clínicos
+                Href="test/#testemonials"
+                @onmouseover="OnMouseOverTextTestemunhosPacientesColorChange"
+                @onmouseout="OnMouseOutTextTestemunhosPacientesColorChange"
+                OnClick="@(async () => await ScrollToSection("testemonials"))"
+                Style="@($"color: {mudTestemunhosPacientesTextColor}; transition: color 0.3s;")">
+                Testemunhos
             </MudButton>
             <MudButton 
                 Class="mr-5"
@@ -96,7 +96,7 @@
     private string mudMissaoTextColor = Colors.Gray.Lighten5;
     private string mudServicosTextColor = Colors.Gray.Lighten5;
     private string mudEquipaTextColor = Colors.Gray.Lighten5;
-    private string mudCasosClinicosTextColor = Colors.Gray.Lighten5;
+    private string mudTestemunhosPacientesTextColor = Colors.Gray.Lighten5;
     private string mudMarcacaoTextColor = Colors.Gray.Lighten5;
     private string mudButtonTextColor = Colors.Shades.White;
     private string mudButtonBackgroundColor = Colors.BlueGray.Darken4;
@@ -135,14 +135,14 @@
         mudServicosTextColor = Colors.Gray.Lighten5;
     }
 
-    private void OnMouseOverTextCasosClinicosColorChange(MouseEventArgs args)
+    private void OnMouseOverTextTestemunhosPacientesColorChange(MouseEventArgs args)
     {
-        mudCasosClinicosTextColor = Colors.Brown.Lighten4;
+        mudTestemunhosPacientesTextColor = Colors.Brown.Lighten4;
     }
 
-    private void OnMouseOutTextCasosClinicosColorChange(MouseEventArgs args)
+    private void OnMouseOutTextTestemunhosPacientesColorChange(MouseEventArgs args)
     {
-        mudCasosClinicosTextColor = Colors.Gray.Lighten5;
+        mudTestemunhosPacientesTextColor = Colors.Gray.Lighten5;
     }
 
     private void OnMouseOverTextEquipaColorChange(MouseEventArgs args)

@@ -1,9 +1,9 @@
-﻿<section id="clinical-cases">
+﻿<section id="patient-testemonials">
     <MudBreakpointProvider OnBreakpointChanged="OnBreakpointChanged">
         @if(IsMobile)
         {
-            <div class="clinical-cases-container-mobile">
-                <h1 class="clinical-cases-text">Casos Clínicos</h1>
+            <div class="patient-testemonials-container-mobile">
+                <h1 class="patient-testemonials-text">Testemunhos de pacientes</h1>
                 <MudText 
                     Typo="Typo.h6"
                     Class="pa-12 mt-2"
@@ -17,7 +17,7 @@
                             Class="mud-witdh-full"
                             ShowArrows="true" 
                             ShowBullets="true" 
-                            NavigationButtonsClass="clinical-cases-carousel-buttons"
+                            NavigationButtonsClass="patient-testemonials-carousel-buttons"
                             EnableSwipeGesture="false" 
                             AutoCycle="false" 
                             ArrowsPosition="Position.Bottom"
@@ -149,8 +149,8 @@
         }
         else
         {
-            <div class="clinical-cases-container">
-                <h1 class="clinical-cases-text">Casos Clínicos</h1>
+            <div class="patient-testemonials-container">
+                <h1 class="patient-testemonials-text">Testemunhos de pacientes</h1>
                 <MudText 
                     Typo="Typo.h6"
                     Class="mt-1"
@@ -164,7 +164,7 @@
                             Class="mud-witdh-full"
                             ShowArrows="true" 
                             ShowBullets="true" 
-                            NavigationButtonsClass="clinical-cases-carousel-buttons"
+                            NavigationButtonsClass="patient-testemonials-carousel-buttons"
                             EnableSwipeGesture="false" 
                             AutoCycle="false" 
                             ArrowsPosition="Position.Bottom"

@@ -1,6 +1,6 @@
 .services-container {
     /* Set a background color */
-    background-color: #ffffff;
+    background-color: #faf9f7;
 
     /* Keep the section immersive, but allow it to grow on shorter screens */
     min-height: 95svh;
@@ -15,7 +15,7 @@
 
 .services-container-mobile {
     /* Set a background color */
-    background-color: #ffffff;
+    background-color: #faf9f7;
 
     /* Ensure it fills the viewport and center content */
     height: auto;
