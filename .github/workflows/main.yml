@@ -40,7 +40,7 @@ jobs:
 
     # Compila o projeto Blazor WASM
     - name: Publish .NET Core project
-      run: dotnet publish -c Release -o release --nologo
+      run: dotnet publish src/HcDentalClinic/HcDentalClinic.csproj -c Release -o release --nologo
 
     # Adiciona o ficheiro de redirecionamento para SPAs no Cloudflare
     - name: Add SPA _redirects file
