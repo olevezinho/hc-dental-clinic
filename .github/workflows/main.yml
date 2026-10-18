@@ -47,11 +47,10 @@ jobs:
       run: echo "/*  /index.html  200" > release/wwwroot/_redirects
 
     # Publica os ficheiros estáticos diretamente no Cloudflare Pages
+    # (cloudflare/pages-action foi descontinuado; wrangler-action é o substituto oficial)
     - name: Deploy to Cloudflare Pages
-      uses: cloudflare/pages-action@v1
+      uses: cloudflare/wrangler-action@v4
       with:
         apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
         accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-        projectName: 'hc-dental-clinic'
-        directory: 'release/wwwroot'
-        gitBranch: 'main'
+        command: pages deploy release/wwwroot --project-name=hc-dental-clinic
