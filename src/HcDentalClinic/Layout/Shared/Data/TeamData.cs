@@ -10,7 +10,7 @@ public static class TeamData
             Name = "Dra. Helena Miranda",
             Position = ["Medicina Dentária Generalista", "Reabilitação Oral Estética", "Endodontia"],
             ImageUrl = "images/team/helenamiranda.webp",
-            Qualifications = ["Médica Dentista (OMD 10585)", "Pós-graduada em Endodontia", "Dentisteria Adesiva", "Reabilitação Oral Biomimética Avançada"],
+            Qualifications = ["Médica Dentista (OMD 10585)", "Pós-graduação em Endodontia", "Pós-graduação em Dentisteria Adesiva", "Pós-graduação em Reabilitação Oral Biomimética Avançada"],
             Specialties = ["Medicina Dentária Generalista", "Reabilitação Oral estética com resinas e cerâmicas", "Endodontia"],
             FullBio = "Dra. Helena Miranda é Médica Dentista com experiência clínica desde 2016 em Medicina Dentária Generalista, Endodontia e Reabilitação Oral Estética/Biomimética. Com formação contínua em técnicas restauradoras estéticas e reabilitação minimamente invasiva, alia função, estética e preservação da estrutura dentária. Participa regularmente em cursos, congressos e apresentações científicas, demonstrando um compromisso contínuo com a atualização e excelência clínica."
         },
@@ -30,7 +30,7 @@ public static class TeamData
             Name = "Dr. André Macedo",
             Position = ["Cirurgia Oral", "Implantologia", "Reabilitação Oral"],
             ImageUrl = "images/team/andremacedo.webp",
-            Qualifications = ["Médico Dentista (OMD 6280)", "Mestre em Cirurgia Oral", "Formação pós-graduada em Implantologia, Periodontologia, Prótese sobre Implantes e Dentisteria Biomimética"],
+            Qualifications = ["Médico Dentista (OMD 6280)", "Mestre em Cirurgia Oral", "Pós-graduação em Implantologia, Periodontologia, Prótese sobre Implantes e Dentisteria Biomimética"],
             Specialties = ["Cirurgia Oral e implantologia", "Reabilitação Oral", "Implantologia"],
             FullBio = "Dr. André Macedo é Médico Dentista com prática clínica dedicada exclusivamente à Cirurgia Oral, Reabilitação Oral e Implantologia. Paralelamente à atividade clínica, é docente em pós-graduações, formador e cofundador do curso de cirurgia guiada Guideland. A sua abordagem assenta na excelência clínica, na utilização de técnicas atuais e num acompanhamento próximo e personalizado de cada paciente."
         },
@@ -40,7 +40,7 @@ public static class TeamData
             Name = "Dra. Helena Barros",
             Position = ["Odontopediatria", "Ortopedia Funcional dos Maxilares", "Consulta da Grávida"],
             ImageUrl = "images/team/helenabarros.webp",
-            Qualifications = ["Médica Dentista (OMD 12464)", "Formação em Odontopediatria", "Ortodontia Preventiva e Intercetiva", "Ortopedia Funcional dos Maxilares"],
+            Qualifications = ["Médica Dentista (OMD 12464)", "Pós-graduação em em Odontopediatria", "Ortodontia Preventiva e Intercetiva", "Ortopedia Funcional dos Maxilares"],
             Specialties = ["Odontopediatria", "Ortopedia funcional dos maxilares", "Consulta da grávida"],
             FullBio = "Dra. Helena Barros é Médica Dentista com prática dedicada à Odontopediatria, acompanhando a saúde oral de bebés, crianças e adolescentes. Mantém uma atualização contínua através de cursos e formação avançada. Exerce também funções como monitora de estágio clínico, aliando a prática clínica ao ensino. A sua abordagem privilegia um ambiente acolhedor, promovendo consultas tranquilas e uma experiência positiva para os mais pequenos."
         },
@@ -50,7 +50,7 @@ public static class TeamData
             Name = "Dra. Marta Ribeiro",
             Position = ["Medicina Dentária Generalista", "Ortodontia convencional e com alinhadores"],
             ImageUrl = "images/team/martacosta.webp",
-            Qualifications = ["Médica Dentista (OMD 11151)", "Licenciada em Medicina Dentária pela CESPU", "Certificação Clínica em Ortodontia", "Formação específica em alinhadores", "Formação pós-graduada em Endodontia e Dentisteria Geral"],
+            Qualifications = ["Médica Dentista (OMD 11151)", "Licenciada em Medicina Dentária pela CESPU", "Pós-graduação em Ortodontia", "Pós-graduação específica em alinhadores", "Pós-graduação em Endodontia e Dentisteria Geral"],
             Specialties = ["Medicina Dentária generalista", "Ortodontia convencional e com alinhadores", "Endodontia", "Dentisteria Geral"],
             FullBio = "Dra. Marta Costa Ribeiro é Médica Dentista com especial dedicação à Ortodontia, tanto convencional como com alinhadores transparentes. Paralelamente, exerce também nas áreas de Endodontia e Dentisteria Geral, permitindo-lhe planear tratamentos personalizados. Aposta numa abordagem rigorosa, baseada na evidência científica e centrada no bem-estar e na satisfação de cada paciente."
         },

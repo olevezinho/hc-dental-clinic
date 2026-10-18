@@ -1,6 +1,6 @@
 .mission-container {
     /* Set a background color */
-    background-color: #faf9f7;
+    background-color: #ffffff;
 
     /* Keep the section immersive, but allow it to grow on shorter screens */
     min-height: 80svh;
@@ -15,7 +15,7 @@
 
 .mission-container-mobile {
     /* Set a background color */
-    background-color: #faf9f7;
+    background-color: #ffffff;
 
     /* Ensure it fills the viewport and center content */
     height: auto;

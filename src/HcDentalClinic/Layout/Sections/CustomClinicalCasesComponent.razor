@@ -1,0 +1,76 @@
+﻿<section id="clinical-cases">
+    <div class="clinical-cases-container">
+        <h1 class="clinical-cases-text">Casos Clínicos</h1>
+        <MudContainer MaxWidth="MaxWidth.Large" Class="pa-4">
+            <MudText 
+                Typo="Typo.h5" 
+                Class="mb-8"
+                Align="Align.Center"
+                Style="font-weight: 250; color: #807f7f; font-size: 1.3rem;">
+                Resultados reais de tratamentos realizados na nossa clínica, partilhados com o consentimento dos nossos pacientes.
+            </MudText>
+            <MudGrid Justify="Justify.Center" Spacing="6" Class="mb-8">
+                @foreach (var clinicalCase in ClinicalCasesData.Cases)
+                {
+                    <MudItem xs="12" sm="8" md="5" Class="d-flex justify-center" @key="clinicalCase.Slug">
+                        <MudLink Href="@($"/clinical-cases/{clinicalCase.Slug}")" Underline="Underline.None" Style="display: block; width: 100%; color: inherit;">
+                            <MudPaper
+                                @onmouseover="@(() => OnMouseOverCard(clinicalCase.Slug))"
+                                @onmouseout="@(() => OnMouseOutCard(clinicalCase.Slug))"
+                                Style="@($"background-color: #ffffff; border-radius: 24px; box-shadow: {GetCardShadow(clinicalCase.Slug)}; cursor: pointer; width: 100%; transition: box-shadow 0.3s ease;")">
+                                <MudCard Style="border-radius: 24px; overflow: hidden; width: 100%;">
+                                    <MudImage 
+                                        Src="@clinicalCase.Images[0].Src" 
+                                        Alt="@clinicalCase.Images[0].Alt"
+                                        Fluid="true"
+                                        Style="@GetCardImageStyle(clinicalCase.Slug)" />
+                                    <MudCardContent>
+                                        <MudText Typo="Typo.h6" Style="color: #ad9587; font-weight: 500;">
+                                            @clinicalCase.Title
+                                        </MudText>
+                                        <MudText Typo="Typo.body2" Class="mt-1" Style="color: #807f7f; font-weight: 300;">
+                                            @clinicalCase.Summary
+                                        </MudText>
+                                    </MudCardContent>
+                                </MudCard>
+                            </MudPaper>
+                        </MudLink>
+                    </MudItem>
+                }
+            </MudGrid>
+        </MudContainer>
+    </div>
+</section>
+
+@code
+{
+    private readonly Dictionary<string, string> _cardShadows = new();
+    private readonly Dictionary<string, string> _cardImageStyles = new();
+
+    protected override void OnInitialized()
+    {
+        foreach (var clinicalCase in ClinicalCasesData.Cases)
+        {
+            _cardShadows[clinicalCase.Slug] = "1px 1px 6px rgba(20, 20, 20, 0.1);";
+            _cardImageStyles[clinicalCase.Slug] = "display: block; transition: transform 0.8s ease;";
+        }
+    }
+
+    private string GetCardShadow(string slug) =>
+        _cardShadows.TryGetValue(slug, out var shadow) ? shadow : "1px 1px 6px rgba(20, 20, 20, 0.1);";
+
+    private string GetCardImageStyle(string slug) =>
+        _cardImageStyles.TryGetValue(slug, out var style) ? style : "display: block; transition: transform 0.8s ease;";
+
+    private void OnMouseOverCard(string slug)
+    {
+        _cardShadows[slug] = "4px 4px 12px rgba(20, 20, 20, 0.25);";
+        _cardImageStyles[slug] = "display: block; transform: scale(1.05); transition: transform 0.8s ease;";
+    }
+
+    private void OnMouseOutCard(string slug)
+    {
+        _cardShadows[slug] = "1px 1px 6px rgba(20, 20, 20, 0.1);";
+        _cardImageStyles[slug] = "display: block; transition: transform 0.8s ease;";
+    }
+}

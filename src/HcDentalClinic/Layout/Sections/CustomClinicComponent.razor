@@ -5,22 +5,46 @@
             <div class="clinic-container-mobile">
                 <h1 class="clinic-text">O nosso espaço</h1>
                 <MudContainer>
-                    <MudGrid
-                        Class="pa-18"
-                        Justify="Justify.Center"
-                        Spacing="2">
-                        <MudItem xs="12" sm="8" Class="d-flex justify-center" Style="height: auto;">
-                            <MudPaper
-                                Elevation="0"
-                                Class="pa-8"
-                                Style="background-color: #ffffff; border-radius: 24px; box-shadow: {phoneShadow}; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s ease;">
-                                <MudImage Class="mx-auto my-auto" 
-                                    Src="images/background-test-image.webp"
-                                    Style="min-width: 250%; min-height: 100%; height: 100%; width: 250%; object-fit: cover;" 
-                                    Alt="HC Dental Clinic Background Slider" />
-                            </MudPaper>
-                        </MudItem>
-                    </MudGrid>
+                    <MudCarousel 
+                        Class="@CarouselClass" 
+                        Style="@($"height: {CarouselHeight};")"
+                        AutoCycle="true" 
+                        ShowBullets="false"
+                        ShowArrows="false"
+                        TData="object">
+                        <ChildContent>
+                            <MudCarouselItem Color="@Color.Inherit" Transition="Transition.Fade">
+                                <div class="carousel-static">
+                                    <ClinicCarouselSlide 
+                                        Headline="Onde os sorrisos crescem a brincar"
+                                        Body="Um espaço pensado para os mais pequenos, onde cada visita ao dentista é uma nova aventura. Venha descobrir o nosso mundo."
+                                        ImageSrc="images/clinic/kids-playground.webp"
+                                        ImageAlt="Espaço infantil da HC Dental Clinic"
+                                        Stacked="true" />
+                                </div>
+                            </MudCarouselItem>
+                            <MudCarouselItem Color="@Color.Inherit" Transition="Transition.Fade">
+                                <div class="carousel-static">
+                                    <ClinicCarouselSlide 
+                                        Headline="O conforto começa à entrada"
+                                        Body="Um átrio luminoso e acolhedor, com música ambiente, pensado para o receber com calma desde o primeiro momento."
+                                        ImageSrc="images/clinic/attrium.webp"
+                                        ImageAlt="Átrio da HC Dental Clinic"
+                                        Stacked="true" />
+                                </div>
+                            </MudCarouselItem>
+                            <MudCarouselItem Color="@Color.Inherit" Transition="Transition.Fade">
+                                <div class="carousel-static">
+                                    <ClinicCarouselSlide 
+                                        Headline="Tecnologia ao serviço do seu sorriso"
+                                        Body="Consultórios modernos e totalmente equipados, para tratamentos mais precisos, confortáveis e seguros."
+                                        ImageSrc="images/clinic/office-zoomed.webp"
+                                        ImageAlt="Consultório da HC Dental Clinic"
+                                        Stacked="true" />
+                                </div>
+                            </MudCarouselItem>
+                        </ChildContent>
+                    </MudCarousel>
                 </MudContainer>
             </div>
         }
@@ -30,177 +54,40 @@
                 <h1 class="clinic-text">O nosso espaço</h1>
                 <MudContainer>
                     <MudCarousel 
-                        Class="mud-width-full pa-10 mt-20" 
-                        Style="height: 70svh;" 
+                        Class="mud-width-full pa-10 mt-50" 
+                        Style="height: 60svh;" 
                         AutoCycle="true" 
                         ShowBullets="false"
                         ShowArrows="false"
                         TData="object">
                         <ChildContent>
-                            <MudCarouselItem 
-                                Color="@Color.Inherit" 
-                                Transition="Transition.Fade">
+                            <MudCarouselItem Color="@Color.Inherit" Transition="Transition.Fade">
                                 <div class="carousel-static carousel-static-desktop">
-                                    <MudGrid
-                                        Spacing="2"
-                                        Justify="Justify.Center">
-                                        <MudItem xs="8"
-                                            Class="pa-10">
-                                            <MudStack 
-                                                Justify="Justify.SpaceBetween" 
-                                                AlignItems="AlignItems.Center"
-                                                Class="pa-4"
-                                                Style="width: 100%;">
-                                                <MudText 
-                                                    Typo="Typo.h3"
-                                                    Style="text-align: center; color: #ad9587; font-weight: 400; font-size: clamp(1rem, 2.5vw, 1.5rem); text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);">
-                                                    Onde os sorrisos crescem a brincar
-                                                </MudText>
-                                                <MudText 
-                                                    Class="pa-12 mt-20"
-                                                    Style="text-align: center; color: #363636; font-weight: 300; font-size: clamp(0.85rem, 1.25vw, 1.25rem); text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);">
-                                                    Um espaço pensado para os mais pequenos, onde cada visita ao dentista é uma nova aventura. Marque a primeira consulta e venha descobrir o nosso mundo.
-                                                </MudText>
-                                                <MudButton
-                                                    Class="mt-20"
-                                                    Variant="Variant.Filled"
-                                                    Href="contact-request"
-                                                    Style="color: white; background-color: #ad9587; border-radius: 24px; font-size: 1.15rem; padding: 0.75rem 2rem;">
-                                                    Marcação
-                                                </MudButton>
-                                            </MudStack>
-                                        </MudItem>
-                                        <MudItem xs="4">
-                                            <MudImage Class="mx-auto my-auto" 
-                                                Src="images/clinic/kids-playground.JPG"
-                                                Style="max-width: 100%; border-radius: 16px; box-shadow: 0px 0px 6px rgba(20, 20, 20, 0.1);" 
-                                                Alt="HC Dental Clinic kids playground" />
-                                            @* <MudPaper
-                                                Elevation="0">
-                                                
-                                            </MudPaper> *@
-                                        </MudItem>
-                                    </MudGrid>
-                                    @* <img
-                                        Class="carousel-static-image"
-                                        src="images/background-white.webp"
-                                        Style="width: 100vw; height: 100vh; max-width: none; max-height: none; object-fit: cover;"
-                                        Alt="HC Dental Clinic Background Slider" />
-                                    <div class="overlay">
-                                        <div class="hero-content">
-                                            <MudGrid>
-                                                <MudItem xs="12">
-                                                    <MudText Class="pa-4"
-                                                        Style="@($"text-align: center;color: #ffffff; font-weight: 700; z-index: 2; font-size: 1.2rem; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.55); letter-spacing: 0.02em;")">
-                                                        O seu sorriso é a nossa prioridade
-                                                    </MudText>
-                                                </MudItem>
-                                            </MudGrid>
-                                            <div class="hero-cta-wrapper">
-                                                <MudButton 
-                                                    Class="pa-4 hero-cta-button"
-                                                    Variant="Variant.Filled"
-                                                    EndIcon="@Icons.Material.Filled.ArrowDownward"
-                                                    IconSize="Size.Small"
-                                                    Href="#mission"
-                                                    @onmouseover="OnMouseOverButtonColorChange"
-                                                    @onmouseout="OnMouseOutButtonColorChange"
-                                                    Style="@($"margin-top: 0.6rem; min-width: 9%; display: flex; justify-content: center; align-items: center; color: {mudButtonTextColor}; background-color: {mudButtonBackgroundColor}; border-radius: 50px; z-index: 2;")">
-                                                    Saiba mais
-                                                </MudButton>
-                                            </div>
-                                        </div>
-                                    </div> *@
+                                    <ClinicCarouselSlide 
+                                        Headline="Onde os sorrisos crescem a brincar"
+                                        Body="Um espaço pensado para os mais pequenos, onde cada visita ao dentista é uma nova aventura. Marque a primeira consulta e venha descobrir o nosso mundo."
+                                        ImageSrc="images/clinic/kids-playground.webp"
+                                        ImageAlt="Espaço infantil da HC Dental Clinic"
+                                        ImageFirst="true" />
                                 </div>
                             </MudCarouselItem>
-                            <MudCarouselItem 
-                                Color="@Color.Inherit" 
-                                Transition="Transition.Fade">
+                            <MudCarouselItem Color="@Color.Inherit" Transition="Transition.Fade">
                                 <div class="carousel-static carousel-static-desktop">
-                                    <MudGrid
-                                        Spacing="2"
-                                        Justify="Justify.Center">
-                                        <MudItem xs="4">
-                                            <MudImage Class="mx-auto my-auto" 
-                                                Src="images/clinic/attrium.JPG"
-                                                Style="max-width: 100%; border-radius: 16px;" 
-                                                Alt="HC Dental Clinic attrium" />
-                                        </MudItem>
-                                        <MudItem xs="8"
-                                            Class="pa-10">
-                                            <MudText 
-                                                Typo="Typo.h3" 
-                                                Class="pa-4 pb-0" 
-                                                Style="text-align: center; color: #ad9587; font-weight: 600; text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);">
-                                                O conforto começa à entrada
-                                            </MudText>
-                                            <MudText 
-                                                Class="pa-4"
-                                                Style="text-align: center; color: #363636; text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);">
-                                                Um átrio luminoso e acolhedor, com música ambiente, pensado para o receber com calma desde o primeiro momento.
-                                            </MudText>
-                                        </MudItem>
-                                    </MudGrid>
+                                    <ClinicCarouselSlide 
+                                        Headline="O conforto começa à entrada"
+                                        Body="Um átrio luminoso e acolhedor, com música ambiente, pensado para o receber com calma desde o primeiro momento."
+                                        ImageSrc="images/clinic/attrium.webp"
+                                        ImageAlt="Átrio da HC Dental Clinic" />
                                 </div>
                             </MudCarouselItem>
-                            <MudCarouselItem 
-                                Color="@Color.Inherit" 
-                                Transition="Transition.Fade">
+                            <MudCarouselItem Color="@Color.Inherit" Transition="Transition.Fade">
                                 <div class="carousel-static carousel-static-desktop">
-                                    <MudGrid
-                                        Spacing="2"
-                                        Justify="Justify.Center">
-                                        <MudItem xs="8"
-                                            Class="pa-10">
-                                            <MudText 
-                                                Typo="Typo.h3" 
-                                                Class="pa-4 pb-0" 
-                                                Style="text-align: center; color: #ad9587; font-weight: 600; text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);">
-                                                Cada pormenor conta
-                                            </MudText>
-                                            <MudText 
-                                                Class="pa-4"
-                                                Style="text-align: center; color: #363636; text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);">
-                                                Materiais cuidadosamente selecionados e um design pensado ao detalhe, num ambiente onde a higiene e a elegância andam de mãos dadas.
-                                            </MudText>
-                                        </MudItem>
-                                        <MudItem xs="4">
-                                            <MudImage Class="mx-auto my-auto" 
-                                                Src="images/clinic/cabinet-handles.JPG"
-                                                Style="max-width: 100%; border-radius: 16px;" 
-                                                Alt="Pormenor do design interior da HC Dental Clinic" />
-                                        </MudItem>
-                                    </MudGrid>
-                                </div>
-                            </MudCarouselItem>
-                            <MudCarouselItem 
-                                Color="@Color.Inherit" 
-                                Transition="Transition.Fade">
-                                <div class="carousel-static carousel-static-desktop">
-                                    <MudGrid
-                                        Spacing="2"
-                                        Justify="Justify.Center">
-                                        <MudItem xs="4">
-                                            <MudImage Class="mx-auto my-auto" 
-                                                Src="images/clinic/office-zoomed.JPG"
-                                                Style="max-width: 100%; border-radius: 16px;" 
-                                                Alt="Consultório da HC Dental Clinic" />
-                                        </MudItem>
-                                        <MudItem xs="8" 
-                                            Class="pa-10">
-                                            <MudText 
-                                                Typo="Typo.h3" 
-                                                Class="pa-4 pb-0" 
-                                                Style="text-align: center; color: #ad9587; font-weight: 600; text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);">
-                                                Tecnologia ao serviço do seu sorriso
-                                            </MudText>
-                                            <MudText 
-                                                Class="pa-4"
-                                                Style="text-align: center; color: #363636; text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);">
-                                                Consultórios modernos e totalmente equipados, para tratamentos mais precisos, confortáveis e seguros.
-                                            </MudText>
-                                        </MudItem>
-                                    </MudGrid>
+                                    <ClinicCarouselSlide 
+                                        Headline="Tecnologia ao serviço do seu sorriso"
+                                        Body="Consultórios modernos e totalmente equipados, para tratamentos mais precisos, confortáveis e seguros."
+                                        ImageSrc="images/clinic/office-zoomed.webp"
+                                        ImageAlt="Consultório da HC Dental Clinic" 
+                                        ImageFirst="true" />
                                 </div>
                             </MudCarouselItem>
                         </ChildContent>
@@ -211,18 +98,28 @@
     </MudBreakpointProvider>
 </section>
 
-<style>
-.carousel-static {
-    height: 100%;
-}
-</style>
-
 @code 
 {
     private MudBlazor.Breakpoint _currentBreakpoint;
     private bool IsMobile => _currentBreakpoint < MudBlazor.Breakpoint.Sm;
     private bool IsSmallTablet => _currentBreakpoint is MudBlazor.Breakpoint.Sm;
     private bool IsLargeTablet => _currentBreakpoint >= MudBlazor.Breakpoint.Md && _currentBreakpoint < MudBlazor.Breakpoint.Lg;
+
+    // Per-breakpoint carousel sizing: mobile needs a tall frame because the
+    // slide content stacks; tablets approach desktop proportions.
+    private string CarouselHeight => _currentBreakpoint switch
+    {
+        < MudBlazor.Breakpoint.Sm => "clamp(30rem, 78svh, 38rem)",
+        MudBlazor.Breakpoint.Sm => "clamp(28rem, 68svh, 34rem)",
+        _ => "clamp(26rem, 58svh, 32rem)" // LargeTablet
+    };
+
+    private string CarouselClass => _currentBreakpoint switch
+    {
+        < MudBlazor.Breakpoint.Sm => "mud-width-full pa-2 mt-4",
+        MudBlazor.Breakpoint.Sm => "mud-width-full pa-4 mt-6",
+        _ => "mud-width-full pa-6 mt-8" // LargeTablet
+    };
     
     private void OnBreakpointChanged(MudBlazor.Breakpoint breakpoint)
     {

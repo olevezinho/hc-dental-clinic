@@ -111,7 +111,7 @@
                             RequiredError="Tem de aceitar a política de privacidade para continuar."
                             Style="color:#ad9587; font-weight: 550;">
                             <ChildContent>
-                                Li e aceito a <MudLink Href="/privacy" Target="_blank">política de privacidade</MudLink>
+                                Li e aceito a <MudLink Href="/privacy" Target="_blank"><u>política de privacidade</u></MudLink>
                             </ChildContent>
                         </MudCheckBox>
                     </MudItem>
@@ -207,12 +207,18 @@
     private bool _agreement { get; set; } = false;
 
     public string[] _reasons =[
-        "Check-up / Limpeza",
-        "Emergência",
-        "Dentisteria estética",
-        "Ortodontia",
+        "Urgência",
+        "Check-up / Higiene Oral",
+        "Cirurgia Oral e Implantologia",
+        "Ortodontia / Alinhadores",
+        "Prótese fixa e removível",
+        "Reabilitação Estética",
+        "Endodontia",
         "Odontopediatria",
-        "Outro"
+        "Oclusão, Disfunção ATM e Sono",
+        "Medicina Geral e Familiar",
+        "Medicina Estética",
+        "Outros"
     ];
 
     protected override async Task OnAfterRenderAsync(bool firstRender)

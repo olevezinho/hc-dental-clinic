@@ -173,9 +173,9 @@
                     Class="mt-4"
                     Align="Align.Center"
                     Style="font-weight: 325; color: #807f7f; font-size: 1.3rem;">
-                    Acreditamos que todos merecem um sorriso saudável e bonito. A nossa missão é<br />
-                    fornecer cuidados dentários excepcionais que combinam a mais recente tecnologia<br />
-                    com uma abordagem suave e compassiva, adequada para pacientes de todas as idades.
+                    Somos uma clínica dedicada à Medicina Dentária e Medicina Estética, onde<br />
+                    combinamos conhecimento científico, tecnologia avançada e uma abordagem<br />
+                    personalizada para proporcionar cuidados de saúde de elevada qualidade.
                 </MudText>
                 <MudGrid Class="pa-10 mt-10" Justify="Justify.Center" Spacing="6">
                     <MudItem xs="8" sm="4" md="3" Class="d-flex justify-center align-center" Style="min-height: 18rem;">
@@ -187,13 +187,14 @@
                                 <MudItem xs="12">
                                     <MudText Typo="Typo.h3" Class="pa-4" Align="Align.Center"
                                         Style="color: #ad9587; font-weight: bold;">
-                                        Cuidado Compassivo
+                                        Saúde e bem-estar
                                     </MudText>
                                 </MudItem>
                                 <MudItem xs="12">
                                     <MudText Typo="Typo.h6" Class="pa-4" Align="Align.Justify"
                                         Style="@($"color: {Colors.Gray.Darken1}; font-weight: 300;")">
-                                        Tratamos cada paciente com cuidado e compreensão, conforto e tranquilidade
+                                        A saúde e a segurança dos nossos pacientes orientam todas
+                                        as decisões clínicas e todos os tratamentos que realizamos.
                                     </MudText>
                                 </MudItem>
                             </MudGrid>
@@ -209,13 +210,60 @@
                                 <MudItem xs="12">
                                     <MudText Typo="Typo.h3" Class="pa-4" Align="Align.Center"
                                         Style="color: #ad9587; font-weight: bold;">
-                                        Para Toda a Família
+                                        Excelência
                                     </MudText>
                                 </MudItem>
                                 <MudItem xs="12">
                                     <MudText Typo="Typo.h6" Class="pa-4" Align="Align.Justify"
                                         Style="@($"color: {Colors.Gray.Darken1}; font-weight: 300;")">
-                                        Dos mais novos aos mais velhos, criamos um ambiente acolhedor para toda a família
+                                        Comprometemo-nos com os mais elevados padrões
+                                        clínicos e científicos em todos os tratamentos.
+                                    </MudText>
+                                </MudItem>
+                            </MudGrid>
+                        </MudPaper>
+                    </MudItem>
+
+                    <MudItem xs="6" sm="4" md="3" Class="d-flex justify-center align-center" Style="min-height: 18rem;">
+                        <MudPaper 
+                            @onmouseover="OnMouseOverQualityExcelenceShadowIncrease"
+                            @onmouseout="OnMouseOutQualityExcelenceShadowDecrease"
+                            Style="@($"background-color: #ffffff; border-radius: 24px; box-shadow: {defaultQualityExcelenceShadow} text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25); height: 100%;")">
+                            <MudGrid Class="pa-10">
+                                <MudItem xs="12">
+                                    <MudText Typo="Typo.h3" Class="pa-4" Align="Align.Center"
+                                        Style="color: #ad9587; font-weight: bold;">
+                                        Cuidado
+                                    </MudText>
+                                </MudItem>
+                                <MudItem xs="12">
+                                    <MudText Typo="Typo.h6" Class="pa-4" Align="Align.Justify"
+                                        Style="@($"color: {Colors.Gray.Darken1}; font-weight: 300;")">
+                                        Na HC, o ambiente sereno, o respeito pelos horários e o
+                                        acompanhamento personalizado refletem a nossa forma de cuidar.
+                                    </MudText>
+                                </MudItem>
+                            </MudGrid>
+                        </MudPaper>
+                    </MudItem>
+
+                    <MudItem xs="6" sm="3" md="3" Class="d-flex justify-center align-center" Style="min-height: 18rem;">
+                        <MudPaper 
+                            @onmouseover="OnMouseOverQualityExcelenceShadowIncrease"
+                            @onmouseout="OnMouseOutQualityExcelenceShadowDecrease"
+                            Style="@($"background-color: #ffffff; border-radius: 24px; box-shadow: {defaultQualityExcelenceShadow} text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25); height: 100%;")">
+                            <MudGrid Class="pa-10">
+                                <MudItem xs="12">
+                                    <MudText Typo="Typo.h3" Class="pa-4" Align="Align.Center"
+                                        Style="color: #ad9587; font-weight: bold;">
+                                        Confiança
+                                    </MudText>
+                                </MudItem>
+                                <MudItem xs="12">
+                                    <MudText Typo="Typo.h6" Class="pa-4" Align="Align.Justify"
+                                        Style="@($"color: {Colors.Gray.Darken1}; font-weight: 300;")">
+                                        Mais do que cuidar da saúde oral, construímos relações de 
+                                        confiança, assentes na proximidade, na dedicação e no respeito.
                                     </MudText>
                                 </MudItem>
                             </MudGrid>
@@ -231,13 +279,37 @@
                                 <MudItem xs="12">
                                     <MudText Typo="Typo.h3" Class="pa-4" Align="Align.Center"
                                         Style="color: #ad9587; font-weight: bold;">
-                                        Excelência de Qualidade
+                                        Inovação
                                     </MudText>
                                 </MudItem>
                                 <MudItem xs="12">
                                     <MudText Typo="Typo.h6" Class="pa-4" Align="Align.Justify"
                                         Style="@($"color: {Colors.Gray.Darken1}; font-weight: 300;")">
-                                        Utilizamos tecnologia de ponta e técnicas comprovadas para os melhores resultados
+                                        Investimos continuamente em formações, tecnologia
+                                        e técnicas avançadas para oferecer os melhores cuidados.
+                                    </MudText>
+                                </MudItem>
+                            </MudGrid>
+                        </MudPaper>
+                    </MudItem>
+
+                    <MudItem xs="8" sm="4" md="3" Class="d-flex justify-center align-center" Style="min-height: 18rem;">
+                        <MudPaper 
+                            @onmouseover="OnMouseOverQualityExcelenceShadowIncrease"
+                            @onmouseout="OnMouseOutQualityExcelenceShadowDecrease"
+                            Style="@($"background-color: #ffffff; border-radius: 24px; box-shadow: {defaultQualityExcelenceShadow} text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25); height: 100%;")">
+                            <MudGrid Class="pa-10">
+                                <MudItem xs="12">
+                                    <MudText Typo="Typo.h3" Class="pa-4" Align="Align.Center"
+                                        Style="color: #ad9587; font-weight: bold;">
+                                        Naturalidade
+                                    </MudText>
+                                </MudItem>
+                                <MudItem xs="12">
+                                    <MudText Typo="Typo.h6" Class="pa-4" Align="Align.Justify"
+                                        Style="@($"color: {Colors.Gray.Darken1}; font-weight: 300;")">
+                                        Valorizamos a harmonia, equilibrio e a indiviudalidade 
+                                        de cada pessoa.
                                     </MudText>
                                 </MudItem>
                             </MudGrid>

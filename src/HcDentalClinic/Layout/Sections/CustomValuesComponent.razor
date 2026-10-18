@@ -1,0 +1,347 @@
+﻿<section id="philosophy">
+    <MudBreakpointProvider OnBreakpointChanged="OnBreakpointChanged">
+        @if(IsMobile)
+        {
+            <div class="values-container-mobile">
+                <h1 class="values-text">A nossa filosofia</h1>
+                <MudText 
+                    Typo="Typo.h5"
+                    Class="pa-12 mt-2"
+                    Align="Align.Center"
+                    Style="font-weight: 300; color: #807f7f; font-size: 1.1rem;">
+                    Cada paciente é único. Por isso, dedicamos tempo a ouvir, compreender<br/> 
+                    e planear cada tratamento de forma personalizada, garantindo uma <br/>
+                    experiência tranquila, transparente e centrada nas suas necessidades.
+                </MudText>
+                <MudGrid 
+                    Class="pa-2 mt-2 mb-8"
+                    Justify="Justify.Center" 
+                    Spacing="8">
+                    @foreach (var value in values)
+                    {
+                        <MudItem xs="10" sm="8">
+                            @ValueCard(value)
+                        </MudItem>
+                        <MudFlexBreak />
+                    }
+                </MudGrid>
+            </div>
+        }
+        else if(IsSmallTablet || IsLargeTablet)
+        {
+            <div class="values-container-mobile">
+                <h1 class="values-text">A nossa filosofia</h1>
+                <MudText 
+                    Typo="Typo.h5"
+                    Class="pa-12 mt-2"
+                    Align="Align.Center"
+                    Style="font-weight: 300; color: #807f7f; font-size: 1.1rem;">
+                    Cada paciente é único. Por isso, dedicamos tempo a ouvir, compreender<br/> 
+                    e planear cada tratamento de forma personalizada, garantindo uma <br/>
+                    experiência tranquila, transparente e centrada nas suas necessidades.
+                </MudText>
+                <MudGrid 
+                    Class="pa-2 mt-2 mb-8"
+                    Justify="Justify.Center" 
+                    Spacing="8">
+                    @foreach (var value in values)
+                    {
+                        <MudItem sm="5" md="5" Class="d-flex">
+                            @ValueCard(value)
+                        </MudItem>
+                    }
+                </MudGrid>
+            </div>
+        }
+        else
+        {
+            <div class="values-container">
+                <h1 class="values-text">A nossa filosofia</h1>
+                <MudText 
+                    Typo="Typo.h6"
+                    Class="mt-4 mb-4"
+                    Align="Align.Center"
+                    Style="font-weight: 325; color: #807f7f; font-size: 1.3rem;">
+                    Cada paciente é único. Por isso, dedicamos tempo a ouvir, compreender<br/> 
+                    e planear cada tratamento de forma personalizada, garantindo uma <br/>
+                    experiência tranquila, transparente e centrada nas suas necessidades.
+                </MudText>
+
+                <h2 class="values-text mb-4"><i>Os nossos valores ...</i></h2>
+                <MudGrid 
+                    Class="pa-1 mt-4 mb-4"
+                    Justify="Justify.Center" 
+                    Spacing="8">
+                    <MudItem xs="6" sm="3" Class="d-flex">
+                        <MudPaper
+                            @onmouseover="OnMouseOverYellowPlaceholderShadowIncrease"
+                            @onmouseout="OnMouseOutYellowPlaceholderShadowDecrease"
+                            Style="@($"background-color: #ffffff; border-radius: 24px; box-shadow: {defaultYellowPlaceholderShadow} text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25); width: 100%;")">
+                            <MudGrid Class="pa-6">
+                                <MudItem xs="12" Style="margin-bottom: -2rem;">
+                                    <MudText 
+                                        Typo="Typo.h3" 
+                                        Class="pa-5"
+                                        Align="Align.Center"
+                                        Style="color: #ad9587; font-weight: bold;">
+                                        Saúde e bem-estar
+                                    </MudText>
+                                </MudItem>
+                                <MudFlexBreak />
+                                <MudItem xs="12">
+                                    <MudText 
+                                        Typo="Typo.h6" 
+                                        Class="pa-5" 
+                                        Align="Align.Justify"
+                                        Style="@($"color: {Colors.Gray.Darken1}; font-weight: 300;")">
+                                        A saúde e a segurança dos nossos pacientes orientam todas
+                                        as decisões clínicas e todos os tratamentos que realizamos.
+                                    </MudText>
+                                </MudItem>
+                            </MudGrid>
+                        </MudPaper>
+                    </MudItem>
+
+                    <MudItem xs="6" sm="3" Class="d-flex">
+                        <MudPaper
+                            @onmouseover="OnMouseOverBrownPlaceholderShadowIncrease"
+                            @onmouseout="OnMouseOutBrownPlaceholderShadowDecrease"
+                            Style="@($"background-color: #ffffff; border-radius: 24px; box-shadow: {defaultBrownPlaceholderShadow} text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25); width: 100%;")">
+                            <MudGrid Class="pa-6">
+                                <MudItem xs="12" Style="margin-bottom: -2rem;">
+                                    <MudText Typo="Typo.h3" Class="pa-5" Align="Align.Center"
+                                        Style="color: #ad9587; font-weight: bold;">
+                                        Excelência
+                                    </MudText>
+                                </MudItem>
+                                <MudFlexBreak />
+                                <MudItem xs="12">
+                                    <MudText Typo="Typo.h6" Class="pa-5" Align="Align.Justify"
+                                        Style="@($"color: {Colors.Gray.Darken1}; font-weight: 300;")">
+                                        Comprometemo-nos com os mais elevados padrões clínicos e científicos em todos os tratamentos.
+                                    </MudText>
+                                </MudItem>
+                            </MudGrid>
+                        </MudPaper>
+                    </MudItem>
+
+                    <MudItem xs="6" sm="3" Class="d-flex">
+                        <MudPaper
+                            @onmouseover="OnMouseOverPinkPlaceholderShadowIncrease"
+                            @onmouseout="OnMouseOutPinkPlaceholderShadowDecrease"
+                            Style="@($"background-color: #ffffff; border-radius: 24px; box-shadow: {defaultPinkPlaceholderShadow} text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25); width: 100%;")">
+                            <MudGrid Class="pa-6">
+                                <MudItem xs="12" Style="margin-bottom: -2rem;">
+                                    <MudText Typo="Typo.h3" Class="pa-5" Align="Align.Center"
+                                        Style="color: #ad9587; font-weight: bold;">
+                                        Cuidado
+                                    </MudText>
+                                </MudItem>
+                                <MudFlexBreak />
+                                <MudItem xs="12">
+                                    <MudText Typo="Typo.h6" Class="pa-5" Align="Align.Justify"
+                                        Style="@($"color: {Colors.Gray.Darken1}; font-weight: 300;")">
+                                        Na HC, o ambiente sereno, o respeito pelos horários e o acompanhamento personalizado refletem a nossa forma de cuidar.
+                                    </MudText>
+                                </MudItem>
+                            </MudGrid>
+                        </MudPaper>
+                    </MudItem>
+
+                    <MudFlexBreak />
+
+                    <MudItem xs="6" sm="3" Class="d-flex">
+                        <MudPaper
+                            @onmouseover="OnMouseOverPurplePlaceholderShadowIncrease"
+                            @onmouseout="OnMouseOutPurplePlaceholderShadowDecrease"
+                            Style="@($"background-color: #ffffff; border-radius: 24px; box-shadow: {defaultPurplePlaceholderShadow} text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25); width: 100%;")">
+                            <MudGrid Class="pa-6">
+                                <MudItem xs="12" Style="margin-bottom: -2rem;">
+                                    <MudText Typo="Typo.h3" Class="pa-5" Align="Align.Center"
+                                        Style="color: #ad9587; font-weight: bold;">
+                                        Confiança
+                                    </MudText>
+                                </MudItem>
+                                <MudFlexBreak />
+                                <MudItem xs="12">
+                                    <MudText Typo="Typo.h6" Class="pa-5" Align="Align.Justify"
+                                        Style="@($"color: {Colors.Gray.Darken1}; font-weight: 300;")">
+                                        Mais do que cuidar da saúde oral, construímos relações de confiança, assentes na proximidade, na dedicação e no respeito.
+                                    </MudText>
+                                </MudItem>
+                            </MudGrid>
+                        </MudPaper>
+                    </MudItem>
+
+                    <MudItem xs="6" sm="3" Class="d-flex">
+                        <MudPaper
+                            @onmouseover="OnMouseOverGreenPlaceholderShadowIncrease"
+                            @onmouseout="OnMouseOutGreenPlaceholderShadowDecrease"
+                            Style="@($"background-color: #ffffff; border-radius: 24px; box-shadow: {defaultGreenPlaceholderShadow} text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25); width: 100%;")">
+                            <MudGrid Class="pa-6">
+                                <MudItem xs="12" Style="margin-bottom: -2rem;">
+                                    <MudText Typo="Typo.h3" Class="pa-5" Align="Align.Center"
+                                        Style="color: #ad9587; font-weight: bold;">
+                                        Inovação
+                                    </MudText>
+                                </MudItem>
+                                <MudFlexBreak />
+                                <MudItem xs="12">
+                                    <MudText Typo="Typo.h6" Class="pa-5" Align="Align.Justify"
+                                        Style="@($"color: {Colors.Gray.Darken1}; font-weight: 300;")">
+                                        Investimos continuamente em formações, tecnologia e técnicas avançadas para oferecer os melhores cuidados.
+                                    </MudText>
+                                </MudItem>
+                            </MudGrid>
+                        </MudPaper>
+                    </MudItem>
+
+                    <MudItem xs="6" sm="3" Class="d-flex">
+                        <MudPaper
+                            @onmouseover="OnMouseOverRedPlaceholderShadowIncrease"
+                            @onmouseout="OnMouseOutRedPlaceholderShadowDecrease"
+                            Style="@($"background-color: #ffffff; border-radius: 24px; box-shadow: {defaultRedPlaceholderShadow} text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25); width: 100%;")">
+                            <MudGrid Class="pa-6">
+                                <MudItem xs="12" Style="margin-bottom: -2rem;">
+                                    <MudText Typo="Typo.h3" Class="pa-5" Align="Align.Center"
+                                        Style="color: #ad9587; font-weight: bold;">
+                                        Naturalidade
+                                    </MudText>
+                                </MudItem>
+                                <MudFlexBreak />
+                                <MudItem xs="12">
+                                    <MudText Typo="Typo.h6" Class="pa-5" Align="Align.Justify"
+                                        Style="@($"color: {Colors.Gray.Darken1}; font-weight: 300;")">
+                                        Valorizamos a harmonia, equilibrio e a indiviudalidade de cada pessoa.
+                                    </MudText>
+                                </MudItem>
+                            </MudGrid>
+                        </MudPaper>
+                    </MudItem>
+                </MudGrid>
+                <MudButton
+                    Class="mt-20 mb-1"
+                    Variant="Variant.Filled"
+                    Href="values#contact-form"
+                    Style="color: white; background-color: #ad9587; border-radius: 24px; font-size: 1.15rem; padding: 0.75rem 2rem;">
+                    Marcação
+                </MudButton>
+            </div>
+        }
+    </MudBreakpointProvider>
+    
+</section>
+
+@code 
+{
+    private MudBlazor.Breakpoint _currentBreakpoint;
+    private bool IsMobile => _currentBreakpoint < MudBlazor.Breakpoint.Sm;
+    private bool IsSmallTablet => _currentBreakpoint is MudBlazor.Breakpoint.Sm;
+    private bool IsLargeTablet => _currentBreakpoint >= MudBlazor.Breakpoint.Md && _currentBreakpoint < MudBlazor.Breakpoint.Lg;
+
+    private readonly record struct Value(string Title, string Description);
+
+    private readonly Value[] values =
+    [
+        new("Saúde e bem-estar", "A saúde e a segurança dos nossos pacientes orientam todas as decisões clínicas e todos os tratamentos que realizamos."),
+        new("Excelência", "Comprometemo-nos com os mais elevados padrões clínicos e científicos em todos os tratamentos."),
+        new("Cuidado", "Na HC, o ambiente sereno, o respeito pelos horários e o acompanhamento personalizado refletem a nossa forma de cuidar."),
+        new("Confiança", "Mais do que cuidar da saúde oral, construímos relações de confiança, assentes na proximidade, na dedicação e no respeito."),
+        new("Inovação", "Investimos continuamente em formações, tecnologia e técnicas avançadas para oferecer os melhores cuidados."),
+        new("Naturalidade", "Valorizamos a harmonia, equilibrio e a indiviudalidade de cada pessoa.")
+    ];
+
+    private RenderFragment ValueCard(Value value) => 
+    @<MudPaper
+        @onmouseover="OnMouseOverBrownPlaceholderShadowIncrease"
+        @onmouseout="OnMouseOutBrownPlaceholderShadowDecrease"
+        Style="@($"background-color: #ffffff; border-radius: 24px; box-shadow: {defaultBrownPlaceholderShadow} text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25); width: 100%;")">
+        <MudGrid Class="pa-2 mt-1">
+            <MudFlexBreak />
+            <MudItem xs="12" Style="margin-bottom: -2rem;">
+                <MudText Typo="Typo.h3" Class="pa-5" Align="Align.Left" Style="@($"color: #ad9587; font-weight: bold;")">
+                    @value.Title
+                </MudText>
+            </MudItem>
+            <MudFlexBreak />
+            <MudItem xs="12">
+                <MudText Typo="Typo.h6" Class="pa-5" Align="Align.Left" Style="@($"color: {Colors.Gray.Darken1}; font-weight: 250;")">
+                    @value.Description
+                </MudText>
+            </MudItem>
+        </MudGrid>
+    </MudPaper>;
+
+    private string defaultYellowPlaceholderShadow = "0px 0px 8px rgba(20, 20, 20, 0.15);";
+    private string defaultBrownPlaceholderShadow = "0px 0px 8px rgba(20, 20, 20, 0.15);";
+    private string defaultPinkPlaceholderShadow = "0px 0px 8px rgba(20, 20, 20, 0.15);";
+    private string defaultPurplePlaceholderShadow = "0px 0px 8px rgba(20, 20, 20, 0.15);";
+    private string defaultGreenPlaceholderShadow = "0px 0px 8px rgba(20, 20, 20, 0.15);";
+    private string defaultRedPlaceholderShadow = "0px 0px 8px rgba(20, 20, 20, 0.15);";
+
+    private void OnBreakpointChanged(MudBlazor.Breakpoint breakpoint)
+    {
+        _currentBreakpoint = breakpoint;
+        StateHasChanged();
+    }
+    
+    private void OnMouseOverYellowPlaceholderShadowIncrease(MouseEventArgs args)
+    {
+        defaultYellowPlaceholderShadow = "0px 4px 16px rgba(20, 20, 20, 0.25);";
+    }
+
+    private void OnMouseOutYellowPlaceholderShadowDecrease(MouseEventArgs args)
+    {
+        defaultYellowPlaceholderShadow = "0px 0px 8px rgba(20, 20, 20, 0.15);";
+    }
+
+    private void OnMouseOverBrownPlaceholderShadowIncrease(MouseEventArgs args)
+    {
+        defaultBrownPlaceholderShadow = "0px 4px 16px rgba(20, 20, 20, 0.25);";
+    }
+
+    private void OnMouseOutBrownPlaceholderShadowDecrease(MouseEventArgs args)
+    {
+        defaultBrownPlaceholderShadow = "0px 0px 8px rgba(20, 20, 20, 0.15);";
+    }
+
+    private void OnMouseOverPinkPlaceholderShadowIncrease(MouseEventArgs args)
+    {
+        defaultPinkPlaceholderShadow = "0px 4px 16px rgba(20, 20, 20, 0.25);";
+    }
+
+    private void OnMouseOutPinkPlaceholderShadowDecrease(MouseEventArgs args)
+    {
+        defaultPinkPlaceholderShadow = "0px 0px 8px rgba(20, 20, 20, 0.15);";
+    }
+
+    private void OnMouseOverPurplePlaceholderShadowIncrease(MouseEventArgs args)
+    {
+        defaultPurplePlaceholderShadow = "0px 4px 16px rgba(20, 20, 20, 0.25);";
+    }
+
+    private void OnMouseOutPurplePlaceholderShadowDecrease(MouseEventArgs args)
+    {
+        defaultPurplePlaceholderShadow = "0px 0px 8px rgba(20, 20, 20, 0.15);";
+    }
+
+    private void OnMouseOverGreenPlaceholderShadowIncrease(MouseEventArgs args)
+    {
+        defaultGreenPlaceholderShadow = "0px 4px 16px rgba(20, 20, 20, 0.25);";
+    }
+
+    private void OnMouseOutGreenPlaceholderShadowDecrease(MouseEventArgs args)
+    {
+        defaultGreenPlaceholderShadow = "0px 0px 8px rgba(20, 20, 20, 0.15);";
+    }
+
+    private void OnMouseOverRedPlaceholderShadowIncrease(MouseEventArgs args)
+    {
+        defaultRedPlaceholderShadow = "0px 4px 16px rgba(20, 20, 20, 0.25);";
+    }
+
+    private void OnMouseOutRedPlaceholderShadowDecrease(MouseEventArgs args)
+    {
+        defaultRedPlaceholderShadow = "0px 0px 8px rgba(20, 20, 20, 0.15);";
+    }
+}

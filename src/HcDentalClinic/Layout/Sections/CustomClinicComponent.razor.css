@@ -3,7 +3,7 @@
     background-color: #ffffff;
 
     /* Let the form dictate the height when the viewport is shorter */
-    min-height: 90svh;
+    min-height: 90vh;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -30,7 +30,7 @@
     /* Use clamp for fluid typography: clamp(MIN, PREFERRED, MAX) */
     font-size: clamp(1.5rem, 5vw, 2.5rem);
     color: #ad9587; /* Change text color to white */
-    padding-top: 1rem; /* Add some space from the top */
+    padding-top: 0.5rem; /* Add some space from the top */
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* Soft shadow for text */
     padding-inline: 1rem; /* Ensures minimum space on both edges of the viewport */
     font-weight: 300;

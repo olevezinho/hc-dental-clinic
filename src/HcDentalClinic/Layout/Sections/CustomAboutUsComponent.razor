@@ -1,0 +1,148 @@
+﻿<section id="about-us">
+    <MudBreakpointProvider OnBreakpointChanged="OnBreakpointChanged">
+        @if(IsMobile || IsSmallTablet || IsLargeTablet)
+        {
+            <div class="about-us-container-mobile">
+                <h1 class="about-us-text">Quem Somos</h1>
+                <MudContainer>
+                    <MudImage 
+                        Class="mx-auto my-20" 
+                        Src="images/clinic/desk.webp"
+                        Style="max-width: 75%; border-radius: 16px; box-shadow: 0px 0px 6px rgba(20, 20, 20, 0.1);" 
+                        Alt="Clinic lobby" />
+                    <MudText 
+                        Class="pa-15"
+                        Style="text-align: center; color: #363636; font-weight: 300; font-size: clamp(1.25rem, 1.25vw, 1.75rem); text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);">
+                        Somos uma clínica dedicada à Medicina Dentária e Medicina Estética, onde combinamos conhecimento científico, tecnologia avançada e uma abordagem personalizada para proporcionar cuidados de saúde de elevada qualidade.
+                    </MudText>
+                    <MudImage 
+                        Class="mx-auto my-20" 
+                        Src="images/clinic/hallway.webp"
+                        Style="max-width: 75%; border-radius: 16px; box-shadow: 0px 0px 6px rgba(20, 20, 20, 0.1);" 
+                        Alt="Hallway entry" />
+                    <MudText 
+                        Class="pa-20"
+                        Style="text-align: center; color: #363636; font-weight: 300; font-size: clamp(1.25rem, 1.25vw, 1.75rem); text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);">
+                        Na HC Dental Clinic acreditamos que a excelência clínica começa na forma como recebemos e cuidamos de cada paciente.
+                    </MudText>
+                    <MudImage 
+                        Class="mx-auto my-20" 
+                        Src="images/clinic/flowers.webp"
+                        Style="max-width: 75%; border-radius: 16px; box-shadow: 0px 0px 6px rgba(20, 20, 20, 0.1);" 
+                        Alt="Waiting area's flowers and furniture" />
+                    <MudText 
+                        Class="pa-20"
+                        Style="text-align: center; color: #363636; font-weight: 300; font-size: clamp(1.25rem, 1.25vw, 1.75rem); text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);">
+                        Criámos um espaço moderno, acolhedor e tranquilo, pensado para que cada visita seja uma experiência confortável e positiva.
+                    </MudText>
+                    <MudImage 
+                        Class="mx-auto my-20" 
+                        Src="images/clinic/open-space.webp"
+                        Style="max-width: 75%; border-radius: 16px; box-shadow: 0px 0px 6px rgba(20, 20, 20, 0.1);" 
+                        Alt="Hallway entry" />
+                    <MudText 
+                        Class="pa-20"
+                        Style="text-align: center; color: #363636; font-weight: 300; font-size: clamp(1.25rem, 1.25vw, 1.75rem); text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);">
+                        A nossa equipa trabalha diariamente com um compromisso comum: oferecer tratamentos seguros, eficazes e adaptados a cada pessoa, promovendo a saúde, o bem-estar e a qualidade de vida.
+                    </MudText>
+                    <MudButton
+                        Class="mt-10 mb-10"
+                        Variant="Variant.Filled"
+                        Href="contact-request"
+                        Style="color: white; background-color: #ad9587; border-radius: 24px; font-size: 1.15rem; padding: 0.75rem 2rem;">
+                        Marcação
+                    </MudButton>
+                </MudContainer>
+            </div>
+        }
+        else
+        {
+            <div class="about-us-container">
+                <h1 class="about-us-text">Quem Somos</h1>
+                <MudContainer Class="mt-20">
+                    <MudGrid Spacing="2" Justify="Justify.Center" Style="height: 100%;">
+                        <MudItem xs="6">
+                            <MudStack 
+                                Justify="Justify.SpaceBetween" 
+                                AlignItems="AlignItems.Center"
+                                Class="pa-2"
+                                Style="width: 100%;">
+                                <MudText 
+                                    Class="pa-20"
+                                    Style="text-align: center; color: #363636; font-weight: 300; font-size: clamp(0.85rem, 1.25vw, 1.25rem); text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);">
+                                    Somos uma clínica dedicada à Medicina Dentária e Medicina Estética, onde combinamos conhecimento científico, tecnologia avançada e uma abordagem personalizada para proporcionar cuidados de saúde de elevada qualidade.
+                                </MudText>
+                                <MudImage 
+                                    Class="mx-auto my-10" 
+                                    Src="images/clinic/flowers.webp"
+                                    Style="max-width: 60%; border-radius: 16px; box-shadow: 0px 0px 6px rgba(20, 20, 20, 0.1);" 
+                                    Alt="Waiting area's flowers and furniture" />
+                                <MudText 
+                                    Class="pa-20"
+                                    Style="text-align: center; color: #363636; font-weight: 300; font-size: clamp(0.85rem, 1.25vw, 1.25rem); text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);">
+                                    Na HC Dental Clinic acreditamos que a excelência clínica começa na forma como recebemos e cuidamos de cada paciente.
+                                </MudText>
+                                <MudImage 
+                                    Class="mx-auto my-10" 
+                                    Src="images/clinic/hallway.webp"
+                                    Style="max-width: 60%; border-radius: 16px; box-shadow: 0px 0px 6px rgba(20, 20, 20, 0.1);" 
+                                    Alt="Hallway entry" />
+                            </MudStack>
+                        </MudItem>
+                        <MudItem xs="6" 
+                            Class="d-flex" 
+                            Style="height: 100%;">
+                            <MudStack 
+                                Justify="Justify.SpaceBetween" 
+                                AlignItems="AlignItems.Center"
+                                Class="pa-2"
+                                Style="width: 100%;">
+                                <MudImage 
+                                    Class="mx-auto my-10" 
+                                    Src="images/clinic/desk.webp"
+                                    Style="max-width: 60%; border-radius: 16px; box-shadow: 0px 0px 6px rgba(20, 20, 20, 0.1);" 
+                                    Alt="Clinic lobby" />
+                                <MudText 
+                                    Class="pa-20"
+                                    Style="text-align: center; color: #363636; font-weight: 300; font-size: clamp(0.85rem, 1.25vw, 1.25rem); text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);">
+                                    Criámos um espaço moderno, acolhedor e tranquilo, pensado para que cada visita seja uma experiência confortável e positiva.
+                                </MudText>
+                                <MudImage 
+                                    Class="mx-auto my-10" 
+                                    Src="images/clinic/open-space.webp"
+                                    Style="max-width: 60%; border-radius: 16px; box-shadow: 0px 0px 6px rgba(20, 20, 20, 0.1);" 
+                                    Alt="Hallway entry" />
+                                <MudText 
+                                    Class="pa-20"
+                                    Style="text-align: center; color: #363636; font-weight: 300; font-size: clamp(0.85rem, 1.25vw, 1.25rem); text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);">
+                                    A nossa equipa trabalha diariamente com um compromisso comum: oferecer tratamentos seguros, eficazes e adaptados a cada pessoa, promovendo a saúde, o bem-estar e a qualidade de vida.
+                                </MudText>
+                            </MudStack>
+                        </MudItem>
+                    </MudGrid>
+                    <MudButton
+                        Class="mt-20 mb-10"
+                        Variant="Variant.Filled"
+                        Href="values#contact-form"
+                        Style="color: white; background-color: #ad9587; border-radius: 24px; font-size: 1.15rem; padding: 0.75rem 2rem;">
+                        Marcação
+                    </MudButton>
+                </MudContainer>
+            </div>
+        }
+    </MudBreakpointProvider>
+</section>
+
+@code 
+{
+    private MudBlazor.Breakpoint _currentBreakpoint;
+    private bool IsMobile => _currentBreakpoint < MudBlazor.Breakpoint.Sm;
+    private bool IsSmallTablet => _currentBreakpoint is MudBlazor.Breakpoint.Sm;
+    private bool IsLargeTablet => _currentBreakpoint >= MudBlazor.Breakpoint.Md && _currentBreakpoint < MudBlazor.Breakpoint.Lg;
+    
+    private void OnBreakpointChanged(MudBlazor.Breakpoint breakpoint)
+    {
+        _currentBreakpoint = breakpoint;
+        StateHasChanged();
+    }
+}

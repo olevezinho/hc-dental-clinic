@@ -1,0 +1,107 @@
+﻿@if (Stacked)
+{
+    <MudStack 
+        Justify="Justify.SpaceAround" 
+        AlignItems="AlignItems.Center"
+        Class="pa-4"
+        Style="width: 100%;">
+        <MudText 
+            Typo="Typo.h3"
+            Class="pa-2"
+            Style="text-align: center; color: #ad9587; font-weight: 400; font-size: clamp(1rem, 2.5vw, 1.5rem); text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);">
+            @Headline
+        </MudText>
+        <MudImage 
+            Class="mx-auto my-auto" 
+            Src="@ImageSrc"
+            Style="max-width: 60%; border-radius: 16px; box-shadow: 0px 0px 6px rgba(20, 20, 20, 0.1);" 
+            Alt="@ImageAlt" />
+        <MudText 
+            Class="pa-2"
+            Style="text-align: center; color: #363636; font-weight: 300; font-size: clamp(0.85rem, 1.25vw, 1.25rem); text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);">
+            @Body
+        </MudText>
+        <MudButton
+            Class="mb-6"
+            Variant="Variant.Filled"
+            Href="contact-request"
+            Style="color: white; background-color: #ad9587; border-radius: 24px; font-size: 1.15rem; padding: 0.75rem 2rem;">
+            Marcação
+        </MudButton>
+    </MudStack>
+}
+else
+{
+    <MudGrid
+        Class="mt-2"
+        Spacing="2" 
+        Justify="Justify.Center" 
+        Style="height: 100%;">
+        @if (ImageFirst)
+        {
+            <MudItem xs="4" Class="d-flex align-center justify-center" Style="height: 100%;">@ImageContent</MudItem>
+            <MudItem xs="8" Class="d-flex" Style="height: 100%;">@TextContent</MudItem>
+        }
+        else
+        {
+            <MudItem xs="8" Class="d-flex" Style="height: 100%;">@TextContent</MudItem>
+            <MudItem xs="4" Class="d-flex align-center justify-center" Style="height: 100%;">@ImageContent</MudItem>
+        }
+    </MudGrid>
+}
+
+@code 
+{
+
+    [Parameter]
+    public bool Stacked { get; set; }
+    
+    [Parameter, EditorRequired] 
+    public string Headline { get; set; } = string.Empty;
+    
+    [Parameter, EditorRequired] 
+    public string Body { get; set; } = string.Empty;
+    
+    [Parameter, EditorRequired] 
+    public string ImageSrc { get; set; } = string.Empty;
+    
+    [Parameter, EditorRequired]
+    public string ImageAlt { get; set; } = string.Empty;
+    
+    [Parameter] 
+    public bool ImageFirst { get; set; }
+
+    private RenderFragment TextContent => __builder =>
+    {
+        <MudStack 
+            Justify="Justify.SpaceEvenly" 
+            AlignItems="AlignItems.Center"
+            Class="pa-4"
+            Style="width: 100%;">
+            <MudText 
+                Typo="Typo.h3"
+                Class="pa-8 mt-12"
+                Style="text-align: center; color: #ad9587; font-weight: 400; font-size: clamp(1rem, 2.5vw, 1.5rem); text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);">
+                @Headline
+            </MudText>
+            <MudText
+                Style="text-align: center; color: #363636; font-weight: 300; font-size: clamp(0.85rem, 1.25vw, 1.25rem); text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);">
+                @Body
+            </MudText>
+            <MudButton
+                Class="mb-20"
+                Variant="Variant.Filled"
+                Href="contact-request"
+                Style="color: white; background-color: #ad9587; border-radius: 24px; font-size: 1.15rem; padding: 0.75rem 2rem;">
+                Marcação
+            </MudButton>
+        </MudStack>
+    };
+
+    private RenderFragment ImageContent => __builder =>
+    {
+            <MudImage Src="@ImageSrc"
+                Style="max-width: 90%; max-height: 100%; object-fit: contain; border-radius: 16px; box-shadow: 0px 0px 6px rgba(20, 20, 20, 0.1);"
+                Alt="@ImageAlt" />
+    };
+}
