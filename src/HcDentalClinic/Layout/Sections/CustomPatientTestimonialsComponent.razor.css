@@ -1,0 +1,54 @@
+.patient-testemonials-container {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.patient-testemonials-text {
+    /* Use clamp for fluid typography: clamp(MIN, PREFERRED, MAX) */
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    color: #ad9587;
+    padding-top: 4rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    padding-inline: 1rem;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    margin-bottom: 3.5rem;
+}
+
+.review-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 1rem 2rem 4.5rem; /* Bottom padding clears the carousel arrows/bullets */
+    text-align: left;
+}
+
+.review-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+    padding-inline: 1.2rem;
+    margin-top: 1rem;
+}
+
+.review-card-rating {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.review-card-stars {
+    display: flex;
+    align-items: center;
+}
+
+.review-card-body {
+    flex: 1;
+    padding: 1.25rem 1.2rem 0;
+    margin-top: 1rem;
+}

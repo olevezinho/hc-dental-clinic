@@ -1,0 +1,67 @@
+﻿<MudBreakpointProvider OnBreakpointChanged="OnBreakpointChanged">
+    <div class="carousel-static @(IsMobile ? "carousel-static-mobile" : "carousel-static-desktop")">
+        <img
+            class="carousel-static-image"
+            src="@(IsMobile ? "images/background-mobile.webp" : "images/background-white.webp")"
+            alt="HC Dental Clinic Background" />
+        <div class="overlay">
+            <div class="hero-content">
+                <MudGrid>
+                    <MudItem xs="12">
+                        <MudText Class="pa-4"
+                            Style="@($"text-align: center;color: #ffffff; font-weight: 700; z-index: 2; font-size: 1rem; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.55); letter-spacing: 0.02em;")">
+                            Excelência em Medicina Dentária e Medicina Estética
+                        </MudText>
+                    </MudItem>
+                </MudGrid>
+                <div class="hero-cta-wrapper">
+                    <MudButton 
+                        Class="pa-4 hero-cta-button"
+                        Variant="Variant.Filled"
+                        EndIcon="@Icons.Material.Filled.ArrowDownward"
+                        IconSize="Size.Small"
+                        Href="#clinic"
+                        @onmouseover="OnMouseOverButtonColorChange"
+                        @onmouseout="OnMouseOutButtonColorChange"
+                        OnClick="@(async () => await ScrollToSection("clinic"))"
+                        Style="@($"margin-top: 0.6rem; min-width: 9%; display: flex; justify-content: center; align-items: center; color: {mudButtonTextColor}; background-color: {mudButtonBackgroundColor}; border-radius: 50px; z-index: 2;")">
+                        Saiba mais
+                    </MudButton>
+                </div>
+            </div>
+        </div>
+    </div>
+</MudBreakpointProvider>
+
+@code
+{
+    private MudBlazor.Breakpoint _currentBreakpoint;
+    private bool IsMobile => _currentBreakpoint < MudBlazor.Breakpoint.Sm;
+
+    private string mudButtonTextColor = Colors.Shades.White;
+    private string mudButtonBackgroundColor = Colors.BlueGray.Darken4;
+
+    private void OnBreakpointChanged(MudBlazor.Breakpoint breakpoint)
+    {
+        _currentBreakpoint = breakpoint;
+        StateHasChanged();
+    }
+
+    // Scroll to section using JavaScript interop
+    private async Task ScrollToSection(string sectionId)
+    {
+        await JSRuntime.InvokeVoidAsync("scrollToSection", sectionId);
+    }
+
+    private void OnMouseOverButtonColorChange(MouseEventArgs args)
+    {
+        mudButtonTextColor = Colors.Gray.Lighten3;
+        mudButtonBackgroundColor = "#ad9587";
+    }
+
+    private void OnMouseOutButtonColorChange(MouseEventArgs args)
+    {
+        mudButtonTextColor = Colors.Shades.White;
+        mudButtonBackgroundColor = Colors.BlueGray.Darken4;
+    }
+}

@@ -1,24 +1,64 @@
 .footer-container {
-    background-color: #000000; /* Match the landing page background color */
+    background-color: #000000;
     display: flex;
     flex-direction: column;
 }
 
-.social-media-links {
-    display: flex;
-    flex-direction: column;
+.footer-column-title {
+    color: #eeeeee;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0;
+    padding: 1rem;
 }
 
-.copyright-container {    
-    /* Ensure it fills the viewport and center content */
-    justify-content: space-between; /* Pushes children to top and bottom */
+.footer-social {
+    display: flex;
+    gap: 0.75rem;
+    padding: 1rem;
+}
+
+.footer-contact-group {
+    margin: 0 0 1rem;
+    padding-inline: 1rem;
+}
+
+.footer-contact-label {
+    color: #807f7f;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin: 0 0 0.25rem;
+}
+
+.footer-contact-value {
+    color: #d1d1d1;
+    font-weight: 400;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.footer-contact-link {
+    color: #d1d1d1;
+    font-weight: 400;
+    line-height: 1.6;
+    text-decoration: none;
+    transition: color 0.2s ease;
+    overflow-wrap: anywhere; /* long e-mails wrap instead of overflowing narrow columns */
+}
+
+.footer-contact-link:hover {
+    color: #ad9587;
+}
+
+.copyright-container {
+    justify-content: space-between;
     align-items: center;
     text-align: center;
 }
 
 .copyright-text {
     padding: 10px;
-    color: #d1d1d1; /* Change text color to light gray */
-    text-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5); /* Soft shadow for footer */
-    padding-inline: 1rem; /* Ensures minimum space on both edges of the viewport */
+    color: #d1d1d1;
+    text-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
+    padding-inline: 1rem;
 }

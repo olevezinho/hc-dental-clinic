@@ -1,10 +1,4 @@
-﻿<style>
-    .mud-overlay.dialog-styles {
-        backdrop-filter: blur(10px);
-    }
-</style>
-
-<section id="team">
+﻿<section id="team">
     <MudBreakpointProvider OnBreakpointChanged="OnBreakpointChanged">
         @if(IsMobile)
         {
@@ -206,7 +200,7 @@
         {
             <div class="team-container">
                 <h1 class="team-text">Conheça a Nossa Equipa</h1>
-                <MudContainer MaxWidth="MaxWidth.Large" Class="pa-4">
+                <MudContainer MaxWidth="MaxWidth.Large" Class="pa-4 mt-10">
                     <MudText 
                         Typo="Typo.h5" 
                         Class="mb-2"
@@ -214,7 +208,7 @@
                         Style="font-weight: 325; color: #807f7f; font-size: 1.3rem;">
                         Os nossos profissionais dentários experientes e simpáticos estão aqui para cuidar do seu sorriso
                     </MudText>
-                    <div class="carousel-nav-wrapper mb-16" style="position: relative; width: 100%;">
+                    <div class="carousel-nav-wrapper mb-16 mt-20" style="position: relative; width: 100%;">
                         <div style="position: absolute; left: -7rem; top: 50%; transform: translateY(-50%); z-index: 2;">
                             <div class="mud-button-root mud-icon-button mud-icon-button-color-inherit mud-ripple mud-ripple-icon"
                                 @onmouseover="OnMouseOverPreviousButton"
@@ -273,6 +267,13 @@
         }
     </MudBreakpointProvider>
 </section>
+
+<style>
+    .mud-overlay.dialog-styles {
+        backdrop-filter: blur(10px);
+    }
+</style>
+
 
 @code 
 {

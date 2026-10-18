@@ -1,40 +1,49 @@
-﻿<MudBreakpointProvider OnBreakpointChanged="OnBreakpointChanged">
+<MudBreakpointProvider OnBreakpointChanged="OnBreakpointChanged">
     <MudToolBar Style="position: sticky; top: 0; width: 100%; z-index: 999999; background-color: black;">
         <MudImage 
             @onclick="@(() => Navigation.NavigateTo("/"))" 
             Src="/images/loading-light.webp" 
             Alt="HC Dental Clinic logótipo" 
-            Width="180" />
+            Width="190" />
         <MudSpacer />
         @if(IsMobile || IsSmallTablet)
         {
-            <MudButton 
-                Class="mr-5"
-                Variant="Variant.Filled"
-                Href="test/#contact-form"
-                @onmouseover="OnMouseOverColorChange"
-                @onmouseout="OnMouseOutColorChange"
-                OnClick="@(async () => await ScrollToSection("contact-form"))"
-                Style="@($"color: {mudButtonTextColor}; background-color: {mudButtonBackgroundColor}; border-radius: 16px; font-size: 1rem;")">
-                Marcação
-            </MudButton>
+            <MudIconButton
+                Class="mr-2"
+                Icon="@Icons.Material.Rounded.Menu"
+                aria-label="Abrir menu"
+                OnClick="OpenMobileMenu"
+                Style="@($"color: #ffffff; background-color: {mudContactButtonBackgroundColor}; border-radius: 16px;")" />
         }
         else
         {
+            <MudMenu 
+                Class="mr-5"
+                @onmouseover="OnMouseOverTextAboutUsColorChange"
+                @onmouseout="OnMouseOutTextAboutUsColorChange"
+                @onclick="OnMouseClickAboutUsChange"
+                ActivationEvent="MouseEvent.MouseOver"
+                Variant="Variant.Text"
+                EndIcon="@($"{mudAboutUsIcon}")"
+                Label="Sobre nós"
+                Style="@($"color: {mudAboutUsTextColor}; transition: color 0.3s;")">
+                <MudMenuItem 
+                    @onmouseover="OnMouseOverTextWhoWeAreColorChange"
+                    @onmouseout="OnMouseOutTextWhoWeAreColorChange" 
+                    OnClick="@(() => Navigation.NavigateTo("values#about-us"))"
+                    Label="Quem somos"
+                    Style="@($"color: {mudWhoWeAreTextColor}; transition: color 0.3s; background-color: {mudWhoWeAreTextBackgroundColor};")"/>
+                <MudMenuItem
+                    @onmouseover="OnMouseOverTextPhilosophyColorChange"
+                    @onmouseout="OnMouseOutTextPhilosophyColorChange"
+                    OnClick="@(() => Navigation.NavigateTo("values#philosophy"))"
+                    Label="Filosofia" 
+                    Style="@($"color: {mudPhilosophyTextColor}; transition: color 0.3s; background-color: {mudPhilosophyTextBackgroundColor};")"/>
+            </MudMenu>
             <MudButton 
                 Class="mr-5"
                 Variant="Variant.Text"
-                Href="test/#mission"
-                @onmouseover="OnMouseOverTextMissaoColorChange"
-                @onmouseout="OnMouseOutTextMissaoColorChange"
-                OnClick="@(async () => await ScrollToSection("mission"))"
-                Style="@($"color: {mudMissaoTextColor}; transition: color 0.3s;")">
-                Missão
-            </MudButton>
-            <MudButton 
-                Class="mr-5"
-                Variant="Variant.Text"
-                Href="test/#services"
+                Href="#services"
                 @onmouseover="OnMouseOverTextServicosColorChange"
                 @onmouseout="OnMouseOutTextServicosColorChange"
                 OnClick="@(async () => await ScrollToSection("services"))"
@@ -44,27 +53,25 @@
             <MudButton 
                 Class="mr-5"
                 Variant="Variant.Text"
-                Href="test/#team"
+                Href="team"
                 @onmouseover="OnMouseOverTextEquipaColorChange"
                 @onmouseout="OnMouseOutTextEquipaColorChange"
-                OnClick="@(async () => await ScrollToSection("team"))"
                 Style="@($"color: {mudEquipaTextColor}; transition: color 0.3s;")">
                 Equipa
             </MudButton>
             <MudButton 
                 Class="mr-5"
                 Variant="Variant.Text"
-                Href="test/#testemonials"
-                @onmouseover="OnMouseOverTextTestemunhosPacientesColorChange"
-                @onmouseout="OnMouseOutTextTestemunhosPacientesColorChange"
-                OnClick="@(async () => await ScrollToSection("testemonials"))"
-                Style="@($"color: {mudTestemunhosPacientesTextColor}; transition: color 0.3s;")">
-                Testemunhos
+                Href="clinical-cases"
+                @onmouseover="OnMouseOverTextCasosClinicosColorChange"
+                @onmouseout="OnMouseOutTextCasosClinicosColorChange"
+                Style="@($"color: {mudCasosClinicosTextColor}; transition: color 0.3s;")">
+                Casos Clínicos
             </MudButton>
             <MudButton 
                 Class="mr-5"
                 Variant="Variant.Text"
-                Href="test/#contact-form"
+                Href="#contact-form"
                 @onmouseover="OnMouseOverTextMarcacaoColorChange"
                 @onmouseout="OnMouseOutTextMarcacaoColorChange"
                 OnClick="@(async () => await ScrollToSection("contact-form"))"
@@ -75,15 +82,64 @@
             <MudButton 
                 Class="mr-5"
                 Variant="Variant.Filled"
-                Href="test/#contact"
+                Href="#footer"
                 @onmouseover="OnMouseOverContactColorChange"
                 @onmouseout="OnMouseOutContactColorChange"
-                OnClick="@(async () => await ScrollToSection("contact"))"
+                OnClick="@(async () => await ScrollToSection("footer"))"
                 Style="@($"color: {mudContactButtonTextColor}; background-color: {mudContactButtonBackgroundColor}; border-radius: 16px;")">
                 Contacto
             </MudButton>
         }
     </MudToolBar>
+
+    <div class="mobile-menu @(_mobileMenuOpen ? "open" : null)">
+        <div class="mobile-menu-backdrop" @onclick="CloseMobileMenu"></div>
+        <aside class="mobile-menu-panel">
+            <div class="mobile-menu-header">
+                <MudIconButton
+                    Icon="@Icons.Material.Rounded.Close"
+                    aria-label="Fechar menu"
+                    OnClick="CloseMobileMenu"
+                    Style="@($"color: {Colors.Shades.White};")" />
+            </div>
+            <nav class="mobile-menu-nav">
+                <button type="button" class="mobile-menu-link" @onclick="ToggleAboutUs">
+                    Sobre nós
+                    <MudIcon
+                        Icon="@Icons.Material.Rounded.ExpandMore"
+                        Size="Size.Small"
+                        Style="@($"transition: transform 0.25s ease; transform: rotate({(_aboutUsExpanded ? "180deg" : "0deg")});")" />
+                </button>
+                <div class="mobile-menu-submenu @(_aboutUsExpanded ? "expanded" : null)">
+                    <div class="mobile-menu-submenu-inner">
+                        <button type="button" class="mobile-menu-link mobile-menu-sublink"
+                            @onclick="@(() => NavigateAndClose("values#about-us"))">
+                            Quem somos
+                        </button>
+                        <button type="button" class="mobile-menu-link mobile-menu-sublink"
+                            @onclick="@(() => NavigateAndClose("values#philosophy"))">
+                            Filosofia
+                        </button>
+                    </div>
+                </div>
+                <button type="button" class="mobile-menu-link"
+                    @onclick="@(() => NavigateAndClose("team"))">
+                    Equipa
+                </button>
+                <button type="button" class="mobile-menu-link"
+                    @onclick="@(() => NavigateAndClose("clinical-cases"))">
+                    Casos Clínicos
+                </button>
+                <button type="button" class="mobile-menu-link"
+                    @onclick="@(() => NavigateAndClose("contact-request"))">
+                    Marcação
+                </button>
+                <button type="button" class="mobile-menu-link" @onclick="ScrollToFooterAndClose">
+                    Contacto
+                </button>
+            </nav>
+        </aside>
+    </div>
 </MudBreakpointProvider>
 
 @code
@@ -91,21 +147,27 @@
     private MudBlazor.Breakpoint _currentBreakpoint;
     private bool IsMobile => _currentBreakpoint < MudBlazor.Breakpoint.Sm;
     private bool IsSmallTablet => _currentBreakpoint is MudBlazor.Breakpoint.Sm;
-    private bool IsLargeTablet => _currentBreakpoint >= MudBlazor.Breakpoint.Md && _currentBreakpoint < MudBlazor.Breakpoint.Lg;
 
-    private string mudMissaoTextColor = Colors.Gray.Lighten5;
+    private bool _mobileMenuOpen;
+    private bool _aboutUsExpanded;
+
+    private string mudAboutUsTextColor = Colors.Gray.Lighten5;
+    private string mudWhoWeAreTextColor = Colors.Gray.Lighten5;
+    private string mudWhoWeAreTextBackgroundColor = Colors.Shades.Black;
+    private string mudPhilosophyTextColor = Colors.Gray.Lighten5;
+    private string mudPhilosophyTextBackgroundColor = Colors.Shades.Black;
+    private string mudAboutUsIcon = Icons.Material.Rounded.ArrowDropDown;
     private string mudServicosTextColor = Colors.Gray.Lighten5;
     private string mudEquipaTextColor = Colors.Gray.Lighten5;
-    private string mudTestemunhosPacientesTextColor = Colors.Gray.Lighten5;
+    private string mudCasosClinicosTextColor = Colors.Gray.Lighten5;
     private string mudMarcacaoTextColor = Colors.Gray.Lighten5;
-    private string mudButtonTextColor = Colors.Shades.White;
-    private string mudButtonBackgroundColor = Colors.BlueGray.Darken4;
     private string mudContactButtonTextColor = Colors.Shades.White;
     private string mudContactButtonBackgroundColor = Colors.BlueGray.Darken4;
 
-    private void OnBreakpointChanged(MudBlazor.Breakpoint breakpoint)
+    private async Task OnBreakpointChanged(MudBlazor.Breakpoint breakpoint)
     {
         _currentBreakpoint = breakpoint;
+        await CloseMobileMenu();
         StateHasChanged();
     }
 
@@ -115,34 +177,101 @@
         await JSRuntime.InvokeVoidAsync("scrollToSection", sectionId);
     }
 
-    private void OnMouseOverTextMissaoColorChange(MouseEventArgs args)
+    private async Task OpenMobileMenu()
     {
-        mudMissaoTextColor = Colors.Brown.Lighten4;
+        _mobileMenuOpen = true;
+        await JSRuntime.InvokeVoidAsync("setBodyScrollLock", true);
     }
 
-    private void OnMouseOutTextMissaoColorChange(MouseEventArgs args)
+    private async Task CloseMobileMenu()
     {
-        mudMissaoTextColor = Colors.Gray.Lighten5;
+        if(!_mobileMenuOpen)
+        {
+            return;
+        }
+
+        _mobileMenuOpen = false;
+        _aboutUsExpanded = false;
+        await JSRuntime.InvokeVoidAsync("setBodyScrollLock", false);
+    }
+
+    private void ToggleAboutUs()
+    {
+        _aboutUsExpanded = !_aboutUsExpanded;
+    }
+
+    private async Task NavigateAndClose(string uri)
+    {
+        await CloseMobileMenu();
+        Navigation.NavigateTo(uri);
+    }
+
+    private async Task ScrollToFooterAndClose()
+    {
+        await CloseMobileMenu();
+        await ScrollToSection("footer");
+    }
+
+    private void OnMouseOverTextAboutUsColorChange(MouseEventArgs args)
+    {
+        mudAboutUsTextColor = Colors.Brown.Lighten4;
+    }
+
+    private void OnMouseOutTextAboutUsColorChange(MouseEventArgs args)
+    {
+        mudAboutUsTextColor = Colors.Gray.Lighten5;
+    }
+
+    private void OnMouseClickAboutUsChange()
+    {
+        if(mudAboutUsIcon is not Icons.Material.Rounded.ArrowDropDown)
+        {
+            mudAboutUsIcon = Icons.Material.Rounded.ArrowDropDown;
+        }
+        else
+        {
+            mudAboutUsIcon = Icons.Material.Rounded.ArrowDropUp;    
+        }        
+    }
+
+    private void OnMouseOverTextWhoWeAreColorChange(MouseEventArgs args)
+    {
+        mudWhoWeAreTextBackgroundColor = Colors.Gray.Darken4;
+    }
+
+    private void OnMouseOutTextWhoWeAreColorChange(MouseEventArgs args)
+    {
+        mudWhoWeAreTextBackgroundColor = Colors.Shades.Black;
+    }
+
+    private void OnMouseOverTextPhilosophyColorChange(MouseEventArgs args)
+    {
+        mudPhilosophyTextBackgroundColor = Colors.Gray.Darken4;
+    }
+
+    private void OnMouseOutTextPhilosophyColorChange(MouseEventArgs args)
+    {
+        mudPhilosophyTextBackgroundColor = Colors.Shades.Black;
     }
 
     private void OnMouseOverTextServicosColorChange(MouseEventArgs args)
     {
         mudServicosTextColor = Colors.Brown.Lighten4;
     }
-    
+
     private void OnMouseOutTextServicosColorChange(MouseEventArgs args)
     {
         mudServicosTextColor = Colors.Gray.Lighten5;
     }
 
-    private void OnMouseOverTextTestemunhosPacientesColorChange(MouseEventArgs args)
+    private void OnMouseOverTextCasosClinicosColorChange(MouseEventArgs args)
     {
-        mudTestemunhosPacientesTextColor = Colors.Brown.Lighten4;
+        mudCasosClinicosTextColor = Colors.Brown.Lighten4;
     }
 
-    private void OnMouseOutTextTestemunhosPacientesColorChange(MouseEventArgs args)
+    private void OnMouseOutTextCasosClinicosColorChange(MouseEventArgs args)
     {
-        mudTestemunhosPacientesTextColor = Colors.Gray.Lighten5;
+        mudCasosClinicosTextColor = Colors.Gray.Lighten5;
     }
 
     private void OnMouseOverTextEquipaColorChange(MouseEventArgs args)
@@ -163,18 +292,6 @@
     private void OnMouseOutTextMarcacaoColorChange(MouseEventArgs args)
     {
         mudMarcacaoTextColor = Colors.Gray.Lighten5;
-    }
-
-    private void OnMouseOverColorChange(MouseEventArgs args)
-    {
-        mudButtonTextColor = Colors.Gray.Lighten3;
-        mudButtonBackgroundColor = Colors.Brown.Lighten3;
-    }
-
-    private void OnMouseOutColorChange(MouseEventArgs args)
-    {
-        mudButtonTextColor = Colors.Shades.White;
-        mudButtonBackgroundColor = Colors.BlueGray.Darken4;
     }
 
     private void OnMouseOverContactColorChange(MouseEventArgs args)

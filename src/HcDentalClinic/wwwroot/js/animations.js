@@ -24,3 +24,7 @@ globalThis.animateCarouselSlide = function (gridId, direction) {
         grid.style.transform = 'translateX(0)';
     }, 400);
 };
+// Locks/unlocks body scroll (used by the mobile menu overlay)
+globalThis.setBodyScrollLock = (locked) => {
+    document.body.style.overflow = locked ? 'hidden' : '';
+};

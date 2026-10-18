@@ -1,0 +1,47 @@
+@implements IDisposable
+
+@if (_isVisible)
+{
+    <div class="whatsapp-button-container">
+        <MudFab 
+            StartIcon="@Icons.Custom.Brands.WhatsApp"
+            Href="https://wa.me/00351965345367"
+            Target="_blank"
+            rel="noopener noreferrer"
+            Size="Size.Large"
+            Style="color: #ffffff; background-color: #25D366;"
+            aria-label="Contactar a clínica via WhatsApp" />
+    </div>
+}
+
+@code
+{
+    private bool _isVisible;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            CookieConsent.Changed += OnConsentChanged;
+            await CookieConsent.InitializeAsync();
+
+            if (CookieConsent.HasConsent)
+            {
+                _isVisible = true;
+                StateHasChanged();
+            }
+        }
+    }
+
+    private void OnConsentChanged()
+    {
+        _isVisible = CookieConsent.HasConsent;
+        StateHasChanged();
+    }
+
+    public void Dispose()
+    {
+        CookieConsent.Changed -= OnConsentChanged;
+    }
+}
+        
