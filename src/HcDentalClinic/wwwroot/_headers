@@ -1,0 +1,22 @@
+# Cloudflare Pages custom cache headers.
+# Fingerprinted Blazor framework files (content-hashed names) can be cached forever.
+/_framework/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# MudBlazor static assets and images are not fingerprinted: cache for 1 week.
+# NOTE: if you replace an image keeping the same filename, purge the Cloudflare cache.
+/_content/*
+  Cache-Control: public, max-age=604800, immutable
+
+/images/*
+  Cache-Control: public, max-age=604800, immutable
+
+/favicon.png
+  Cache-Control: public, max-age=604800
+
+# App configuration must always be fresh (generated per deploy).
+/appsettings.json
+  Cache-Control: public, max-age=0, must-revalidate
+
+/appsettings.Production.json
+  Cache-Control: public, max-age=0, must-revalidate
