@@ -17,11 +17,4 @@
     <PackageReference Include="MudBlazor" />
     <!-- <PackageReference Include="Verifalia" Version="5.0.0" /> -->
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="wwwroot/images/cases/" />
-    <Folder Include="wwwroot/images/cases/1/" />
-    <Folder Include="wwwroot/images/clinic/" />
-  </ItemGroup>
-
 </Project>
